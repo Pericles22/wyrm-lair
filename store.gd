@@ -14,7 +14,7 @@ var state = {
 			body = null,
 			legs = null,
 			feet = null,
-			left_hand = null,
+			off_hand = null,
 			strong_hand = 'bronze_dagger'
 		},
 		skills = {
