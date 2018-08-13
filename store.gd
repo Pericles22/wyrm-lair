@@ -4,6 +4,10 @@ var equipment = {
 	bronze_dagger = {
 		attack = 1,
 		speed = 3
+	},
+	irom_helm = {
+		defense = 2,
+		speed = -1	
 	}
 }
 

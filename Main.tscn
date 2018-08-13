@@ -11,13 +11,13 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="City" parent="." index="0" instance=ExtResource( 2 )]
 
-margin_right = 960.0
-margin_bottom = 536.0
-_sections_unfolded = [ "Margin", "Size Flags", "custom_constants" ]
+margin_left = 30.0
+margin_top = 21.0
+margin_right = 990.0
+margin_bottom = 557.0
 
 [node name="HUD" parent="." index="1" instance=ExtResource( 3 )]
 
 margin_right = 960.0
-margin_bottom = 84.0
 
 

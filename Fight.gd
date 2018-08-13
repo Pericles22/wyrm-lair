@@ -6,7 +6,7 @@ var enemy = {
 	type = 'enemy',
 	maxHealth = 200,
 	currHealth = 200,
-	defense = 5,
+	defense = 10,
 	moves = ['slash']
 }
 var player = {
@@ -37,7 +37,7 @@ func do_move(move):
 	match move:
 		'slash': 
 			slash(enemy)
-			$VBoxContainer/EnemyContainer/ProgressBar.value = enemy.currHealth
+			$VBoxContainer/EnemyWrapper/EnemyContainer/ProgressBar.value = enemy.currHealth
 		'harden': harden(player)
 		
 	if(!check_is_dead()):
@@ -47,21 +47,23 @@ func retaliate(move):
 	match move:
 		'slash': 
 			slash(player)
-			$VBoxContainer/PlayerContainer/ProgressBar.value = player.currHealth
+			$VBoxContainer/PlayerWrapper/PlayerContainer/ProgressBar.value = player.currHealth
 		
 	check_is_dead()
 		
 func check_is_dead():
 	if(player.currHealth <= 0):
-		print('player died')
+		$FightHUD/OutcomeLabel.text = "DEFEAT"
+		$VBoxContainer/PlayerWrapper/PlayerContainer.hide()
+		$FightHUD/Buttons.hide()
 		return true
 	elif(enemy.currHealth <= 0):
-		print('enemy died')
-		$VBoxContainer/EnemyContainer.hide()
+		$FightHUD/OutcomeLabel.text = "VICTORY"
+		$VBoxContainer/EnemyWrapper/EnemyContainer.hide()
+		$FightHUD/Buttons.hide()
 		return true
 	else:
 		return false	
-
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
