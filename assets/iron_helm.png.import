@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rusty_sword.png-2644893c978f5f770a6a032a53a4343f.stex"
+path="res://.import/iron_helm.png-ad910343abfcbf445bb0406467225f1a.stex"
 
 [deps]
 
-source_file="res://assets/rusty_sword.png"
-source_md5="b4f489089a3ff63c339cdf81cedd2efd"
+source_file="res://assets/iron_helm.png"
+source_md5="6ee592408bd169a1e83ad8c48210832f"
 
-dest_files=[ "res://.import/rusty_sword.png-2644893c978f5f770a6a032a53a4343f.stex" ]
-dest_md5="7ce03029f67d4302a873c44a53c064ef"
+dest_files=[ "res://.import/iron_helm.png-ad910343abfcbf445bb0406467225f1a.stex" ]
+dest_md5="90a3c5f64a47d16d52fbd126680d5cf0"
 
 [params]
 

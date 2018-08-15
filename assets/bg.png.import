@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rusty_sword.png-2644893c978f5f770a6a032a53a4343f.stex"
+path="res://.import/bg.png-23a59c2e9cba2223a50fa3fe41b70b25.stex"
 
 [deps]
 
-source_file="res://assets/rusty_sword.png"
-source_md5="b4f489089a3ff63c339cdf81cedd2efd"
+source_file="res://assets/bg.png"
+source_md5="2005c97c9a7012b019e5f909c0d9c632"
 
-dest_files=[ "res://.import/rusty_sword.png-2644893c978f5f770a6a032a53a4343f.stex" ]
-dest_md5="7ce03029f67d4302a873c44a53c064ef"
+dest_files=[ "res://.import/bg.png-23a59c2e9cba2223a50fa3fe41b70b25.stex" ]
+dest_md5="20ea4aa5aa2243b4952f7f90fadb663a"
 
 [params]
 
