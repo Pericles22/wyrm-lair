@@ -3,19 +3,14 @@ extends MarginContainer
 export(PackedScene) var MoveButton;
 
 var enemy = {
-	type = 'enemy',
 	maxHealth = 200,
 	currHealth = 200,
-	defense = 10,
+	stats = {
+		defense = 10
+	},
 	moves = ['slash']
 }
-var player = {
-	type = 'player',
-	maxHealth = 200,
-	currHealth = 200,
-	defense = 5,
-	moves = ['slash','harden']
-}
+var player = store.state.player
 
 func _ready():
 	for move in player.moves:
@@ -26,10 +21,10 @@ func _ready():
 		$FightHUD/Buttons.add_child(button)
 	
 func harden(unit):
-	unit.defense += 2
+	unit.stats.defense += 2
 
 func slash(unit):
-	var amount = 20 - unit.defense
+	var amount = 20 - unit.stats.defense
 	
 	unit.currHealth -= max(amount, 0)
 

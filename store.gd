@@ -1,32 +1,44 @@
 extends Node
 
-var equipment = {
-	bronze_dagger = {
-		attack = 1,
-		speed = 3
+var equipment = [
+	{
+		name = 'iron_helm',
+		stats = {
+			defense = 2,
+			speed = -1	
+		},
+		img = 'iron_helm.png'
 	},
-	irom_helm = {
-		defense = 2,
-		speed = -1	
+	{
+		name = 'rusty_sword',
+		stats = {
+			offense = 3,
+			speed = 1	
+		},
+		img = 'rusty_sword.png'
 	}
-}
+]
 
 var state = {
 	player = {
+		maxHealth = 200,
+		currHealth = 200,
+		moves = ['slash','harden'],
 		equipment = {
 			head = null,
 			body = null,
 			legs = null,
 			feet = null,
 			off_hand = null,
-			strong_hand = 'bronze_dagger'
+			strong_hand = null
 		},
-		skills = {
+		stats = {
 			attack = 618,
 			defense = 0,
 			magic = 0,
 		}
-	}
+	},
+	pack = []
 }
 
 
@@ -52,7 +64,9 @@ func get_skill_level(name):
 		level_mark += 25 + pow(level, 2) / log(level + 1) * 2
 	
 	return level
-
-
+	
 func get_state():
 	return state
+	
+func purchase_item(item):
+	print(item)
