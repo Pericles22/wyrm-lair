@@ -1,7 +1,7 @@
 extends Node
 
-var equipment = [
-	{
+var equipment = {
+	iron_helm = {
 		name = 'iron_helm',
 		stats = {
 			defense = 2,
@@ -11,7 +11,7 @@ var equipment = [
 		cost = 150,
 		img = 'iron_helm.png'
 	},
-	{
+	rusty_sword = {
 		name = 'rusty_sword',
 		stats = {
 			attack = 3,
@@ -21,7 +21,7 @@ var equipment = [
 		cost = 200,
 		img = 'rusty_sword.png'
 	},
-	{
+	dirty_dagger = {
 		name = 'dirty_dagger',
 		stats = {
 			attack = 2,
@@ -31,7 +31,7 @@ var equipment = [
 		cost = 200,
 		img = 'dirty_dagger.png'
 	}
-]
+}
 
 var state = {
 	player = {
@@ -61,13 +61,13 @@ var state = {
 func get_attack():
 	var weapon = state.player.equipment.strong_hand
 	var weapon_attack = 0 if not weapon else weapon.attack
-	var attack_skill = get_skill_level('attack')
+	var attack_stat = get_stat('attack')
 	
-	return attack_skill + weapon_attack
+	return attack_stat + weapon_attack
 
 
-func get_skill_level(name):
-	var xp = state.player.skills[name]
+func get_stat_level(name):
+	var xp = state.player.stats[name]
 	
 	if xp == 0:
 		return 1
@@ -87,13 +87,16 @@ func get_state():
 func purchase_item(item):
 	state.pack[item.name] = item
 	update_gold(-item.cost)
-	print(state.pack, get_gold())
 	
 func equip_item(item):
 	state.player.equipment[item.location] = item.name
 	
+	print(state.player.stats)
+	
 	for stat in item.stats:
 		state.player.stats[stat] += item.stats[stat]
+	
+	print(state.player.stats)
 	
 func update_gold(amount):
 	state.player.gold += amount
