@@ -8,16 +8,28 @@ var equipment = [
 			speed = -1	
 		},
 		location = 'head',
+		cost = 150,
 		img = 'iron_helm.png'
 	},
 	{
 		name = 'rusty_sword',
 		stats = {
-			offense = 3,
+			attack = 3,
 			speed = 1	
 		},
 		location = 'strong_hand',
+		cost = 200,
 		img = 'rusty_sword.png'
+	},
+	{
+		name = 'dirty_dagger',
+		stats = {
+			attack = 2,
+			speed = 2	
+		},
+		location = 'off_hand',
+		cost = 200,
+		img = 'dirty_dagger.png'
 	}
 ]
 
@@ -39,7 +51,8 @@ var state = {
 			defense = 10,
 			magic = 10,
 			speed = 1
-		}
+		},
+		gold = 500
 	},
 	pack = {}
 }
@@ -72,18 +85,18 @@ func get_state():
 	return state
 	
 func purchase_item(item):
-	if(item.name in state.pack):
-		equip_item(item)
-	else:
-		state.pack[item.name] = item
-		print(state.pack)
+	state.pack[item.name] = item
+	update_gold(-item.cost)
+	print(state.pack, get_gold())
 	
 func equip_item(item):
 	state.player.equipment[item.location] = item.name
 	
-	print(state.player.stats)
-	
 	for stat in item.stats:
 		state.player.stats[stat] += item.stats[stat]
-		
-	print(state.player.stats)
+	
+func update_gold(amount):
+	state.player.gold += amount
+	
+func get_gold():
+	return state.player.gold
