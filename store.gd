@@ -7,6 +7,7 @@ var equipment = [
 			defense = 2,
 			speed = -1	
 		},
+		location = 'head',
 		img = 'iron_helm.png'
 	},
 	{
@@ -15,6 +16,7 @@ var equipment = [
 			offense = 3,
 			speed = 1	
 		},
+		location = 'strong_hand',
 		img = 'rusty_sword.png'
 	}
 ]
@@ -33,12 +35,13 @@ var state = {
 			strong_hand = null
 		},
 		stats = {
-			attack = 618,
-			defense = 0,
-			magic = 0,
+			attack = 23,
+			defense = 10,
+			magic = 10,
+			speed = 1
 		}
 	},
-	pack = []
+	pack = {}
 }
 
 
@@ -69,4 +72,18 @@ func get_state():
 	return state
 	
 func purchase_item(item):
-	print(item)
+	if(item.name in state.pack):
+		equip_item(item)
+	else:
+		state.pack[item.name] = item
+		print(state.pack)
+	
+func equip_item(item):
+	state.player.equipment[item.location] = item.name
+	
+	print(state.player.stats)
+	
+	for stat in item.stats:
+		state.player.stats[stat] += item.stats[stat]
+		
+	print(state.player.stats)

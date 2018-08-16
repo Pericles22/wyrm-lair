@@ -91,6 +91,4 @@ _sections_unfolded = [ "Rect", "Size Flags" ]
 
 [connection signal="pressed" from="TextureRect/Button" to="." method="_on_Button_pressed"]
 
-[connection signal="toggled" from="TextureRect/Button" to="." method="_on_Button_toggled"]
-
 
