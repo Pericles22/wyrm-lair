@@ -51,11 +51,13 @@ func check_is_dead():
 		$FightHUD/OutcomeLabel.text = "DEFEAT"
 		$VBoxContainer/PlayerWrapper/PlayerContainer.hide()
 		$FightHUD/Buttons.hide()
+		get_tree().change_scene('res://Main.tscn')
 		return true
 	elif(enemy.currHealth <= 0):
 		$FightHUD/OutcomeLabel.text = "VICTORY"
 		$VBoxContainer/EnemyWrapper/EnemyContainer.hide()
 		$FightHUD/Buttons.hide()
+		get_tree().change_scene('res://Main.tscn')
 		return true
 	else:
 		return false	

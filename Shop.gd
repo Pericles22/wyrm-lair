@@ -9,7 +9,7 @@ func _ready():
 		var shopItem = ShopItem.instance()
 		shopItem.find_node('Image').set_texture(load("res://assets/"+items[item].img))
 		shopItem.connect('purchase_item', self, 'purchase_item', [items[item]])
-		$ItemRow.add_child(shopItem)
+		$VBoxContainer/ItemRow.add_child(shopItem)
 		
 func purchase_item(item):
 	if(store.get_gold() < item.cost):
