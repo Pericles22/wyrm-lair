@@ -89,13 +89,34 @@ func purchase_item(item):
 	update_gold(-item.cost)
 	
 func equip_item(item):
+	var currentItemName = location_already_equipped(item.location)
+	
+	if(currentItemName):
+		var currentItem = equipment[currentItemName]
+		update_stats(currentItem, 'unequip')
+		unequip_item(item.location)
+	
 	state.player.equipment[item.location] = item.name
 	
+	update_stats(item, 'equip')
+		
+func location_already_equipped(location):
+	return state.player.equipment[location]
+	
+func unequip_item(location):
+	state.player.equipment[location] = null
+	
+func update_stats(item, action):
 	print(state.player.stats)
 	
-	for stat in item.stats:
-		state.player.stats[stat] += item.stats[stat]
-	
+	match action:
+		'equip':
+			for stat in item.stats:
+				state.player.stats[stat] += item.stats[stat]
+		'unequip':
+			for stat in item.stats:
+				state.player.stats[stat] -= item.stats[stat]
+				
 	print(state.player.stats)
 	
 func update_gold(amount):
