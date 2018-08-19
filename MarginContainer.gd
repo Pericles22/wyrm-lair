@@ -27,3 +27,7 @@ func set_piece(currItem):
 			$HBoxContainer/Body/Legs/Image.set_texture(load("res://assets/"+currItem.img))
 		'feet':
 			$HBoxContainer/Body/Feet/Image.set_texture(load("res://assets/"+currItem.img))
+
+
+func _on_Map_pressed():
+	get_tree().change_scene('res://Main.tscn')
