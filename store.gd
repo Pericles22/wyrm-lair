@@ -116,8 +116,7 @@ func do_move(move, agent, target):
 	if('agent' in moves[move]):
 		var agentStats = moves[move].agent
 		for stat in agentStats:
-			if(stat == 'currHealth'): update_unit_stats(agent, stat, calculate_damage(agent, target, agentStats[stat]))
-			else: update_unit_stats(agent, stat, agentStats[stat])
+			update_unit_stats(agent, stat, agentStats[stat])
 	
 	if('target' in moves[move]):
 		var targetStats = moves[move].target
