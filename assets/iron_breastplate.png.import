@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bg.png-23a59c2e9cba2223a50fa3fe41b70b25.stex"
+path="res://.import/iron_breastplate.png-6a425c79d6f4f57a64d837056fd0e04f.stex"
 
 [deps]
 
-source_file="res://assets/bg.png"
-source_md5="199def55e23b2387e2706b4f9703f379"
+source_file="res://assets/iron_breastplate.png"
+source_md5="2c18be46d3749c83e3f1d6a05d0255a3"
 
-dest_files=[ "res://.import/bg.png-23a59c2e9cba2223a50fa3fe41b70b25.stex" ]
-dest_md5="52564006cf7be8f2e03da18ba9e2ed68"
+dest_files=[ "res://.import/iron_breastplate.png-6a425c79d6f4f57a64d837056fd0e04f.stex" ]
+dest_md5="fe59042a96d5356ae9bbeba2ea9b2553"
 
 [params]
 

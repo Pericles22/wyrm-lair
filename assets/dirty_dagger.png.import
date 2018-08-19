@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bg.png-23a59c2e9cba2223a50fa3fe41b70b25.stex"
+path="res://.import/dirty_dagger.png-062062a6c6ff79a48d49d7144eea83b2.stex"
 
 [deps]
 
-source_file="res://assets/bg.png"
-source_md5="199def55e23b2387e2706b4f9703f379"
+source_file="res://assets/dirty_dagger.png"
+source_md5="d8bc952eb6932f965c634963c962e588"
 
-dest_files=[ "res://.import/bg.png-23a59c2e9cba2223a50fa3fe41b70b25.stex" ]
-dest_md5="52564006cf7be8f2e03da18ba9e2ed68"
+dest_files=[ "res://.import/dirty_dagger.png-062062a6c6ff79a48d49d7144eea83b2.stex" ]
+dest_md5="1ed0617df7c22634b9d492cdde89d0b2"
 
 [params]
 

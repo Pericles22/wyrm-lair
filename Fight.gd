@@ -3,12 +3,13 @@ extends MarginContainer
 export(PackedScene) var MoveButton;
 
 var enemy = {
-	maxHealth = 200,
-	currHealth = 200,
 	stats = {
-		defense = 10
+		maxHealth = 200,
+		currHealth = 200,
+		defense = 10,
+		attack = 10
 	},
-	moves = ['slash']
+	moves = ['slash', 'harden', 'body_slam']
 }
 var player = store.state.player
 
@@ -26,41 +27,55 @@ func harden(unit):
 func slash(unit):
 	var amount = 20 - unit.stats.defense
 	
-	unit.currHealth -= max(amount, 0)
+	unit.stats.currHealth = max(unit.stats.currHealth - amount, 0)
+	
+func body_slam(attacker, target):
+	var amount = 55 - target.stats.defense
+	target.stats.currHealth = max(target.stats.currHealth - amount, 0)
+	
+	attacker.stats.currHealth -= 10
 
 func do_move(move):
-	match move:
-		'slash': 
-			slash(enemy)
-			$VBoxContainer/EnemyWrapper/EnemyContainer/ProgressBar.value = enemy.currHealth
-		'harden': harden(player)
-		
+	store.do_move(move, player, enemy)
+	
+	$VBoxContainer/EnemyWrapper/EnemyContainer/ProgressBar.value = enemy.stats.currHealth
+	$VBoxContainer/PlayerWrapper/PlayerContainer/ProgressBar.value = player.stats.currHealth
+	
 	if(!check_is_dead()):
-		retaliate('slash')
+		retaliate()
 		
-func retaliate(move):
-	match move:
-		'slash': 
-			slash(player)
-			$VBoxContainer/PlayerWrapper/PlayerContainer/ProgressBar.value = player.currHealth
+func retaliate():
+	randomize()
+	var index = randi()%enemy.moves.size()
+	var move = enemy.moves[index]
+	
+	store.do_move(move, enemy, player)
+	
+	$VBoxContainer/EnemyWrapper/EnemyContainer/ProgressBar.value = enemy.stats.currHealth
+	$VBoxContainer/PlayerWrapper/PlayerContainer/ProgressBar.value = player.stats.currHealth
 		
 	check_is_dead()
 		
 func check_is_dead():
-	if(player.currHealth <= 0):
-		$FightHUD/OutcomeLabel.text = "DEFEAT"
-		$VBoxContainer/PlayerWrapper/PlayerContainer.hide()
-		$FightHUD/Buttons.hide()
-		get_tree().change_scene('res://Main.tscn')
+	if(player.stats.currHealth <= 0):
+		end_fight(true)
 		return true
-	elif(enemy.currHealth <= 0):
+	elif(enemy.stats.currHealth <= 0):
+		end_fight(false)
+		return true
+	return false
+
+func end_fight(victory):
+	if(victory):
 		$FightHUD/OutcomeLabel.text = "VICTORY"
+		$VBoxContainer/PlayerWrapper/PlayerContainer.hide()
+	else: 
+		$FightHUD/OutcomeLabel.text = "DEFEAT"
 		$VBoxContainer/EnemyWrapper/EnemyContainer.hide()
-		$FightHUD/Buttons.hide()
-		get_tree().change_scene('res://Main.tscn')
-		return true
-	else:
-		return false	
+	
+	$FightHUD/Buttons.hide()
+	get_tree().change_scene('res://Main.tscn')
+	
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

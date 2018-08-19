@@ -12,3 +12,7 @@ func _on_Monastery_pressed():
 
 func _on_Cave_pressed():
 	emit_signal('enter_lair')
+
+
+func _on_Farm_pressed():
+	get_tree().change_scene('res://Equipment.tscn')

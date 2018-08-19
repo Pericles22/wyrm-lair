@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bg.png-23a59c2e9cba2223a50fa3fe41b70b25.stex"
+path="res://.import/breastplate.jpg-b40e5340c21cd8cf68f9654e3e13e052.stex"
 
 [deps]
 
-source_file="res://assets/bg.png"
-source_md5="199def55e23b2387e2706b4f9703f379"
+source_file="res://assets/breastplate.jpg"
+source_md5="89a523e9b25b2b7d43344f60b1758130"
 
-dest_files=[ "res://.import/bg.png-23a59c2e9cba2223a50fa3fe41b70b25.stex" ]
-dest_md5="52564006cf7be8f2e03da18ba9e2ed68"
+dest_files=[ "res://.import/breastplate.jpg-b40e5340c21cd8cf68f9654e3e13e052.stex" ]
+dest_md5="0fe13875fc5f85f7ffa7da992bc0b9d2"
 
 [params]
 

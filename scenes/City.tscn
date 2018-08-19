@@ -194,6 +194,8 @@ _sections_unfolded = [ "Size Flags", "Textures" ]
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/Cave" to="." method="_on_Cave_pressed"]
 
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Farm" to="." method="_on_Farm_pressed"]
+
 [connection signal="pressed" from="HBoxContainer/VBoxContainer3/Monastery" to="." method="_on_Monastery_pressed"]
 
 
