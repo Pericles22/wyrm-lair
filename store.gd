@@ -1,5 +1,9 @@
 extends Node
 
+var lairFloor = {
+	monsters = []	
+}
+
 var moves = {
 	body_slam = {
 		agent = {
@@ -87,6 +91,8 @@ var equipment = {
 var state = {
 	player = {
 		moves = ['slash','harden', 'body_slam'],
+		level = 1,
+		room = 6,
 		equipment = {
 			head = null,
 			torso = null,
@@ -110,7 +116,14 @@ var state = {
 
 
 func calculate_damage(agent, target, stat):
-	return min(stat - agent.stats.attack + target.stats.defense, 0) # TODO: Defense/attack stats should not apply to self-inflicted damage, like body_slam
+	return min(stat - agent.stats.attack + target.stats.defense, 0)
+	
+func change_room(amt):
+	state.player.room += amt
+	print(state.player.room)
+
+func change_scene(scene):
+	get_tree().change_scene('res://'+scene+'.tscn')
 
 func do_move(move, agent, target):
 	if('agent' in moves[move]):
@@ -174,6 +187,9 @@ func purchase_item(item):
 	state.pack[item.name] = item
 	update_gold(-item.cost)
 
+func set_floor(floorArr):
+	lairFloor.monsters = floorArr
+
 func unequip_item(location):
 	state.player.equipment[location] = null
 
@@ -181,8 +197,6 @@ func update_gold(amount):
 	state.player.gold += amount
 
 func update_stats(item, action):
-	print(state.player.stats)
-	
 	match action:
 		'equip':
 			for stat in item.stats:
@@ -193,8 +207,4 @@ func update_stats(item, action):
 				
 
 func update_unit_stats(unit, statName, stat):
-	print('unit:', unit)
-	print('statName:', statName)
-	print('stat:', stat)
-	
 	unit.stats[statName] = max(0, unit.stats[statName] + stat)

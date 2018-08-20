@@ -11,7 +11,7 @@ func _on_Monastery_pressed():
 
 
 func _on_Cave_pressed():
-	emit_signal('enter_lair')
+	store.change_scene('LairRoom')
 
 
 func _on_Farm_pressed():

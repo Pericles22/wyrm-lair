@@ -74,7 +74,7 @@ func end_fight(victory):
 		$VBoxContainer/EnemyWrapper/EnemyContainer.hide()
 	
 	$FightHUD/Buttons.hide()
-	get_tree().change_scene('res://Main.tscn')
+	store.change_scene('LairRoom')
 	
 
 #func _process(delta):

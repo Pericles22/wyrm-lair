@@ -23,7 +23,7 @@ rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
-mouse_default_cursor_shape = 0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
@@ -35,7 +35,7 @@ text = "stuff for the test"
 flat = false
 align = 1
 script = ExtResource( 2 )
-_sections_unfolded = [ "Anchor", "custom_fonts" ]
+_sections_unfolded = [ "Anchor", "Mouse", "custom_fonts" ]
 
 [connection signal="pressed" from="." to="." method="_on_Button_pressed"]
 
