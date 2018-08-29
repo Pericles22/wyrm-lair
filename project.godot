@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 store="*res://store.gd"
+Lair="*res://lair.gd"
 
 [rendering]
 

@@ -58,20 +58,27 @@ func retaliate():
 		
 func check_is_dead():
 	if(player.stats.currHealth <= 0):
-		end_fight(true)
+		end_fight(false)
 		return true
 	elif(enemy.stats.currHealth <= 0):
-		end_fight(false)
+		end_fight(true)
 		return true
 	return false
 
 func end_fight(victory):
+	print('first:',Lair.lairFloor.room)
 	if(victory):
+		print('we won')
 		$FightHUD/OutcomeLabel.text = "VICTORY"
 		$VBoxContainer/PlayerWrapper/PlayerContainer.hide()
+		store.kill_monster()
 	else: 
 		$FightHUD/OutcomeLabel.text = "DEFEAT"
 		$VBoxContainer/EnemyWrapper/EnemyContainer.hide()
+		print('what are we doing here', victory)
+		store.reset_room()
+		
+	print('second:',Lair.lairFloor.room)
 	
 	$FightHUD/Buttons.hide()
 	store.change_scene('LairRoom')

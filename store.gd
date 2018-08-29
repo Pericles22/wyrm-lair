@@ -1,9 +1,5 @@
 extends Node
 
-var lairFloor = {
-	monsters = []	
-}
-
 var moves = {
 	body_slam = {
 		agent = {
@@ -85,14 +81,21 @@ var equipment = {
 		location = 'torso',
 		cost = 24,
 		img = 'iron_breastplate.png'
+	},
+	small_potion = {
+		name = 'small_potion',
+		stats = {
+			currHealth = 10	
+		},
+		cost = 20,
+		location = null,
+		img = 'small_potion.png'
 	}
 }
 
 var state = {
 	player = {
 		moves = ['slash','harden', 'body_slam'],
-		level = 1,
-		room = 6,
 		equipment = {
 			head = null,
 			torso = null,
@@ -102,10 +105,10 @@ var state = {
 			strong_hand = null
 		},
 		stats = {
-			currHealth = 200,
+			currHealth = 200, #Apparently the potions are being doubly effective, maybe all stat changes are doing that?
 			maxHealth = 200,
 			attack = 23,
-			defense = 10,
+			defense = 40,
 			magic = 10,
 			speed = 1
 		},
@@ -115,12 +118,14 @@ var state = {
 }
 
 
+func _ready():
+	generate_floor()
+
 func calculate_damage(agent, target, stat):
 	return min(stat - agent.stats.attack + target.stats.defense, 0)
 	
 func change_room(amt):
-	state.player.room += amt
-	print(state.player.room)
+	Lair.lairFloor.room += amt
 
 func change_scene(scene):
 	get_tree().change_scene('res://'+scene+'.tscn')
@@ -138,16 +143,35 @@ func do_move(move, agent, target):
 			else: update_unit_stats(target, stat, targetStats[stat])
 
 func equip_item(item):
-	var currentItemName = location_already_equipped(item.location)
+	if(item.location): 
+		var currentItemName = location_already_equipped(item.location)
 	
-	if(currentItemName):
-		var currentItem = equipment[currentItemName]
-		update_stats(currentItem, 'unequip')
-		unequip_item(item.location)
+		if(currentItemName):
+			var currentItem = equipment[currentItemName]
+			update_stats(currentItem, 'unequip')
+			unequip_item(item.location)
+		
+		state.player.equipment[item.location] = item.name
 	
-	state.player.equipment[item.location] = item.name
+	state.pack.erase(item.name)
 	
 	update_stats(item, 'equip')
+
+func generate_floor():
+	var roomArr = []
+	
+	randomize()
+	for i in range(16):
+		var num = 0
+		if(randi()%3 == 0): 
+			num = 1
+		roomArr.push_back(num)
+	
+	roomArr[randi()%16] = 2
+	
+	print(roomArr)
+		
+	store.set_floor(roomArr)
 
 func get_attack():
 	var weapon = state.player.equipment.strong_hand
@@ -179,16 +203,26 @@ func get_stat_level(name):
 
 func get_state():
 	return state
+	
+func kill_monster():
+	Lair.lairFloor.monsters[Lair.lairFloor.room - 1] = 0
 
 func location_already_equipped(location):
 	return state.player.equipment[location]
+
+func next_floor():
+	Lair.lairFloor.level += 1
+	generate_floor()
 
 func purchase_item(item):
 	state.pack[item.name] = item
 	update_gold(-item.cost)
 
+func reset_room():
+	Lair.lairFloor.room = Lair.lairFloor.lastRoom
+
 func set_floor(floorArr):
-	lairFloor.monsters = floorArr
+	Lair.lairFloor.monsters = floorArr
 
 func unequip_item(location):
 	state.player.equipment[location] = null
@@ -200,6 +234,8 @@ func update_stats(item, action):
 	match action:
 		'equip':
 			for stat in item.stats:
+				if(stat == 'currHealth'): 
+					state.player.stats[stat] = min(state.player.stats[stat] + item.stats[stat], state.player.stats.maxHealth)
 				state.player.stats[stat] += item.stats[stat]
 		'unequip':
 			for stat in item.stats:
