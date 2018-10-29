@@ -7,10 +7,7 @@ path="res://.import/small_potion.png-a3607f91ac51ed4034eab8d894c2b2f0.stex"
 [deps]
 
 source_file="res://assets/small_potion.png"
-source_md5="b64205c1e9fa7d89d3564c693a7c7bab"
-
 dest_files=[ "res://.import/small_potion.png-a3607f91ac51ed4034eab8d894c2b2f0.stex" ]
-dest_md5="74c0e5cef372160236edc74aa99c0df2"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/arrow_down.png-f57d0d1f5ba548b3982d0fea16d6b091.stex"
 [deps]
 
 source_file="res://assets/arrow_down.png"
-source_md5="fe8f1087d5a1898e6f0160557b2bb65b"
-
 dest_files=[ "res://.import/arrow_down.png-f57d0d1f5ba548b3982d0fea16d6b091.stex" ]
-dest_md5="91dc93df74d11bb3338c80aa7abd75e4"
 
 [params]
 
