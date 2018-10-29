@@ -30,6 +30,7 @@ var equipment = {
 		},
 		location = 'head',
 		cost = 15,
+		quantity = 1,
 		img = 'iron_helm.png'
 	},
 	rusty_sword = {
@@ -40,6 +41,7 @@ var equipment = {
 		},
 		location = 'strong_hand',
 		cost = 20,
+		quantity = 1,
 		img = 'rusty_sword.png'
 	},
 	dirty_dagger = {
@@ -50,6 +52,7 @@ var equipment = {
 		},
 		location = 'off_hand',
 		cost = 20,
+		quantity = 1,
 		img = 'dirty_dagger.png'
 	},
 	leather_shoe = {
@@ -60,6 +63,7 @@ var equipment = {
 		},
 		location = 'feet',
 		cost = 14,
+		quantity = 1,
 		img = 'leather_shoe.png'
 	},
 	iron_greaves = {
@@ -70,6 +74,7 @@ var equipment = {
 		},
 		location = 'legs',
 		cost = 14,
+		quantity = 1,
 		img = 'iron_greaves.png'
 	},
 	iron_breastplate = {
@@ -80,6 +85,7 @@ var equipment = {
 		},
 		location = 'torso',
 		cost = 24,
+		quantity = 1,
 		img = 'iron_breastplate.png'
 	},
 	small_potion = {
@@ -89,6 +95,7 @@ var equipment = {
 		},
 		cost = 20,
 		location = null,
+		quantity = 3,
 		img = 'small_potion.png'
 	}
 }
@@ -215,7 +222,13 @@ func next_floor():
 	generate_floor()
 
 func purchase_item(item):
-	state.pack[item.name] = item
+	if(item.name in state.pack):
+		var packItem = state.pack[item.name]
+		var newCount = packItem.quantity + item.quantity
+		packItem.quantity = newCount
+		print(newCount, packItem.quantity)
+	else:
+		state.pack[item.name] = item.duplicate()
 	update_gold(-item.cost)
 
 func reset_room():

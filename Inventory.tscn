@@ -4,7 +4,7 @@
 [ext_resource path="res://InventoryItem.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/map.png" type="Texture" id=3]
 
-[node name="Inventory" type="MarginContainer"]
+[node name="Inventory" type="MarginContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
