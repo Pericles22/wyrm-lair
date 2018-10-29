@@ -7,6 +7,7 @@ func _ready():
 	for item in items:
 		var inventoryItem = InventoryItem.instance()
 		inventoryItem.find_node('Image').set_texture(load("res://assets/"+items[item].img))
+		inventoryItem.find_node('Quantity').text = str(items[item].quantity)
 		inventoryItem.connect('equip_item', store, 'equip_item', [items[item]])
 		$VBoxContainer/ItemRow.add_child(inventoryItem)
 

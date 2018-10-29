@@ -160,9 +160,11 @@ func equip_item(item):
 		
 		state.player.equipment[item.location] = item.name
 	
-	state.pack.erase(item.name)
-	
 	update_stats(item, 'equip')
+	
+	state.pack[item.name].quantity -= 1
+	if(!state.pack[item.name].quantity):
+		state.pack.erase(item.name)
 
 func generate_floor():
 	var roomArr = []
@@ -223,12 +225,10 @@ func next_floor():
 
 func purchase_item(item):
 	if(item.name in state.pack):
-		var packItem = state.pack[item.name]
-		var newCount = packItem.quantity + item.quantity
-		packItem.quantity = newCount
-		print(newCount, packItem.quantity)
+		state.pack[item.name].quantity += item.quantity
 	else:
 		state.pack[item.name] = item.duplicate()
+	print(state.pack[item.name])
 	update_gold(-item.cost)
 
 func reset_room():
