@@ -11,13 +11,14 @@ config_version=3
 [application]
 
 config/name="Wyrm Lair"
-run/main_scene="res://Fight.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://src/Main.tscn"
+config/icon="res://assets/icon.png"
 
 [autoload]
 
-store="*res://store.gd"
-Lair="*res://lair.gd"
+EquipmentStore="*res://stores/EquipmentStore.gd"
+PlayerStore="*res://stores/PlayerStore.gd"
+LairStore="*res://stores/LairStore.gd"
 
 [rendering]
 

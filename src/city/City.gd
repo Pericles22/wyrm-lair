@@ -11,8 +11,8 @@ func _on_Monastery_pressed():
 
 
 func _on_Cave_pressed():
-	store.change_scene('LairRoom')
+	PlayerStore.change_scene('lair/LairRoom')
 
 
 func _on_Farm_pressed():
-	get_tree().change_scene('res://Equipment.tscn')
+	PlayerStore.change_scene('inventory/Equipment')

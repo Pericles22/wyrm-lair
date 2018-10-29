@@ -1,7 +1,7 @@
 extends MarginContainer
 
-var equipped = store.state.player.equipment
-var	equipment = store.equipment
+var equipped = PlayerStore.state.player.equipment
+var	equipment = PlayerStore.equipment
 
 
 func _ready():
@@ -11,7 +11,7 @@ func _ready():
 func set_armor():
 	for item in equipped:
 		if(equipped[item]):
-			set_piece(store.get_item(equipped[item]))
+			set_piece(PlayerStore.get_item(equipped[item]))
 
 func set_piece(currItem):
 	match currItem.location:
@@ -30,4 +30,4 @@ func set_piece(currItem):
 
 
 func _on_Map_pressed():
-	get_tree().change_scene('res://Main.tscn')
+	PlayerStore.change_scene('Main')

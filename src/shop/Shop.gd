@@ -2,7 +2,7 @@ extends MarginContainer
 
 export(PackedScene) var ShopItem;
 
-var items = store.equipment
+var items = PlayerStore.equipment
 
 func _ready():
 	for item in items:
@@ -12,10 +12,10 @@ func _ready():
 		$VBoxContainer/ItemRow.add_child(shopItem)
 		
 func purchase_item(item):
-	if(store.get_gold() < item.cost):
+	if(PlayerStore.get_gold() < item.cost):
 		print('insufficient funds')
 	else:
-		store.purchase_item(item)
+		PlayerStore.purchase_item(item)
 
 func _on_MapButton_pressed():
-	get_tree().change_scene('res://Main.tscn')
+	PlayerStore.change_scene('Main')

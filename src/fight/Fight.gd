@@ -11,7 +11,7 @@ var enemy = {
 	},
 	moves = ['slash', 'harden', 'body_slam']
 }
-var player = store.state.player
+var player = PlayerStore.state.player
 
 func _ready():
 	for move in player.moves:
@@ -36,7 +36,7 @@ func body_slam(attacker, target):
 	attacker.stats.currHealth -= 10
 
 func do_move(move):
-	store.do_move(move, player, enemy)
+	PlayerStore.do_move(move, player, enemy)
 	
 	$VBoxContainer/EnemyWrapper/EnemyContainer/ProgressBar.value = enemy.stats.currHealth
 	$VBoxContainer/PlayerWrapper/PlayerContainer/ProgressBar.value = player.stats.currHealth
@@ -49,7 +49,7 @@ func retaliate():
 	var index = randi()%enemy.moves.size()
 	var move = enemy.moves[index]
 	
-	store.do_move(move, enemy, player)
+	PlayerStore.do_move(move, enemy, player)
 	
 	$VBoxContainer/EnemyWrapper/EnemyContainer/ProgressBar.value = enemy.stats.currHealth
 	$VBoxContainer/PlayerWrapper/PlayerContainer/ProgressBar.value = player.stats.currHealth
@@ -66,22 +66,22 @@ func check_is_dead():
 	return false
 
 func end_fight(victory):
-	print('first:',Lair.lairFloor.room)
+	print('first:',LairStore.lairFloor.room)
 	if(victory):
 		print('we won')
 		$FightHUD/OutcomeLabel.text = "VICTORY"
 		$VBoxContainer/PlayerWrapper/PlayerContainer.hide()
-		store.kill_monster()
+		PlayerStore.kill_monster()
 	else: 
 		$FightHUD/OutcomeLabel.text = "DEFEAT"
 		$VBoxContainer/EnemyWrapper/EnemyContainer.hide()
 		print('what are we doing here', victory)
-		store.reset_room()
+		PlayerStore.reset_room()
 		
-	print('second:',Lair.lairFloor.room)
+	print('second:',LairStore.lairFloor.room)
 	
 	$FightHUD/Buttons.hide()
-	store.change_scene('LairRoom')
+	PlayerStore.change_scene('lair/LairRoom')
 	
 
 #func _process(delta):

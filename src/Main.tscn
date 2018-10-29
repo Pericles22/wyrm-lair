@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://scenes/City.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Main.gd" type="Script" id=1]
+[ext_resource path="res://src/city/City.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/HUD.tscn" type="PackedScene" id=3]
 
-[node name="Main" type="Node2D" index="0"]
+[node name="Main" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]

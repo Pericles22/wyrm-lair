@@ -1,10 +1,11 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scenes/City.gd" type="Script" id=1]
+[ext_resource path="res://src/city/City.gd" type="Script" id=1]
 [ext_resource path="res://assets/cave_entrance.svg" type="Texture" id=2]
 [ext_resource path="res://assets/farm.svg" type="Texture" id=3]
 [ext_resource path="res://assets/blacksmith.svg" type="Texture" id=4]
 [ext_resource path="res://assets/monastery.svg" type="Texture" id=5]
+
 
 [node name="MarginContainer" type="MarginContainer"]
 
