@@ -20,7 +20,7 @@ func set_boundaries():
 
 func check_monsters():
 	if(LairStore.lairFloor.monsters[room-1] == 2): $NextFloor.show()
-	elif(LairStore.lairFloor.monsters[room-1]): PlayerStore.change_scene('fight/Fight')
+	elif(LairStore.lairFloor.monsters[room-1] % 2): PlayerStore.change_scene('fight/Fight')
 	else: $NextFloor.hide()
 
 func _on_UpArrow_pressed():

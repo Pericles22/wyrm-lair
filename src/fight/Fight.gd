@@ -38,9 +38,6 @@ func body_slam(attacker, target):
 func do_move(move):
 	PlayerStore.do_move(move, player, enemy)
 	
-	$VBoxContainer/EnemyWrapper/EnemyContainer/ProgressBar.value = enemy.stats.currHealth
-	$VBoxContainer/PlayerWrapper/PlayerContainer/ProgressBar.value = player.stats.currHealth
-	
 	if(!check_is_dead()):
 		retaliate()
 		
@@ -50,9 +47,6 @@ func retaliate():
 	var move = enemy.moves[index]
 	
 	PlayerStore.do_move(move, enemy, player)
-	
-	$VBoxContainer/EnemyWrapper/EnemyContainer/ProgressBar.value = enemy.stats.currHealth
-	$VBoxContainer/PlayerWrapper/PlayerContainer/ProgressBar.value = player.stats.currHealth
 		
 	check_is_dead()
 		
@@ -68,23 +62,18 @@ func check_is_dead():
 func end_fight(victory):
 	print('first:',LairStore.lairFloor.room)
 	if(victory):
-		print('we won')
 		$FightHUD/OutcomeLabel.text = "VICTORY"
 		$VBoxContainer/PlayerWrapper/PlayerContainer.hide()
 		PlayerStore.kill_monster()
 	else: 
 		$FightHUD/OutcomeLabel.text = "DEFEAT"
 		$VBoxContainer/EnemyWrapper/EnemyContainer.hide()
-		print('what are we doing here', victory)
 		PlayerStore.reset_room()
 		
-	print('second:',LairStore.lairFloor.room)
-	
 	$FightHUD/Buttons.hide()
 	PlayerStore.change_scene('lair/LairRoom')
 	
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func _process(delta):
+	$VBoxContainer/EnemyWrapper/EnemyContainer/ProgressBar.value = enemy.stats.currHealth
+	$VBoxContainer/PlayerWrapper/PlayerContainer/ProgressBar.value = player.stats.currHealth

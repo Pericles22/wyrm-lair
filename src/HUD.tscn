@@ -4,6 +4,8 @@
 [ext_resource path="res://assets/icon.png" type="Texture" id=2]
 [ext_resource path="res://assets/backpack.png" type="Texture" id=3]
 
+
+
 [node name="HUD" type="MarginContainer"]
 
 anchor_left = 0.0

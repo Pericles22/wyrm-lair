@@ -176,7 +176,7 @@ func generate_floor():
 			num = 1
 		roomArr.push_back(num)
 	
-	roomArr[randi()%16] = 2
+	roomArr[randi()%16] = 3
 	
 	print(roomArr)
 		
@@ -214,7 +214,7 @@ func get_state():
 	return state
 	
 func kill_monster():
-	LairStore.lairFloor.monsters[LairStore.lairFloor.room - 1] = 0
+	LairStore.lairFloor.monsters[LairStore.lairFloor.room - 1] -= 1
 
 func location_already_equipped(location):
 	return state.player.equipment[location]
