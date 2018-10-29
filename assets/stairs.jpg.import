@@ -7,7 +7,10 @@ path="res://.import/stairs.jpg-9071b16cca0ebe4af1478e9cf39836ec.stex"
 [deps]
 
 source_file="res://assets/stairs.jpg"
+source_md5="9b5abeb5f22dfcf528ee75eb8f40b78e"
+
 dest_files=[ "res://.import/stairs.jpg-9071b16cca0ebe4af1478e9cf39836ec.stex" ]
+dest_md5="f6ee126e70da2770c9560f5ff461131e"
 
 [params]
 

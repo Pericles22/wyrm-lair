@@ -132,10 +132,10 @@ func calculate_damage(agent, target, stat):
 	return min(stat - agent.stats.attack + target.stats.defense, 0)
 	
 func change_room(amt):
-	Lair.lairFloor.room += amt
+	LairStore.lairFloor.room += amt
 
 func change_scene(scene):
-	get_tree().change_scene('res://'+scene+'.tscn')
+	get_tree().change_scene('res://src/' + scene + '.tscn')
 
 func do_move(move, agent, target):
 	if('agent' in moves[move]):
@@ -180,7 +180,7 @@ func generate_floor():
 	
 	print(roomArr)
 		
-	store.set_floor(roomArr)
+	set_floor(roomArr)
 
 func get_attack():
 	var weapon = state.player.equipment.strong_hand
@@ -214,13 +214,13 @@ func get_state():
 	return state
 	
 func kill_monster():
-	Lair.lairFloor.monsters[Lair.lairFloor.room - 1] = 0
+	LairStore.lairFloor.monsters[LairStore.lairFloor.room - 1] = 0
 
 func location_already_equipped(location):
 	return state.player.equipment[location]
 
 func next_floor():
-	Lair.lairFloor.level += 1
+	LairStore.lairFloor.level += 1
 	generate_floor()
 
 func purchase_item(item):
@@ -232,10 +232,10 @@ func purchase_item(item):
 	update_gold(-item.cost)
 
 func reset_room():
-	Lair.lairFloor.room = Lair.lairFloor.lastRoom
+	LairStore.lairFloor.room = LairStore.lairFloor.lastRoom
 
 func set_floor(floorArr):
-	Lair.lairFloor.monsters = floorArr
+	LairStore.lairFloor.monsters = floorArr
 
 func unequip_item(location):
 	state.player.equipment[location] = null

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://InventoryItem.gd" type="Script" id=1]
+[ext_resource path="res://src/shop/ShopItem.gd" type="Script" id=1]
 [ext_resource path="res://assets/bg.png" type="Texture" id=2]
 [ext_resource path="res://assets/iron_helm.png" type="Texture" id=3]
+
+[sub_resource type="Theme" id=1]
+
 
 [node name="Item" type="MarginContainer"]
 
@@ -10,19 +13,20 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 8.0
-margin_bottom = 40.0
+margin_right = 104.0
+margin_bottom = 136.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+theme = SubResource( 1 )
 script = ExtResource( 1 )
+_sections_unfolded = [ "Margin", "Rect", "Theme" ]
 
 [node name="TextureRect" type="TextureRect" parent="." index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -38,32 +42,33 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 2 )
 stretch_mode = 0
+_sections_unfolded = [ "Rect" ]
 
-[node name="Equip" type="Button" parent="TextureRect" index="0"]
+[node name="Button" type="Button" parent="TextureRect" index="0"]
 
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -23.0
-margin_top = -24.0
-margin_right = 24.0
-margin_bottom = -4.0
+margin_left = -38.0
+margin_top = -25.0
+margin_right = 38.0
+margin_bottom = -5.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Equip"
+text = "Purchase"
 flat = false
 align = 1
-_sections_unfolded = [ "Mouse", "Size Flags" ]
+_sections_unfolded = [ "Margin", "Mouse", "Rect" ]
 
 [node name="Image" type="TextureRect" parent="." index="1"]
 
@@ -82,33 +87,8 @@ size_flags_horizontal = 1
 size_flags_vertical = 2
 texture = ExtResource( 3 )
 stretch_mode = 0
-_sections_unfolded = [ "Size Flags" ]
+_sections_unfolded = [ "Rect", "Size Flags" ]
 
-[node name="Quantity" type="Label" parent="Image" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.05
-anchor_bottom = 0.0
-margin_left = 62.0
-margin_top = 94.0
-margin_right = 85.2
-margin_bottom = 108.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 8
-size_flags_vertical = 8
-custom_colors/font_color = Color( 0.0117188, 4.57764e-05, 4.57764e-05, 1 )
-text = "8"
-align = 2
-valign = 2
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Grow Direction", "Rect", "custom_colors" ]
-
-[connection signal="pressed" from="TextureRect/Equip" to="." method="_on_Equip_pressed"]
+[connection signal="pressed" from="TextureRect/Button" to="." method="_on_Button_pressed"]
 
 

@@ -1,6 +1,6 @@
 extends MarginContainer
 
-var room = Lair.lairFloor.room
+var room = LairStore.lairFloor.room
 
 func _ready():
 	set_boundaries()
@@ -19,34 +19,34 @@ func set_boundaries():
 
 
 func check_monsters():
-	if(Lair.lairFloor.monsters[room-1] == 2): $NextFloor.show()
-	elif(Lair.lairFloor.monsters[room-1]): store.change_scene('Fight')
+	if(LairStore.lairFloor.monsters[room-1] == 2): $NextFloor.show()
+	elif(LairStore.lairFloor.monsters[room-1]): PlayerStore.change_scene('fight/Fight')
 	else: $NextFloor.hide()
 
 func _on_UpArrow_pressed():
-	store.change_room(-4)
+	PlayerStore.change_room(-4)
 
 func _on_RightArrow_pressed():
-	store.change_room(1)
+	PlayerStore.change_room(1)
 
 func _on_DownArrow_pressed():
-	store.change_room(4)
+	PlayerStore.change_room(4)
 	
 func _on_LeftArrow_pressed():
-	store.change_room(-1)
+	PlayerStore.change_room(-1)
 	
 func _process(delta):
-	if(room != Lair.lairFloor.room):
-		room = Lair.lairFloor.room
+	if(room != LairStore.lairFloor.room):
+		room = LairStore.lairFloor.room
 		set_boundaries()
 		check_monsters()
 
 
 
 func _on_Map_pressed():
-	store.change_scene('Main')
+	PlayerStore.change_scene('Main')
 
 func _on_NextFloor_pressed():
-	store.next_floor()
+	PlayerStore.next_floor()
 	check_monsters()
-	print(Lair.lairFloor.level)
+	print(LairStore.lairFloor.level)

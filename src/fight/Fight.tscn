@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Fight.gd" type="Script" id=1]
-[ext_resource path="res://MoveButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/fight/Fight.gd" type="Script" id=1]
+[ext_resource path="res://src/fight/MoveButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/enemy.png" type="Texture" id=3]
 [ext_resource path="res://assets/icon.png" type="Texture" id=4]
-[ext_resource path="res://FightHUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/fight/FightHUD.tscn" type="PackedScene" id=5]
 
 [node name="MarginContainer" type="MarginContainer" index="0"]
 
