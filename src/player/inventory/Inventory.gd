@@ -1,4 +1,4 @@
-extends MarginContainer
+extends 'res://nodes/Router.gd'
 
 export(PackedScene) var InventoryItem
 
