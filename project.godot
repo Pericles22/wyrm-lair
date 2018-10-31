@@ -17,8 +17,10 @@ config/icon="res://assets/icon.png"
 [autoload]
 
 EquipmentStore="*res://stores/EquipmentStore.gd"
-PlayerStore="*res://stores/PlayerStore.gd"
+InventoryStory="*res://stores/InventoryStore.gd"
 LairStore="*res://stores/LairStore.gd"
+PlayerStore="*res://stores/PlayerStore.gd"
+RouteStore="*res://stores/RouteStore.gd"
 
 [rendering]
 
