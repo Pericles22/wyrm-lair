@@ -1,6 +1,4 @@
-extends HBoxContainer
-
-var route_depth = 0
+extends 'res://nodes/Router.gd'
 
 func _on_Blacksmith_pressed():
   print('blacksmith pressed...')

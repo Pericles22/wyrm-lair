@@ -1,8 +1,6 @@
-extends MarginContainer
+extends 'res://nodes/Router.gd'
 
 export(PackedScene) var MoveButton;
-
-var route_depth = 0
 
 var enemy = {
 	stats = {

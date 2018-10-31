@@ -1,10 +1,8 @@
-extends MarginContainer
+extends 'res://nodes/Router.gd'
 
 export(PackedScene) var ShopItem;
 
 var items = PlayerStore.equipment
-
-var route_depth = 0
 
 func _ready():
 	for item in items:

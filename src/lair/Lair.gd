@@ -1,6 +1,4 @@
-extends MarginContainer
-
-var route_depth = 0
+extends 'res://nodes/Router.gd'
 
 func _ready():
 	pass

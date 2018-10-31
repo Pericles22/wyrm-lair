@@ -6,16 +6,31 @@
 [ext_resource path="res://assets/blacksmith.svg" type="Texture" id=4]
 [ext_resource path="res://assets/monastery.svg" type="Texture" id=5]
 
-[node name="Overview" type="HBoxContainer"]
+[node name="Overview" type="MarginContainer" index="0"]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Focus", "Hint", "Material", "Mouse", "Size Flags", "Theme", "Visibility", "custom_constants" ]
+
+[node name="Wrapper" type="HBoxContainer" parent="." index="0"]
+
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 40.0
-margin_top = 80.0
-margin_right = 984.0
-margin_bottom = 560.0
+margin_left = 8.0
+margin_right = 1024.0
+margin_bottom = 600.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -23,18 +38,17 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
-script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Rect" ]
 
-[node name="Col1" type="VBoxContainer" parent="." index="0"]
+[node name="Col1" type="VBoxContainer" parent="Wrapper" index="0"]
 
 editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 308.0
-margin_bottom = 480.0
+margin_right = 336.0
+margin_bottom = 600.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -44,16 +58,16 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Anchor", "Size Flags" ]
 
-[node name="Cave" type="TextureButton" parent="Col1" index="0"]
+[node name="Cave" type="TextureButton" parent="Wrapper/Col1" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 90.0
-margin_top = 176.0
-margin_right = 218.0
-margin_bottom = 304.0
+margin_left = 104.0
+margin_top = 236.0
+margin_right = 232.0
+margin_bottom = 364.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -68,15 +82,15 @@ group = null
 texture_normal = ExtResource( 2 )
 _sections_unfolded = [ "Mouse", "Size Flags", "Textures" ]
 
-[node name="Col2" type="VBoxContainer" parent="." index="1"]
+[node name="Col2" type="VBoxContainer" parent="Wrapper" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 312.0
-margin_right = 620.0
-margin_bottom = 480.0
+margin_left = 340.0
+margin_right = 676.0
+margin_bottom = 600.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -86,14 +100,14 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Anchor", "Size Flags" ]
 
-[node name="Farm" type="TextureButton" parent="Col2" index="0"]
+[node name="Farm" type="TextureButton" parent="Wrapper/Col2" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 90.0
-margin_right = 218.0
+margin_left = 104.0
+margin_right = 232.0
 margin_bottom = 128.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -109,16 +123,16 @@ group = null
 texture_normal = ExtResource( 3 )
 _sections_unfolded = [ "Mouse", "Size Flags", "Textures" ]
 
-[node name="Blacksmith" type="TextureButton" parent="Col2" index="1"]
+[node name="Blacksmith" type="TextureButton" parent="Wrapper/Col2" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 90.0
-margin_top = 352.0
-margin_right = 218.0
-margin_bottom = 480.0
+margin_left = 104.0
+margin_top = 472.0
+margin_right = 232.0
+margin_bottom = 600.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -133,15 +147,15 @@ group = null
 texture_normal = ExtResource( 4 )
 _sections_unfolded = [ "Mouse", "Size Flags", "Textures" ]
 
-[node name="Col3" type="VBoxContainer" parent="." index="2"]
+[node name="Col3" type="VBoxContainer" parent="Wrapper" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 624.0
-margin_right = 932.0
-margin_bottom = 480.0
+margin_left = 680.0
+margin_right = 1016.0
+margin_bottom = 600.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -151,16 +165,16 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="Monastery" type="TextureButton" parent="Col3" index="0"]
+[node name="Monastery" type="TextureButton" parent="Wrapper/Col3" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 90.0
-margin_top = 176.0
-margin_right = 218.0
-margin_bottom = 304.0
+margin_left = 104.0
+margin_top = 236.0
+margin_right = 232.0
+margin_bottom = 364.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -175,24 +189,8 @@ group = null
 texture_normal = ExtResource( 5 )
 _sections_unfolded = [ "Mouse", "Textures" ]
 
-[node name="Route" type="MarginContainer" parent="." index="3"]
+[connection signal="pressed" from="Wrapper/Col1/Cave" to="." method="_on_Cave_pressed"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 936.0
-margin_right = 944.0
-margin_bottom = 480.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-
-[connection signal="pressed" from="Col1/Cave" to="." method="_on_Cave_pressed"]
-
-[connection signal="pressed" from="Col2/Blacksmith" to="." method="_on_Blacksmith_pressed"]
+[connection signal="pressed" from="Wrapper/Col2/Blacksmith" to="." method="_on_Blacksmith_pressed"]
 
 
