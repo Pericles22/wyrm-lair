@@ -30,4 +30,4 @@ func set_piece(currItem):
 
 
 func _on_Map_pressed():
-	PlayerStore.change_scene('Main')
+	RouteStore.assign('/city')

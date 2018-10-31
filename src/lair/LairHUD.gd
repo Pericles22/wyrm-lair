@@ -20,7 +20,7 @@ func set_boundaries():
 
 func check_monsters():
 	if(LairStore.lairFloor.monsters[room-1] == 2): $NextFloor.show()
-	elif(LairStore.lairFloor.monsters[room-1] % 2): PlayerStore.change_scene('fight/Fight')
+	elif(LairStore.lairFloor.monsters[room-1] % 2): RouteStore.replace('/fight')
 	else: $NextFloor.hide()
 
 func _on_UpArrow_pressed():
@@ -44,7 +44,7 @@ func _process(delta):
 
 
 func _on_Map_pressed():
-	PlayerStore.change_scene('Main')
+	RouteStore.assign('/city')
 
 func _on_NextFloor_pressed():
 	PlayerStore.next_floor()

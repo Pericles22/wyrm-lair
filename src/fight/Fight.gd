@@ -2,6 +2,8 @@ extends MarginContainer
 
 export(PackedScene) var MoveButton;
 
+var route_depth = 0
+
 var enemy = {
 	stats = {
 		maxHealth = 200,
@@ -71,7 +73,7 @@ func end_fight(victory):
 		PlayerStore.reset_room()
 		
 	$FightHUD/Buttons.hide()
-	PlayerStore.change_scene('lair/LairRoom')
+	RouteStore.replace('/lair')
 	
 
 func _process(delta):

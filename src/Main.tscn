@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Main.gd" type="Script" id=1]
 [ext_resource path="res://src/city/City.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/lair/LairRoom.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/fight/Fight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/lair/Lair.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/HUD.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="MarginContainer" index="0"]
 
@@ -20,9 +21,10 @@ size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 City = ExtResource( 2 )
-Lair = ExtResource( 3 )
+Fight = ExtResource( 3 )
+Lair = ExtResource( 4 )
 
-[node name="HUD" parent="." index="0" instance=ExtResource( 4 )]
+[node name="HUD" parent="." index="0" instance=ExtResource( 5 )]
 
 anchor_right = 0.0
 margin_left = 8.0

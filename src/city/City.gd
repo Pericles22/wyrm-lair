@@ -1,12 +1,36 @@
 extends MarginContainer
 
-func _on_Blacksmith_pressed():
-	RouteStore.assign('/city/equipment-store')
+export(PackedScene) var EquipmentShop
+export(PackedScene) var Overview
 
+var route_depth = 0
 
-func _on_Cave_pressed():
-	RouteStore.assign('/lair')
+var state = {
+	href = ''
+}
 
+func _process(delta):
+	var href = RouteStore.href()
 
-func _on_Farm_pressed():
-	RouteStore.assign('/city/inventory-store')
+	if (href != state.href):
+		state.href = href
+		__route()
+
+func __route():
+	var node = RouteStore.get_route_node(route_depth)
+	print('routing in city...', node)
+
+	var scene
+
+	match node:
+		'equipment-store': scene = EquipmentShop
+		'overview': scene = Overview
+		_: scene = Overview
+
+	if !scene: return
+
+	var scene_instance = scene.instance()
+	scene_instance.route_depth = route_depth + 1
+
+	$Route.remove_child($Route.get_child(0))
+	$Route.add_child(scene_instance)

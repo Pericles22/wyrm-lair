@@ -4,6 +4,8 @@ export(PackedScene) var ShopItem;
 
 var items = PlayerStore.equipment
 
+var route_depth = 0
+
 func _ready():
 	for item in items:
 		var shopItem = ShopItem.instance()
@@ -18,4 +20,4 @@ func purchase_item(item):
 		PlayerStore.purchase_item(item)
 
 func _on_MapButton_pressed():
-	PlayerStore.change_scene('Main')
+	RouteStore.assign('/city')
