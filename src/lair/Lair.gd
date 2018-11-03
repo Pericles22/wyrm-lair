@@ -1,4 +1,4 @@
-extends MarginContainer
+extends 'res://nodes/Router.gd'
 
 func _ready():
 	pass

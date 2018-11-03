@@ -1,18 +1,10 @@
-extends MarginContainer
+extends 'res://nodes/Router.gd'
 
-signal enter_shop
-signal enter_lair
+export(PackedScene) var EquipmentShop
+export(PackedScene) var Overview
 
-func _ready():
-	pass
-
-func _on_Monastery_pressed():
-	emit_signal('enter_shop')
-
-
-func _on_Cave_pressed():
-	PlayerStore.change_scene('lair/LairRoom')
-
-
-func _on_Farm_pressed():
-	PlayerStore.change_scene('inventory/Equipment')
+func get_route_scene(node):
+	match node:
+		'equipment-store': return EquipmentShop
+		'overview': return Overview
+		_: return Overview

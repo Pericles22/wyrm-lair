@@ -1,4 +1,4 @@
-extends MarginContainer
+extends 'res://nodes/Router.gd'
 
 export(PackedScene) var MoveButton;
 
@@ -71,7 +71,7 @@ func end_fight(victory):
 		PlayerStore.reset_room()
 		
 	$FightHUD/Buttons.hide()
-	PlayerStore.change_scene('lair/LairRoom')
+	RouteStore.replace('/lair')
 	
 
 func _process(delta):

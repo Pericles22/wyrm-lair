@@ -8,8 +8,6 @@
 [ext_resource path="res://assets/arrow_right.png" type="Texture" id=6]
 [ext_resource path="res://assets/stairs.jpg" type="Texture" id=7]
 
-
-
 [node name="LairHUD" type="MarginContainer"]
 
 anchor_left = 0.0
@@ -37,7 +35,7 @@ rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
-mouse_default_cursor_shape = 0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 toggle_mode = false
@@ -45,7 +43,7 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 texture_normal = ExtResource( 2 )
-_sections_unfolded = [ "Size Flags", "Textures" ]
+_sections_unfolded = [ "Mouse", "Size Flags", "Textures" ]
 
 [node name="Vertical" type="VBoxContainer" parent="." index="1"]
 

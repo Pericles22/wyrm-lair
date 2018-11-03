@@ -1,4 +1,4 @@
-extends MarginContainer
+extends 'res://nodes/Router.gd'
 
 export(PackedScene) var InventoryItem
 
@@ -13,4 +13,4 @@ func _ready():
 
 
 func _on_MapButton_pressed():
-	PlayerStore.change_scene('Main')
+	RouteStore.assign('/city')
