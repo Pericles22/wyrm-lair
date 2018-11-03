@@ -2,18 +2,18 @@ extends MarginContainer
 
 export(PackedScene) var MoveButton;
 
-var enemy = {
-	stats = {
-		maxHealth = 200,
-		currHealth = 200,
-		defense = 10,
-		attack = 10
-	},
-	moves = ['slash', 'harden', 'body_slam']
-}
+func get_enemy():
+	randomize()
+	var currentFloor = LairStore.lairFloor.level
+	var index = max(floor(randi() % 5) + floor(currentFloor/2) - 5, 0)
+	return LairStore.get_enemy(index)
+	
+var enemy = get_enemy()
+
 var player = PlayerStore.state.player
 
 func _ready():
+	print(enemy)
 	for move in player.moves:
 		var button = MoveButton.instance()
 		button.text = move

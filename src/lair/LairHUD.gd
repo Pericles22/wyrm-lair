@@ -41,8 +41,6 @@ func _process(delta):
 		set_boundaries()
 		check_monsters()
 
-
-
 func _on_Map_pressed():
 	PlayerStore.change_scene('Main')
 

@@ -3,15 +3,15 @@ extends Node
 var moves = {
 	body_slam = {
 		agent = {
-			currHealth = -10
+			currHealth = -1
 		},
 		target = {
-			currHealth = -55
+			currHealth = -3
 		}
 	},
 	slash = {
 		target = {
-			currHealth = -20
+			currHealth = -2
 		}
 	},
 	harden = {
@@ -114,8 +114,8 @@ var state = {
 		stats = {
 			currHealth = 200, #Apparently the potions are being doubly effective, maybe all stat changes are doing that?
 			maxHealth = 200,
-			attack = 23,
-			defense = 40,
+			attack = 1,
+			defense = 2,
 			magic = 10,
 			speed = 1
 		},
