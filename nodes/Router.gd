@@ -9,6 +9,7 @@ func _process(delta):
   if href != last_href:
     last_href = href
     __route()
+    on_route()
 
 # By default, the route container is an immediate child node named Route.
 # Override if the route container lives elsewhere in this node's children tree.
@@ -20,6 +21,11 @@ func get_route_container():
 # It must return a PackedScene that also extends Router.
 # Only the leaf router nodes in the route tree shouldn't implement this.
 func get_route_scene(node):
+  pass
+
+# Will be called when routing occurs and the Router is done with its magic. 
+# Override to run stuff at that point in time.
+func on_route():
   pass
 
 func __route():

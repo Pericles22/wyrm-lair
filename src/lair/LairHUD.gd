@@ -41,9 +41,6 @@ func _process(delta):
 		set_boundaries()
 		check_monsters()
 
-func _on_Map_pressed():
-	RouteStore.assign('/city')
-
 func _on_NextFloor_pressed():
 	PlayerStore.next_floor()
 	check_monsters()

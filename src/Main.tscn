@@ -7,6 +7,7 @@
 [ext_resource path="res://src/player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/HUD.tscn" type="PackedScene" id=6]
 
+
 [node name="Main" type="MarginContainer"]
 
 anchor_left = 0.0

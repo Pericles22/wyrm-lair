@@ -19,9 +19,9 @@ config/icon="res://assets/icon.png"
 EquipmentStore="*res://stores/EquipmentStore.gd"
 InventoryStory="*res://stores/InventoryStore.gd"
 LairStore="*res://stores/LairStore.gd"
-SkillsStore="*res://stores/SkillsStore.gd"
 PlayerStore="*res://stores/PlayerStore.gd"
 RouteStore="*res://stores/RouteStore.gd"
+SkillsStore="*res://stores/SkillsStore.gd"
 
 [rendering]
 

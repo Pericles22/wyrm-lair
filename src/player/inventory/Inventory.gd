@@ -10,7 +10,3 @@ func _ready():
 		inventoryItem.find_node('Quantity').text = str(items[item].quantity)
 		inventoryItem.connect('equip_item', PlayerStore, 'equip_item', [items[item]])
 		$VBoxContainer/ItemRow.add_child(inventoryItem)
-
-
-func _on_MapButton_pressed():
-	RouteStore.assign('/city')
