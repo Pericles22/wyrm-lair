@@ -13,30 +13,18 @@ var enemy = get_enemy()
 var player = PlayerStore.state.player
 
 func _ready():
-	print(enemy)
+	print(enemy.stats)
 	for move in player.moves:
 		var button = MoveButton.instance()
 		button.text = move
 		button.connect('do_move', self, 'do_move', [move])
 		
 		$FightHUD/Buttons.add_child(button)
-	
-func harden(unit):
-	unit.stats.defense += 2
-
-func slash(unit):
-	var amount = 20 - unit.stats.defense
-	
-	unit.stats.currHealth = max(unit.stats.currHealth - amount, 0)
-	
-func body_slam(attacker, target):
-	var amount = 55 - target.stats.defense
-	target.stats.currHealth = max(target.stats.currHealth - amount, 0)
-	
-	attacker.stats.currHealth -= 10
 
 func do_move(move):
-	PlayerStore.do_move(move, player, enemy)
+	SkillsStore.do_move(move, player, enemy)
+	
+	print(enemy.stats)
 	
 	if(!check_is_dead()):
 		retaliate()
@@ -46,7 +34,7 @@ func retaliate():
 	var index = randi()%enemy.moves.size()
 	var move = enemy.moves[index]
 	
-	PlayerStore.do_move(move, enemy, player)
+	SkillsStore.do_move(move, enemy, player)
 		
 	check_is_dead()
 		
@@ -73,7 +61,9 @@ func end_fight(victory):
 	$FightHUD/Buttons.hide()
 	RouteStore.replace('/lair')
 	
+func get_health(unit):
+	return unit.stats.currHealth * 100 / unit.stats.maxHealth
 
 func _process(delta):
-	$VBoxContainer/EnemyWrapper/EnemyContainer/ProgressBar.value = enemy.stats.currHealth
-	$VBoxContainer/PlayerWrapper/PlayerContainer/ProgressBar.value = player.stats.currHealth
+	$VBoxContainer/EnemyWrapper/EnemyContainer/ProgressBar.value = get_health(enemy)
+	$VBoxContainer/PlayerWrapper/PlayerContainer/ProgressBar.value = get_health(player)

@@ -2,54 +2,90 @@ extends Node
 
 var Moves = {
 	bite = {
-		defender = {
-			health = -1
+		target = {
+			currHealth = -1
+		}
+	},
+	body_slam = {
+		agent = {
+			currHealth = -1
+		},
+		target = {
+			currHealth = -3
 		}
 	},
 	burrow = {
-		attacker = {
+		agent = {
 			defense = 2
 		}
 	},
 	cocoon = {
-		attacker = {
+		agent = {
 			defense = 2,
 			speed = -1
 		}
 	},
 	constrict = {
-		defender = {
-			health = -1,
+		target = {
+			currHealth = -1,
 			speed = -2
 		}
 	},
 	curl = {
-		attacker = {
+		agent = {
 			defense = 1
 		}
 	},
+	harden = {
+		agent = {
+			defense = 2
+		}
+	},
 	poison = {
-		defender = {
-			health = -1,
+		target = {
+			currHealth = -1,
 			speed = -1
 		}
 	},
+	slash = {
+		target = {
+			currHealth = -2
+		}
+	},
 	soothe = {
-		attacker = {
-			health = 1
+		agent = {
+			currHealth = 1
 		}
 	},
 	spit = {
-		defender = {
+		target = {
 			defense = -1
 		}
 	},
 	wriggle = {
-		defender = {
-			offense = -1
+		target = {
+			attack = -1
 		}
 	}
 }
+
+func calculate_damage(agent, target, stat):
+	return min(stat - agent.stats.attack + target.stats.defense, 0)
+
+func do_move(move, agent, target):
+	if('agent' in Moves[move]):
+		var agentStats = Moves[move].agent
+		for stat in agentStats:
+			update_unit_stats(agent, stat, agentStats[stat])
+	
+	if('target' in Moves[move]):
+		var targetStats = Moves[move].target
+		for stat in targetStats:
+			if(stat == 'currHealth'): update_unit_stats(target, stat, calculate_damage(agent, target, targetStats[stat]))
+			else: update_unit_stats(target, stat, targetStats[stat])
+
+func update_unit_stats(unit, statName, stat):
+	unit.stats[statName] = max(0, unit.stats[statName] + stat)
 
 func _ready():
 	pass

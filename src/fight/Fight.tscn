@@ -6,8 +6,6 @@
 [ext_resource path="res://assets/icon.png" type="Texture" id=4]
 [ext_resource path="res://src/fight/FightHUD.tscn" type="PackedScene" id=5]
 
-
-
 [node name="MarginContainer" type="MarginContainer" index="0"]
 
 anchor_left = 0.0
@@ -69,7 +67,6 @@ _sections_unfolded = [ "Size Flags" ]
 
 [node name="EnemyContainer" type="VBoxContainer" parent="VBoxContainer/EnemyWrapper" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -102,10 +99,10 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
 min_value = 0.0
-max_value = 200.0
+max_value = 100.0
 step = 1.0
 page = 0.0
-value = 200.0
+value = 100.0
 exp_edit = false
 rounded = false
 percent_visible = true
@@ -148,7 +145,6 @@ _sections_unfolded = [ "Size Flags" ]
 
 [node name="PlayerContainer" type="VBoxContainer" parent="VBoxContainer/PlayerWrapper" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -181,10 +177,10 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
 min_value = 0.0
-max_value = 200.0
+max_value = 100.0
 step = 1.0
 page = 0.0
-value = 200.0
+value = 100.0
 exp_edit = false
 rounded = false
 percent_visible = true

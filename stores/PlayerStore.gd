@@ -1,26 +1,5 @@
 extends Node
 
-var moves = {
-	body_slam = {
-		agent = {
-			currHealth = -1
-		},
-		target = {
-			currHealth = -3
-		}
-	},
-	slash = {
-		target = {
-			currHealth = -2
-		}
-	},
-	harden = {
-		agent = {
-			defense = 2
-		}
-	}
-}
-
 var equipment = {
 	iron_helm = {
 		name = 'iron_helm',
@@ -102,7 +81,7 @@ var equipment = {
 
 var state = {
 	player = {
-		moves = ['slash','harden', 'body_slam'],
+		moves = ['slash','harden','body_slam'],
 		equipment = {
 			head = null,
 			torso = null,
@@ -112,8 +91,8 @@ var state = {
 			strong_hand = null
 		},
 		stats = {
-			currHealth = 200, #Apparently the potions are being doubly effective, maybe all stat changes are doing that?
-			maxHealth = 200,
+			currHealth = 20,
+			maxHealth = 20,
 			attack = 1,
 			defense = 2,
 			magic = 10,
@@ -127,27 +106,12 @@ var state = {
 
 func _ready():
 	generate_floor()
-
-func calculate_damage(agent, target, stat):
-	return min(stat - agent.stats.attack + target.stats.defense, 0)
 	
 func change_room(amt):
 	LairStore.lairFloor.room += amt
 
 func change_scene(scene):
 	get_tree().change_scene('res://src/' + scene + '.tscn')
-
-func do_move(move, agent, target):
-	if('agent' in moves[move]):
-		var agentStats = moves[move].agent
-		for stat in agentStats:
-			update_unit_stats(agent, stat, agentStats[stat])
-	
-	if('target' in moves[move]):
-		var targetStats = moves[move].target
-		for stat in targetStats:
-			if(stat == 'currHealth'): update_unit_stats(target, stat, calculate_damage(agent, target, targetStats[stat]))
-			else: update_unit_stats(target, stat, targetStats[stat])
 
 func equip_item(item):
 	if(item.location): 
@@ -253,7 +217,3 @@ func update_stats(item, action):
 		'unequip':
 			for stat in item.stats:
 				state.player.stats[stat] -= item.stats[stat]
-				
-
-func update_unit_stats(unit, statName, stat):
-	unit.stats[statName] = max(0, unit.stats[statName] + stat)
