@@ -6,20 +6,26 @@ func _ready():
 func on_route():
 	var first_node = RouteStore.get_route_node(0)
 
-	print('HUD routing. First node:', first_node)
-
 	# We have 4 possible HUD buttons: Back, Map, Player, and Retreat
 	# Can maybe clean up this logic with a state machine :O
+	# ...or just define routes for these layouts and ditch this function...
 	match first_node:
 		'city':
-			$Row/Back.hide()
 			$Row/Map.hide()
 			$Row/Player.show()
 			$Row/Retreat.hide()
+
+			var second_node = RouteStore.get_route_node(1)
+
+			# No back button at the root-level city overview
+			if (!second_node || second_node == 'overview'):
+				$Row/Back.hide()
+			else:
+				$Row/Back.show()
 		'fight':
 			$Row/Back.hide()
 			$Row/Map.hide()
-			$Row/Player.show()
+			$Row/Player.hide()
 			$Row/Retreat.show()
 		'lair':
 			$Row/Back.hide()

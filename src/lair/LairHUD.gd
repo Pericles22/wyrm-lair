@@ -1,4 +1,4 @@
-extends MarginContainer
+extends CanvasLayer
 
 var room = LairStore.lairFloor.room
 
@@ -8,14 +8,14 @@ func _ready():
 	pass
 
 func set_boundaries():
-	if(room < 5): $Vertical/Up/UpArrow.hide()
-	else: $Vertical/Up/UpArrow.show()
-	if(room > 12): $Vertical/Down/DownArrow.hide()
-	else: $Vertical/Down/DownArrow.show()	
-	if(room % 4 == 1): $Horizontal/Left/LeftArrow.hide()
-	else: $Horizontal/Left/LeftArrow.show()
-	if(room % 4 == 0): $Horizontal/Right/RightArrow.hide()
-	else: $Horizontal/Right/RightArrow.show()
+	if(room < 5): $UpArrow.hide()
+	else: $UpArrow.show()
+	if(room > 12): $DownArrow.hide()
+	else: $DownArrow.show()	
+	if(room % 4 == 1): $LeftArrow.hide()
+	else: $LeftArrow.show()
+	if(room % 4 == 0): $RightArrow.hide()
+	else: $RightArrow.show()
 
 
 func check_monsters():

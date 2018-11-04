@@ -16,6 +16,3 @@ func purchase_item(item):
 		print('insufficient funds')
 	else:
 		PlayerStore.purchase_item(item)
-
-func _on_MapButton_pressed():
-	RouteStore.assign('/city')
