@@ -2,15 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/enemy_move_3.png-3da1e1ee8aa9b0092eb4587756872488.stex"
+path="res://.import/enemy_move_3.png-78a5d0cd735772ae7c8228aaf1b96a9c.stex"
 
 [deps]
 
-source_file="res://assets/sprities/enemy_move_3.png"
-source_md5="9eed8b00d6aa445eab4614c3a7b80bd6"
-
-dest_files=[ "res://.import/enemy_move_3.png-3da1e1ee8aa9b0092eb4587756872488.stex" ]
-dest_md5="5b179fb5969ab298b31d320b22449248"
+source_file="res://assets/sprites/enemy_move_3.png"
+dest_files=[ "res://.import/enemy_move_3.png-78a5d0cd735772ae7c8228aaf1b96a9c.stex" ]
 
 [params]
 

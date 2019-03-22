@@ -2,15 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player2.jpg-6b51eede4f5a8dda48f49a85e38622e1.stex"
+path="res://.import/player2.jpg-f279ca4abfcb9d994fb755f9f0d76621.stex"
 
 [deps]
 
-source_file="res://assets/sprities/player2.jpg"
-source_md5="6ee60ef9f103e5ed80d3b03861789995"
-
-dest_files=[ "res://.import/player2.jpg-6b51eede4f5a8dda48f49a85e38622e1.stex" ]
-dest_md5="77bc36369496de0ad5bf37e9c4b8e996"
+source_file="res://assets/sprites/player2.jpg"
+dest_files=[ "res://.import/player2.jpg-f279ca4abfcb9d994fb755f9f0d76621.stex" ]
 
 [params]
 
