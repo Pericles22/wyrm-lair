@@ -7,10 +7,7 @@ path="res://.import/attack_3.png-0bbffd5f7d76dd5cdedc262f83376d1f.stex"
 [deps]
 
 source_file="res://assets/sprites/attack_3.png"
-source_md5="aab207fd58c4baae9b55dec727b322cb"
-
 dest_files=[ "res://.import/attack_3.png-0bbffd5f7d76dd5cdedc262f83376d1f.stex" ]
-dest_md5="5decaa7f8f7ff8429dfb11bbd602ab68"
 
 [params]
 
