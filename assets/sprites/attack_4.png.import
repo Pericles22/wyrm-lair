@@ -2,14 +2,14 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/attack_4.png-eb4ca8a6e1ffcda572d3c5fa96153755.stex"
+path="res://.import/attack_4.png-c09804abb8ef5ede183ee7aca2e38697.stex"
 
 [deps]
 
-source_file="res://assets/sprities/attack_4.png"
+source_file="res://assets/sprites/attack_4.png"
 source_md5="c4fa36e5ec0adbeba075b0995bd31d8e"
 
-dest_files=[ "res://.import/attack_4.png-eb4ca8a6e1ffcda572d3c5fa96153755.stex" ]
+dest_files=[ "res://.import/attack_4.png-c09804abb8ef5ede183ee7aca2e38697.stex" ]
 dest_md5="ede62c3848a43b257bc3c708b7d6e605"
 
 [params]

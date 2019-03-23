@@ -2,14 +2,14 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dungeon_sprite.png-4578ab39187e500f57cd62f01daffd83.stex"
+path="res://.import/dungeon_sprite.png-76d68cba92115b2850354a5784f769c2.stex"
 
 [deps]
 
-source_file="res://assets/sprities/dungeon_sprite.png"
+source_file="res://assets/sprites/dungeon_sprite.png"
 source_md5="bd26a9b0795c30af43fb04dbf2c2ec85"
 
-dest_files=[ "res://.import/dungeon_sprite.png-4578ab39187e500f57cd62f01daffd83.stex" ]
+dest_files=[ "res://.import/dungeon_sprite.png-76d68cba92115b2850354a5784f769c2.stex" ]
 dest_md5="57d824e2741ff909b36cde0e6d5adf0e"
 
 [params]
