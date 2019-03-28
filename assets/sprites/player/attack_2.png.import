@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/attack_2.png-34ea037f0a5b4132754496715444d27c.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/sprites/player/attack_2.png"
-source_md5="2d9941b572ba2ba0470402f6beca6d72"
-
 dest_files=[ "res://.import/attack_2.png-34ea037f0a5b4132754496715444d27c.stex" ]
-dest_md5="73b7388d014cda97cc2e3c6ce4153994"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false

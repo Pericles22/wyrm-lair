@@ -1,10 +1,13 @@
 extends KinematicBody2D
 
 signal health_changed
+signal shoot
+
+const Projectile = preload("res://Projectile.tscn")
 
 var can_attack = true
 var damage = 20
-var speed = 120
+var speed = 255
 var velocity = Vector2()
 var max_health = 100
 var lastPos = Vector2()
@@ -17,8 +20,13 @@ func attack():
 
 func die():
 	queue_free()
+	
+func shoot():
+	var dir = Vector2(1, 0).rotated($Position.global_rotation)
+	emit_signal('shoot', Projectile, $Position.global_position, dir)
 
 func take_damage(damage):
+	print("It's burning")
 	health -= damage
 	emit_signal("health_changed", health * 100 / max_health)
 	if health <= 0:
@@ -41,8 +49,13 @@ func check_inputs():
 	if Input.is_action_just_pressed("attack"):
 		if can_attack && !!target:
 			can_attack = false
-			velocity = Vector2(0, 0)
 			$Cooldown.start()
+			attack()
+	elif Input.is_action_just_pressed("shoot"):
+		if can_attack:
+			can_attack = false
+			$Cooldown.start()
+			shoot()
 
 func clamp_pos():
 	position.x = clamp(position.x, $Camera2D.limit_left, $Camera2D.limit_right)
@@ -51,7 +64,7 @@ func clamp_pos():
 func set_sprite_dir(delta):
 	var target_dir = (get_global_mouse_position() - global_position).normalized()
 	var current_dir = Vector2(1, 0).rotated(global_rotation)
-	global_rotation = current_dir.linear_interpolate(target_dir, speed * delta).angle()
+	global_rotation = target_dir.angle()
 	lastPos = global_position
 	
 func _ready():
@@ -61,7 +74,6 @@ func _ready():
 func _physics_process(delta):
 	check_inputs()
 	if(!can_attack):
-		velocity = Vector2(0, 0)
 		$AnimatedSprite.play("attack")
 	elif(velocity.y or velocity.x):
 		$AnimatedSprite.play("walk")
@@ -78,4 +90,3 @@ func _physics_process(delta):
 	
 func _on_Cooldown_timeout():
 	can_attack = true
-	attack()

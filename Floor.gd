@@ -7,3 +7,11 @@ func set_camera_limits():
 	$Player/Camera2D.limit_right = map_limits.end.x * map_cellsize.x
 	$Player/Camera2D.limit_top = map_limits.position.y * map_cellsize.y
 	$Player/Camera2D.limit_bottom = map_limits.end.y * map_cellsize.y
+	
+func _ready():
+	set_camera_limits()
+		
+func _on_Player_shoot(projectile, position, direction):
+	var p = projectile.instance()
+	add_child(p)
+	p.start(position, direction)

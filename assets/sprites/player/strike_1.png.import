@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/strike_1.png-fdb871b5aa5dfb851e83a70a868ecc09.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/sprites/player/strike_1.png"
-source_md5="4a96bb8ca22e084a2036225fb1854f1b"
-
 dest_files=[ "res://.import/strike_1.png-fdb871b5aa5dfb851e83a70a868ecc09.stex" ]
-dest_md5="7db36a656366acad03eb77340ba86d23"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false

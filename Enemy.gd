@@ -41,7 +41,7 @@ func _process(delta):
 	elif target:
 		var target_dir = (target.global_position - global_position).normalized()
 		var current_dir = Vector2(1, 0).rotated($AnimatedSprite.global_rotation)
-		$AnimatedSprite.global_rotation = current_dir.linear_interpolate(target_dir, speed * delta).angle()
+		global_rotation = target_dir.angle()
 		$AnimatedSprite.play("move")
 		velocity = current_dir * speed
 		velocity = move_and_slide(velocity)
