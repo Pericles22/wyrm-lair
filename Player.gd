@@ -1,13 +1,12 @@
 extends KinematicBody2D
 
 signal health_changed
-signal shoot
 
 const Projectile = preload("res://Projectile.tscn")
 
 var can_attack = true
 var damage = 20
-var speed = 255
+export(int) var speed = 140
 var velocity = Vector2()
 var max_health = 100
 var lastPos = Vector2()
@@ -23,9 +22,9 @@ func die():
 	
 func shoot():
 	var dir = Vector2(1, 0).rotated($Position.global_rotation)
-	emit_signal('shoot', Projectile, $Position.global_position, dir)
+	get_parent()._on_shoot(Projectile, $Position.global_position, dir, name)
 
-func take_damage(damage):
+func take_damage(damage, pos):
 	print("It's burning")
 	health -= damage
 	emit_signal("health_changed", health * 100 / max_health)

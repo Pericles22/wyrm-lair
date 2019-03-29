@@ -25,7 +25,7 @@ attack_radius = 30
 damage = 10
 detect_radius = 200
 hp = 100.0
-speed = 500
+speed = 60
 
 [node name="Enemy2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 355.706, 161.914 )
@@ -34,7 +34,7 @@ attack_radius = 30
 damage = 10
 detect_radius = 100
 hp = 100.0
-speed = 500
+speed = 75
 
 [node name="Enemy3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 388.514, 282.897 )
@@ -43,7 +43,7 @@ attack_radius = 30
 damage = 10
 detect_radius = 200
 hp = 20.0
-speed = 500
+speed = 75
 
 [node name="Enemy4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 466.435, 81.9427 )
@@ -52,7 +52,7 @@ attack_radius = 30
 damage = 10
 detect_radius = 250
 hp = 100.0
-speed = 500
+speed = 75
 
 [node name="Enemy5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 68.6287, 317.756 )
@@ -61,6 +61,5 @@ attack_radius = 30
 damage = 10
 detect_radius = 200
 hp = 100.0
-speed = 200
+speed = 80
 
-[connection signal="shoot" from="Player" to="." method="_on_Player_shoot"]

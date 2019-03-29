@@ -11,7 +11,13 @@ func set_camera_limits():
 func _ready():
 	set_camera_limits()
 		
-func _on_Player_shoot(projectile, position, direction):
+func _on_shoot(projectile, position, direction, shooter):
 	var p = projectile.instance()
+	p.shooter = shooter
 	add_child(p)
 	p.start(position, direction)
+	
+func _on_Enemy_drop(drop, position):
+	var d = drop.instance()
+	add_child(d)
+	d.start(position)

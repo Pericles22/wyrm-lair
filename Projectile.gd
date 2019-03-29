@@ -1,7 +1,8 @@
 extends Area2D
 
-export(int) var speed = 160
 export(int) var damage = 10
+export(String) var shooter = ''
+export(int) var speed = 160
 var lifetime = 10
 
 var velocity = Vector2()
@@ -17,7 +18,7 @@ func _process(delta):
 	position += velocity * delta
 
 func _on_Projectile_body_entered(body):
-	if body.has_method("take_damage") && body.name != "Player":
+	if body.has_method("take_damage") && body.name != shooter:
 		body.take_damage(damage, position)
 		queue_free()
 
