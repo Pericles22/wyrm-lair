@@ -6,6 +6,7 @@ const Projectile = preload("res://Projectile.tscn")
 
 var can_attack = true
 var damage = 20
+var dead = false
 export(int) var speed = 140
 var velocity = Vector2()
 var max_health = 100
@@ -18,8 +19,10 @@ func attack():
 		target.take_damage(damage, global_position)
 
 func die():
-	queue_free()
-	
+	dead = true
+	$AnimatedSprite.queue_free()
+	$CollisionShape2D.queue_free()
+
 func shoot():
 	var dir = Vector2(1, 0).rotated($Position.global_rotation)
 	get_parent()._on_shoot(Projectile, $Position.global_position, dir, name)
@@ -70,6 +73,8 @@ func _ready():
 	emit_signal("health_changed", health * 100 / max_health)
 
 func _physics_process(delta):
+	if dead:
+		return
 	check_inputs()
 	if(!can_attack):
 		$AnimatedSprite.play("attack")
