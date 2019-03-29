@@ -7,7 +7,6 @@ var num = 1
 func _ready():
 	var tex_width = texture.get_width() / tile_size.x
 	var tex_height = texture.get_height() / tile_size.y
-	print(tex_width, tex_height)
 	var ts = TileSet.new()
 	for x in range(tex_width):
 		for y in range(tex_height):

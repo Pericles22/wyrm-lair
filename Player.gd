@@ -25,7 +25,6 @@ func shoot():
 	get_parent()._on_shoot(Projectile, $Position.global_position, dir, name)
 
 func take_damage(damage, pos):
-	print("It's burning")
 	health -= damage
 	emit_signal("health_changed", health * 100 / max_health)
 	if health <= 0:

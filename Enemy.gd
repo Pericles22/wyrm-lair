@@ -18,12 +18,10 @@ var target = null
 var velocity = Vector2()
 
 func attack():
-	print(type)
 	if type == "range":
-		print('here')
 		var dir = Vector2(1, 0).rotated(global_rotation)
 		var pos = $Position.global_position
-		get_parent()._on_shoot(Projectile, pos, dir, name)
+		get_parent()._on_shoot(Projectile, pos, dir, 'Enemy')
 	else:
 		target.take_damage(damage, '')
 

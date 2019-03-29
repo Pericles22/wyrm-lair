@@ -6,7 +6,6 @@ var bar_green = preload("res://assets/sprites/hud/health_green.png")
 var bar_texture = bar_green
 
 func change_health(val):
-	print('changing')
 	if val < 60:
 		bar_texture = bar_yellow
 	if val < 25:
