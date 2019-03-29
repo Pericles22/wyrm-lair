@@ -25,7 +25,7 @@ func attack():
 		var pos = $Position.global_position
 		get_parent()._on_shoot(Projectile, pos, dir, name)
 	else:
-		target.take_damage(damage)
+		target.take_damage(damage, '')
 
 func die():
 	get_parent()._on_Enemy_drop(Drop, global_position)
