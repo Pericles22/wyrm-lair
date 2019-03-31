@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var drops = Drops.state
+
 const Drop = preload("res://Drop.tscn")
 const Projectile = preload("res://Projectile.tscn")
 
@@ -21,12 +23,13 @@ func attack():
 	if type == "range":
 		var dir = Vector2(1, 0).rotated(global_rotation)
 		var pos = $Position.global_position
-		get_parent()._on_shoot(Projectile, pos, dir, 'Enemy')
+		get_parent()._on_shoot(Projectile, pos, dir, 'Enemy', damage)
 	else:
 		target.take_damage(damage, '')
 
 func die():
-	get_parent()._on_Enemy_drop(Drop, global_position)
+	randomize()
+	get_parent()._on_Enemy_drop(Drop, global_position, drops[drops.keys()[randi()%4]])
 	queue_free()
 	
 func take_damage(damage, pos):

@@ -21,6 +21,7 @@ config/icon="res://assets/icon.png"
 
 [autoload]
 
+Drops="*res://data/drops.gd"
 PlayerStore="*res://data/player.gd"
 
 [display]

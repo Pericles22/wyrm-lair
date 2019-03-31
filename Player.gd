@@ -6,10 +6,11 @@ const Projectile = preload("res://Projectile.tscn")
 var state = PlayerStore.state
 
 var can_attack = true
-var damage = 20
+var damage = state.damage
 var dead = false
-var health
-var max_health = 100
+var health = state.health
+var maxHealth = state.maxHealth
+export(int) var rangeDamage = state.rangeDamage
 export(int) var speed = state.speed
 var target = null
 var velocity = Vector2()
@@ -25,14 +26,14 @@ func die():
 
 func shoot():
 	var dir = Vector2(1, 0).rotated($Position.global_rotation)
-	get_parent()._on_shoot(Projectile, $Position.global_position, dir, name)
+	get_parent()._on_shoot(Projectile, $Position.global_position, dir, name, rangeDamage)
 
 func take_damage(damage, pos):
 	health -= damage
-	emit_signal("health_changed", health * 100 / max_health)
+	emit_signal("health_changed", health * 100 / maxHealth)
 	if health <= 0:
 		die()
-		
+
 func check_inputs():
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = speed
@@ -68,8 +69,8 @@ func set_sprite_dir(delta):
 	global_rotation = target_dir.angle()
 
 func _ready():
-	health = max_health
-	emit_signal("health_changed", health * 100 / max_health)
+	health = maxHealth
+	emit_signal("health_changed", health * 100 / maxHealth)
 
 func _physics_process(delta):
 	if dead:

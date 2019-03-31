@@ -7,7 +7,8 @@ var lifetime = 10
 
 var velocity = Vector2()
 
-func start(_pos, _dir):
+func start(_pos, _dir, dmg):
+	damage = dmg
 	position = _pos
 	rotation = _dir.angle()
 	$Lifetime.wait_time = lifetime
@@ -18,7 +19,6 @@ func _process(delta):
 	position += velocity * delta
 
 func _on_Projectile_body_entered(body):
-	print('includes', shooter in body.name)
 	if body.has_method("take_damage") && !(shooter in body.name):
 		body.take_damage(damage, position)
 		queue_free()
