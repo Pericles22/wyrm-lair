@@ -6,12 +6,12 @@ const Projectile = preload("res://Projectile.tscn")
 var state = PlayerStore.state
 
 var can_attack = true
-var damage = state.damage
+var damage = state.damage + 0
 var dead = false
-var health = state.health
-var maxHealth = state.maxHealth
-export(int) var rangeDamage = state.rangeDamage
-export(int) var speed = state.speed
+var health = state.health + 0
+var maxHealth = state.maxHealth + 0
+var rangeDamage = state.rangeDamage + 0
+var speed = state.speed + 0
 var target = null
 var velocity = Vector2()
 
