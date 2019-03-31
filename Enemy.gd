@@ -30,8 +30,6 @@ func die():
 	queue_free()
 	
 func take_damage(damage, pos):
-	$Cooldown.stop()
-	can_attack = true
 	global_position -= (pos - global_position)
 	hp -= damage
 	if hp <= 0:
@@ -79,8 +77,6 @@ func _on_AttackRadius_body_entered(body):
 
 func _on_AttackRadius_body_exited(body):
 	if !target || body == target:
-		$Cooldown.stop()
-		can_attack = true
 		attacking = false
 
 func _on_Cooldown_timeout():
