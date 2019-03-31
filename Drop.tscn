@@ -17,7 +17,6 @@ size = 7
 outline_color = Color( 0.345098, 0.101961, 0.101961, 1 )
 use_mipmaps = true
 use_filter = true
-extra_spacing_bottom = -6
 font_data = ExtResource( 2 )
 
 [node name="Drop" type="Area2D"]
