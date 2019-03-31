@@ -7,12 +7,11 @@ const Projectile = preload("res://Projectile.tscn")
 var can_attack = true
 var damage = 20
 var dead = false
-export(int) var speed = 140
-var velocity = Vector2()
-var max_health = 100
-var lastPos = Vector2()
-var target = null
 var health
+var max_health = 100
+export(int) var speed = 140
+var target = null
+var velocity = Vector2()
 
 func attack():
 	if target:
@@ -66,8 +65,7 @@ func set_sprite_dir(delta):
 	var target_dir = (get_global_mouse_position() - global_position).normalized()
 	var current_dir = Vector2(1, 0).rotated(global_rotation)
 	global_rotation = target_dir.angle()
-	lastPos = global_position
-	
+
 func _ready():
 	health = max_health
 	emit_signal("health_changed", health * 100 / max_health)
