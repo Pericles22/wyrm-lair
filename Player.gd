@@ -9,7 +9,7 @@ var damage = 20
 var dead = false
 var health
 var max_health = 100
-export(int) var speed = 140
+export(int) var speed = PlayerStore.state.speed
 var target = null
 var velocity = Vector2()
 
