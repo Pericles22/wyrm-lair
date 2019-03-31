@@ -21,12 +21,7 @@ config/icon="res://assets/icon.png"
 
 [autoload]
 
-EquipmentStore="*res://stores/EquipmentStore.gd"
-InventoryStore="*res://stores/InventoryStore.gd"
-LairStore="*res://stores/LairStore.gd"
-PlayerStore="*res://stores/PlayerStore.gd"
-RouteStore="*res://stores/RouteStore.gd"
-SkillsStore="*res://stores/SkillsStore.gd"
+PlayerStore="*res://data/player.gd"
 
 [display]
 
