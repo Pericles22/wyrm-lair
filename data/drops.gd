@@ -4,7 +4,7 @@ var state = {
     "speed boost": {
         description = 'Speed boost: This item grants twenty speed when picked up.',
         image = "drop1.png",
-        isPermanent = true,
+        isPermanent = false,
 		stats = {
         	speed = 20,
 		}
