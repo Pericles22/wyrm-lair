@@ -29,7 +29,6 @@ tile_data = PoolIntArray( -458769, 131, 0, -458768, 131, 0, -458767, 131, 0, -45
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 53.3228, 49.8234 )
 z_index = 1
-speed = null
 
 [node name="Door" type="Area2D" parent="."]
 editor/display_folded = true

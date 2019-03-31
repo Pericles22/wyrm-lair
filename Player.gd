@@ -3,13 +3,14 @@ extends KinematicBody2D
 signal health_changed
 
 const Projectile = preload("res://Projectile.tscn")
+var state = PlayerStore.state
 
 var can_attack = true
 var damage = 20
 var dead = false
 var health
 var max_health = 100
-export(int) var speed = PlayerStore.state.speed
+export(int) var speed = state.speed
 var target = null
 var velocity = Vector2()
 
@@ -88,6 +89,8 @@ func _physics_process(delta):
 		target = null
 		
 	velocity = move_and_slide(velocity)
+	if state.speed != speed:
+		state.speed = speed
 	
 func _on_Cooldown_timeout():
 	can_attack = true
