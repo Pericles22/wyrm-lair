@@ -16,8 +16,9 @@ var target = null
 var velocity = Vector2()
 
 func attack():
+	var dir = Vector2(1, 0).rotated(global_rotation)
 	if target:
-		target.take_damage(damage, global_position)
+		target.take_damage(damage, dir)
 
 func die():
 	dead = true
