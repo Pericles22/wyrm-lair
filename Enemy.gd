@@ -33,7 +33,7 @@ func die():
 	queue_free()
 	
 func take_damage(damage, pos):
-	global_position -= (pos - global_position)
+	global_position += pos / 15
 	hp -= damage
 	if hp <= 0:
 		die()

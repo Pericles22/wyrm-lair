@@ -14,13 +14,14 @@ func start(_pos, _dir, dmg):
 	$Lifetime.wait_time = lifetime
 	velocity = _dir * speed
 	$Lifetime.start()
+	$AnimatedSprite.play('default')
 	
 func _process(delta):
 	position += velocity * delta
 
 func _on_Projectile_body_entered(body):
 	if body.has_method("take_damage") && !(shooter in body.name):
-		body.take_damage(damage, position)
+		body.take_damage(damage, velocity)
 		queue_free()
 
 func _on_Lifetime_timeout():
