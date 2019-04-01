@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 signal health_changed
 
-const Projectile = preload("res://scenes/projectiles/Projectile.tscn")
+const Projectile = preload("res://scenes/projectiles/BlueBolt.tscn")
 var state = PlayerStore.state
 
 var can_attack = true
