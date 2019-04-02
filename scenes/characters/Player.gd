@@ -6,7 +6,7 @@ const Projectile = preload("res://scenes/projectiles/GreenBolt.tscn")
 var skills = PlayerStore.getStats()
 
 var can_attack = true
-var damage = skills.meleeDamage
+var meleeDamage = skills.meleeDamage
 var dead = false
 var health = skills.health
 var maxHealth = skills.maxHealth
@@ -19,7 +19,7 @@ var velocity = Vector2()
 func attack():
 	var dir = Vector2(1, 0).rotated(global_rotation)
 	if target:
-		target.take_damage(damage, dir)
+		target.take_damage(meleeDamage, dir)
 
 func die():
 	dead = true
