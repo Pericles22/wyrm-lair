@@ -1,20 +1,17 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/characters/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/enemy_move_1.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/attack_1.png" type="Texture" id=3]
-[ext_resource path="res://assets/sprites/attack_2.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprites/attack_3.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/attack_4.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/attack_5.png" type="Texture" id=7]
-[ext_resource path="res://assets/sprites/enemy_move_2.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/enemy_move_3.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/enemy_move_4.png" type="Texture" id=10]
-[ext_resource path="res://assets/sprites/enemy_move_5.png" type="Texture" id=11]
-[ext_resource path="res://assets/sprites/enemy_move_7.png" type="Texture" id=12]
-[ext_resource path="res://assets/sprites/enemy_move_6.png" type="Texture" id=13]
-[ext_resource path="res://assets/sprites/enemy_move_8.png" type="Texture" id=14]
-
+[ext_resource path="res://assets/enemies/blue-snake/bite-01.png" type="Texture" id=3]
+[ext_resource path="res://assets/enemies/blue-snake/bite-02.png" type="Texture" id=4]
+[ext_resource path="res://assets/enemies/blue-snake/bite-03.png" type="Texture" id=5]
+[ext_resource path="res://assets/enemies/blue-snake/bite-04.png" type="Texture" id=6]
+[ext_resource path="res://assets/enemies/blue-snake/slither-01.png" type="Texture" id=7]
+[ext_resource path="res://assets/enemies/blue-snake/slither-02.png" type="Texture" id=8]
+[ext_resource path="res://assets/enemies/blue-snake/slither-03.png" type="Texture" id=9]
+[ext_resource path="res://assets/enemies/blue-snake/slither-04.png" type="Texture" id=10]
+[ext_resource path="res://assets/enemies/blue-snake/slither-05.png" type="Texture" id=11]
+[ext_resource path="res://assets/enemies/blue-snake/slither-06.png" type="Texture" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -23,15 +20,15 @@ animations = [ {
 "name": "idle",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "attack",
-"speed": 5.0
+"speed": 12.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "move",
-"speed": 12.0
+"speed": 6.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
