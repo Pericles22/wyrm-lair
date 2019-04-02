@@ -10,7 +10,6 @@ func _ready():
 	var ts = TileSet.new()
 	for x in range(tex_width):
 		for y in range(tex_height):
-			print(num)
 			num += 1
 			var region = Rect2(x * tile_size.x, y * tile_size.y, tile_size.x, tile_size.y)
 			

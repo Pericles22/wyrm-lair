@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://Enemy.gd" type="Script" id=1]
+[ext_resource path="res://scenes/characters/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/enemy_move_1.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/attack_1.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/attack_2.png" type="Texture" id=4]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/sprites/enemy_move_7.png" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/enemy_move_6.png" type="Texture" id=13]
 [ext_resource path="res://assets/sprites/enemy_move_8.png" type="Texture" id=14]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -37,6 +38,7 @@ animations = [ {
 extents = Vector2( 15.0233, 21.236 )
 
 [node name="Enemy" type="KinematicBody2D"]
+z_index = 2
 collision_layer = 2
 collision_mask = 3
 collision/safe_margin = 0.001
@@ -51,16 +53,18 @@ position = Vector2( -1, 0 )
 shape = SubResource( 2 )
 
 [node name="DetectRadius" type="Area2D" parent="."]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius"]
 
 [node name="AttackRadius" type="Area2D" parent="."]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRadius"]
 
-[node name="Cooldown" type="Timer" parent="."]
+[node name="AttackCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="AggroCooldown" type="Timer" parent="."]
+wait_time = 30.0
 one_shot = true
 
 [node name="Position" type="Position2D" parent="."]
@@ -70,4 +74,5 @@ position = Vector2( 13, 0 )
 [connection signal="body_exited" from="DetectRadius" to="." method="_on_DetectRadius_body_exited"]
 [connection signal="body_entered" from="AttackRadius" to="." method="_on_AttackRadius_body_entered"]
 [connection signal="body_exited" from="AttackRadius" to="." method="_on_AttackRadius_body_exited"]
-[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_Cooldown_timeout"]
+[connection signal="timeout" from="AggroCooldown" to="." method="_on_AggroCooldown_timeout"]

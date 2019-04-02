@@ -14,7 +14,7 @@ var state = {
         image = "drop2.png",
         isPermanent = true,
 		stats = {
-			health = 10
+			health = 30
 		}
     },
     "damage potion": {

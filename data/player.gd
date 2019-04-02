@@ -1,9 +1,15 @@
 extends Node
 
 var state = {
-	damage = 20,
-	health = 1000,
-	maxHealth = 1000,
-	rangeDamage = 10,
-	speed = 120
+	skills = {
+		accuracy = 1,
+		alchemy = 1,
+		defense = 1,
+		health = 100,
+		magicDamage = 1,
+		maxHealth = 100,
+		meleeDamage = 1,
+		rangeDamage = 1,
+		speed = 1
+	}
 }

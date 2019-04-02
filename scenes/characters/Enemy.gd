@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var drops = Drops.state
 
-const Drop = preload("res://Drop.tscn")
+const Drop = preload("res://scenes/items/Drop.tscn")
 const Projectile = preload("res://scenes/projectiles/Fireball.tscn")
 
 export(float) var attack_cooldown
@@ -14,6 +14,7 @@ export(int) var range_radius
 export(int) var speed
 export(String) var type = "range"
 
+var aggravated = false
 var attacking = false
 var can_attack = true
 var target = null
@@ -33,6 +34,10 @@ func die():
 	queue_free()
 	
 func take_damage(damage, pos):
+	var transformer = Transform2D(Vector2(3, 0), Vector2(0, 3), Vector2(0, 0))
+	print($DetectRadius/CollisionShape2D.set_transform(transformer))
+	$AggroCooldown.stop()
+	$AggroCooldown.start()
 	global_position += pos / 15
 	hp -= damage
 	if hp <= 0:
@@ -45,7 +50,7 @@ func _ready():
 	$AttackRadius/CollisionShape2D.shape.radius = attack_radius
 	$DetectRadius/CollisionShape2D.shape = circle2
 	$DetectRadius/CollisionShape2D.shape.radius = detect_radius
-	$Cooldown.wait_time = attack_cooldown
+	$AttackCooldown.wait_time = attack_cooldown
 
 func _process(delta):
 	var current_dir = Vector2(0, 0)
@@ -58,7 +63,7 @@ func _process(delta):
 		if can_attack:
 			can_attack = false
 			attack()
-			$Cooldown.start()
+			$AttackCooldown.start()
 	elif target:
 		$AnimatedSprite.play("move")
 		velocity = current_dir * speed
@@ -84,3 +89,8 @@ func _on_AttackRadius_body_exited(body):
 
 func _on_Cooldown_timeout():
 	can_attack = true
+
+func _on_AggroCooldown_timeout():
+	var reset = Transform2D(Vector2(1, 0), Vector2(0, 1), Vector2(0, 0))
+	$DetectRadius/CollisionShape2D.set_transform(reset)
+	pass

@@ -3,15 +3,16 @@ extends KinematicBody2D
 signal health_changed
 
 const Projectile = preload("res://scenes/projectiles/BlueBolt.tscn")
-var state = PlayerStore.state
+var skills = PlayerStore.state.skills.duplicate()
 
 var can_attack = true
-var damage = state.damage + 0
+var damage = skills.meleeDamage
 var dead = false
-var health = state.health + 0
-var maxHealth = state.maxHealth + 0
-var rangeDamage = state.rangeDamage + 0
-var speed = state.speed + 0
+var health = skills.health
+var maxHealth = skills.maxHealth
+var rangeDamage = skills.rangeDamage
+var show_health = false
+var speed = skills.speed
 var target = null
 var velocity = Vector2()
 
@@ -31,9 +32,15 @@ func shoot():
 
 func take_damage(damage, pos):
 	health -= damage
-	emit_signal("health_changed", health * 100 / maxHealth)
+	update_health()
 	if health <= 0:
 		die()
+		
+func update_health():
+	$HUD.visible = true
+	$HealthCooldown.stop()
+	$HealthCooldown.start()
+	emit_signal("health_changed", health * 100 / maxHealth)
 
 func check_inputs():
 	if Input.is_action_pressed("ui_right"):
@@ -52,12 +59,12 @@ func check_inputs():
 	if Input.is_action_just_pressed("attack"):
 		if can_attack && !!target:
 			can_attack = false
-			$Cooldown.start()
+			$AttackCooldown.start()
 			attack()
 	elif Input.is_action_just_pressed("shoot"):
 		if can_attack:
 			can_attack = false
-			$Cooldown.start()
+			$AttackCooldown.start()
 			shoot()
 
 func clamp_pos():
@@ -67,11 +74,14 @@ func clamp_pos():
 func set_sprite_dir(delta):
 	var target_dir = (get_global_mouse_position() - global_position).normalized()
 	var current_dir = Vector2(1, 0).rotated(global_rotation)
-	global_rotation = target_dir.angle()
+	$CollisionShape2D.global_rotation = target_dir.angle()
+	$Position.global_rotation = target_dir.angle()
+	$AnimatedSprite.global_rotation = target_dir.angle()
 
 func _ready():
 	health = maxHealth
 	emit_signal("health_changed", health * 100 / maxHealth)
+	$HUD.visible = false
 
 func _physics_process(delta):
 	if dead:
@@ -85,14 +95,15 @@ func _physics_process(delta):
 		$AnimatedSprite.play("idle")
 	clamp_pos()
 	set_sprite_dir(delta)
-	if $AttackRange.is_colliding():
-		target = $AttackRange.get_collider()
+	if $AnimatedSprite/AttackRange.is_colliding():
+		target = $AnimatedSprite/AttackRange.get_collider()
 	else:
 		target = null
-		
+
 	velocity = move_and_slide(velocity)
-	if state.speed != speed:
-		state.speed = speed
 	
-func _on_Cooldown_timeout():
+func _on_AttackCooldown_timeout():
 	can_attack = true
+
+func _on_HealthCooldown_timeout():
+	$HUD.visible = false
