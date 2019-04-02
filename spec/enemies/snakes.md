@@ -1,7 +1,5 @@
 # snakes/eels/serpents
 
-## vampire snake
-
 ## garter snake
 
 graphics - assets/enemies/yellow-snake
@@ -9,6 +7,12 @@ graphics - assets/enemies/yellow-snake
 ## rattle snake
 
 ## cobra
+
+## vampire snake
+
+DROPS
+
+vampirical aura - 1 in 5
 
 ## mamba
 
@@ -37,3 +41,11 @@ graphics - assets/enemies/blue-snake
 
 - tentacled snake
 - moray eel
+
+### General drops
+
+- snake skin
+- snake blood
+- eggs
+- eyes
+- fang - requires a certain alchemy level to extract venom (needed for poison projectiles/weapons)
