@@ -22,7 +22,7 @@ var state = {
         image = "drop3.png",
         isPermanent = true,
 		stats = {
-			damage = 10
+			meleeDamage = 10
 		}
     },
     "range potion": {

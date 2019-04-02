@@ -44,7 +44,6 @@ shape = SubResource( 1 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 280.686, 150.224 )
-scale = Vector2( 0.484764, 0.484764 )
 attack_cooldown = 1.0
 attack_radius = 150
 damage = 10
