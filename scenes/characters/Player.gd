@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 signal health_changed
 
-const Projectile = preload("res://scenes/projectiles/BlueBolt.tscn")
+const Projectile = preload("res://scenes/projectiles/GreenBolt.tscn")
 var skills = PlayerStore.getStats()
 
 var can_attack = true

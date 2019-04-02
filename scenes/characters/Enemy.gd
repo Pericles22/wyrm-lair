@@ -3,7 +3,7 @@ extends KinematicBody2D
 var drops = Drops.state
 
 const Drop = preload("res://scenes/items/Drop.tscn")
-const Projectile = preload("res://scenes/projectiles/Fireball.tscn")
+const Projectile = preload("res://scenes/projectiles/BlueSpit.tscn")
 
 export(float) var attack_cooldown
 export(int) var attack_radius
