@@ -10,6 +10,12 @@
 
 ## grub
 
+graphics - assets/enemies/grub
+
+DROPS
+
+
+
 ## centipede
 
 ## millipede
