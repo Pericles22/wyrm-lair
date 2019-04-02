@@ -11,8 +11,15 @@ var state = {
 		meleeDamage = 1,
 		rangeDamage = 1,
 		speed = 1
-	},
-	stats = {
-			
 	}
 }
+
+func getStats():
+	return {
+		accuracy = 20 / state.skills.accuracy,
+		health = state.skills.health,
+		maxHealth = state.skills.maxHealth,
+		meleeDamage = state.skills.meleeDamage * 20,
+		rangeDamage = state.skills.rangeDamage * 10,
+		speed = state.skills.speed + 120
+	}

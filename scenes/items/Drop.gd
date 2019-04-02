@@ -1,6 +1,6 @@
 extends Area2D
 
-var PlayerState = PlayerStore.state
+var PlayerStats = PlayerStore.getStats()
 var type
 
 func start(pos, t):
@@ -20,8 +20,8 @@ func _on_Drop_body_entered(body):
 		
 func update_player_stats(player, stat, diff, perm):
 	if stat == "health":
-		player[stat] = min(PlayerState.maxHealth, player[stat] + diff)
+		player[stat] = min(PlayerStats.maxHealth, player[stat] + diff)
 	else:
 		player[stat] += diff
 	if perm:
-		PlayerState[stat] += diff
+		PlayerStats[stat] += diff

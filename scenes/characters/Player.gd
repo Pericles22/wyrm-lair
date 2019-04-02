@@ -3,7 +3,7 @@ extends KinematicBody2D
 signal health_changed
 
 const Projectile = preload("res://scenes/projectiles/BlueBolt.tscn")
-var skills = PlayerStore.state.skills.duplicate()
+var skills = PlayerStore.getStats()
 
 var can_attack = true
 var damage = skills.meleeDamage
