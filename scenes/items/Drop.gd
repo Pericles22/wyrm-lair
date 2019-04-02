@@ -23,5 +23,3 @@ func update_player_stats(player, stat, diff, perm):
 		player[stat] = min(PlayerStats.maxHealth, player[stat] + diff)
 	else:
 		player[stat] += diff
-	if perm:
-		PlayerStats[stat] += diff

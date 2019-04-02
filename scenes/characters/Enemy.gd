@@ -21,6 +21,7 @@ var target = null
 var velocity = Vector2()
 
 func attack():
+	$AnimatedSprite.play('attack')
 	if type == "range":
 		var dir = Vector2(1, 0).rotated(global_rotation)
 		var pos = $Position.global_position
