@@ -4,6 +4,8 @@
 
 ## garter snake
 
+graphics - assets/enemies/yellow-snake
+
 ## rattle snake
 
 ## cobra
@@ -27,6 +29,8 @@
 ## electric eel
 
 ## ice snake
+
+graphics - assets/enemies/blue-snake
 
 
 ### maybes:
