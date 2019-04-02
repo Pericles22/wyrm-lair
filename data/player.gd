@@ -11,5 +11,8 @@ var state = {
 		meleeDamage = 1,
 		rangeDamage = 1,
 		speed = 1
+	},
+	stats = {
+			
 	}
 }
