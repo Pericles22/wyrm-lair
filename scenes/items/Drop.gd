@@ -19,7 +19,5 @@ func _on_Drop_body_entered(body):
 		queue_free()
 		
 func update_player_stats(player, stat, diff, perm):
-	if stat == "health":
-		player[stat] = min(PlayerStats.maxHealth, player[stat] + diff)
-	else:
-		player[stat] += diff
+	pass
+	#player[stat].experiencew += diff

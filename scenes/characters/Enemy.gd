@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+var Player = PlayerStore
 var drops = Drops.state
 
 const Drop = preload("res://scenes/items/Drop.tscn")
@@ -10,7 +11,7 @@ export(int) var attack_radius
 export(int) var damage
 export(int) var detect_radius
 export(float) var hp
-export(int) var range_radius
+export(int) var level
 export(int) var speed
 export(String) var type = "range"
 
@@ -30,6 +31,7 @@ func attack():
 		target.take_damage(damage, '')
 
 func die():
+	Player.updateStat('rangeDamage', level * 2)
 	randomize()
 	get_parent()._on_Enemy_drop(Drop, global_position, drops[drops.keys()[randi()%4]])
 	queue_free()

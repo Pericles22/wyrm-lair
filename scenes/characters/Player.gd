@@ -77,6 +77,11 @@ func set_sprite_dir(delta):
 	$CollisionShape2D.global_rotation = target_dir.angle()
 	$Position.global_rotation = target_dir.angle()
 	$AnimatedSprite.global_rotation = target_dir.angle()
+	
+func update_stats():
+	meleeDamage = skills.meleeDamage
+	rangeDamage = skills.rangeDamage
+	speed = skills.speed
 
 func _ready():
 	health = maxHealth
@@ -101,6 +106,7 @@ func _physics_process(delta):
 		target = null
 
 	velocity = move_and_slide(velocity)
+	update_stats()
 	
 func _on_AttackCooldown_timeout():
 	can_attack = true
