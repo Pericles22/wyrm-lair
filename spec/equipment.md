@@ -126,7 +126,7 @@ reduced accuracy and no damage reductions
 
 good speed bonuses
 
-- rogue helm
+- rogue hood
 
 - rogue body
 
@@ -174,7 +174,7 @@ great speed bonuses
 
 set bonus: more speed :)
 
-- assassin helm
+- assassin hood
 
 - assassin body
 
@@ -190,7 +190,7 @@ amazing attack bonuses
 
 somewhat reduced speed and no health steal
 
-- dragon slayer helm
+- dragon slayer visage
 
 - dragon slayer body
 
@@ -198,13 +198,13 @@ somewhat reduced speed and no health steal
 
 - dragon slayer boots
 
-- dragon slayer shield
+- dragon slayer targ
 
 ## Wyrm Slayer
 
 basically same stats as dragon slayer gear, but no speed reduction and lots of amazing health steal.
 
-- wyrm slayer helm
+- wyrm slayer visage
 
 - wyrm slayer body
 
@@ -212,4 +212,4 @@ basically same stats as dragon slayer gear, but no speed reduction and lots of a
 
 - wyrm slayer boots
 
-- wyrm slayer shield
+- wyrm slayer targ
