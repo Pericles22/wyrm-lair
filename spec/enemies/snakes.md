@@ -12,7 +12,7 @@ graphics - assets/enemies/yellow-snake
 
 DROPS
 
-vampirical aura - 1 in 5
+vampirical aura - 1/5
 
 ## mamba
 
