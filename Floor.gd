@@ -31,7 +31,7 @@ func spawn_enemies():
 	var yRange = range(top, bottom)
 	var xCount = xRange.size()
 	var yCount = yRange.size()
-	for i in range(1, 31):
+	for i in range(1, enemy_count):
 		var en = Enemy.instance()
 		add_child(en)
 		en.position = Vector2(xRange[randi() % xCount], yRange[randi() % yCount])
