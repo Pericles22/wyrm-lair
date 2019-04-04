@@ -40,6 +40,7 @@ func die():
 func take_damage(damage, pos):
 	is_aggravated = true
 	var transformer = Transform2D(Vector2(3, 0), Vector2(0, 3), Vector2(0, 0))
+	$DetectRadius/CollisionShape2D.set_transform(transformer)
 	$AggroCooldown.stop()
 	$AggroCooldown.start()
 	global_position += pos / 15
