@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Floor1.gd" type="Script" id=1]
 [ext_resource path="res://bg_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/environment/walls.tres" type="TileSet" id=3]
 [ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/characters/Enemy.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.5186, 31.406 )
@@ -49,10 +48,5 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
 shape = SubResource( 1 )
-
-[node name="Enemy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 280.686, 150.224 )
-level = 1
-speed = 50
 
 [connection signal="body_entered" from="Door" to="." method="_on_Door_body_entered"]

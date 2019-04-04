@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var Player = PlayerStore
+var PlayerSkills = Player.state.skills
 var drops = Drops.state
 
 const Drop = preload("res://scenes/items/Drop.tscn")
@@ -17,6 +18,7 @@ export(String) var type = "range"
 
 var attacking = false
 var can_attack = true
+var is_aggravated = false
 var target = null
 var velocity = Vector2()
 
@@ -36,8 +38,8 @@ func die():
 	queue_free()
 	
 func take_damage(damage, pos):
+	is_aggravated = true
 	var transformer = Transform2D(Vector2(3, 0), Vector2(0, 3), Vector2(0, 0))
-	print($DetectRadius/CollisionShape2D.set_transform(transformer))
 	$AggroCooldown.stop()
 	$AggroCooldown.start()
 	global_position += pos / 15
@@ -74,6 +76,10 @@ func calculate_target_pos():
 	    t = t1;
 	
 	return target.position + target.velocity * t;
+	
+func shouldAggro():
+	var playerLevel = (PlayerSkills.meleeDamage.level + PlayerSkills.rangeDamage.level + PlayerSkills.magicDamage.level) / 3
+	return (level >= playerLevel / 2) || is_aggravated
 
 func _process(delta):
 	var current_dir = Vector2(0, 0)
@@ -86,7 +92,7 @@ func _process(delta):
 		global_rotation = target_dir.angle()
 	if attacking:
 		$AnimatedSprite.play("attack")
-		if can_attack:
+		if can_attack && shouldAggro():
 			can_attack = false
 			attack()
 			$AttackCooldown.start()
@@ -117,6 +123,7 @@ func _on_Cooldown_timeout():
 	can_attack = true
 
 func _on_AggroCooldown_timeout():
+	is_aggravated = false
 	var reset = Transform2D(Vector2(1, 0), Vector2(0, 1), Vector2(0, 0))
 	$DetectRadius/CollisionShape2D.set_transform(reset)
 	pass

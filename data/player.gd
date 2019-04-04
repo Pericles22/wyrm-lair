@@ -9,9 +9,14 @@ var state = {
 			level = 1,
 			requiredXP = requiredXP
 		},
-		health = {
+		defense = {
 			experience = 0,
 			level = 1,
+			requiredXP = requiredXP
+		},
+		health = {
+			experience = 0,
+			level = 100,
 			requiredXP = requiredXP
 		},
 		magicDamage = {
@@ -21,7 +26,7 @@ var state = {
 		},
 		maxHealth = {
 			experience = 0,
-			level = 1,
+			level = 100,
 			requiredXP = requiredXP
 		},
 		meleeDamage = {
@@ -55,11 +60,8 @@ func getStats():
 	}
 	
 func updateStat(stat, xp):
-	print(stat + ', ', xp)
 	var playerStat = state.skills[stat]
-	print('playerStat, ', playerStat)
 	playerStat.experience += xp
 	if playerStat.experience >= playerStat.requiredXP:
 		playerStat.level += 1
 		playerStat.requiredXP += pow(log(playerStat.level + 1), 2) * pow(playerStat.level + 1, 2)
-		print(playerStat, ', ', playerStat.requiredXP)

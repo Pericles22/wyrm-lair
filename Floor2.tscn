@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Floor2.gd" type="Script" id=1]
 [ext_resource path="res://bg_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/characters/Enemy.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18.6031, 19.0777 )
@@ -28,69 +27,6 @@ format = 1
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 32.7837, 34.6231 )
-
-[node name="Enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 71.438, 173.812 )
-
-[node name="Enemy2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 84.6882, 364.615 )
-
-[node name="Enemy3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 180.09, 473.267 )
-
-[node name="Enemy4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 328.492, 335.465 )
-
-[node name="Enemy5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 317.892, 187.063 )
-
-[node name="Enemy6" parent="." instance=ExtResource( 4 )]
-position = Vector2( 182.74, 677.321 )
-
-[node name="Enemy7" parent="." instance=ExtResource( 4 )]
-position = Vector2( 553.746, 687.921 )
-
-[node name="Enemy8" parent="." instance=ExtResource( 4 )]
-position = Vector2( 559.046, 510.368 )
-
-[node name="Enemy9" parent="." instance=ExtResource( 4 )]
-position = Vector2( 718.048, 311.615 )
-
-[node name="Enemy10" parent="." instance=ExtResource( 4 )]
-position = Vector2( 572.296, 83.711 )
-
-[node name="Enemy11" parent="." instance=ExtResource( 4 )]
-position = Vector2( 272.841, 968.825 )
-
-[node name="Enemy12" parent="." instance=ExtResource( 4 )]
-position = Vector2( 707.448, 844.273 )
-
-[node name="Enemy13" parent="." instance=ExtResource( 4 )]
-position = Vector2( 914.152, 576.619 )
-
-[node name="Enemy14" parent="." instance=ExtResource( 4 )]
-position = Vector2( 956.552, 921.124 )
-
-[node name="Enemy15" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1226.86, 481.217 )
-
-[node name="Enemy16" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1086.4, 155.262 )
-
-[node name="Enemy17" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1306.36, 823.073 )
-
-[node name="Enemy18" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1552.81, 528.918 )
-
-[node name="Enemy19" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1486.56, 187.063 )
-
-[node name="Enemy20" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1857.57, 226.813 )
-
-[node name="Enemy21" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1764.82, 849.573 )
 
 [node name="Door" type="Area2D" parent="."]
 position = Vector2( 2031.94, 14.6817 )
