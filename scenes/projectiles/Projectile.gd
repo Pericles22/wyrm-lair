@@ -2,7 +2,7 @@ extends Area2D
 
 export(int) var damage = 10
 export(String) var shooter = ''
-export(int) var speed = 140
+export(int) var speed = 200
 var lifetime = 10
 
 var velocity = Vector2()

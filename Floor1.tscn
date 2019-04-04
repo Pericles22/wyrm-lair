@@ -40,7 +40,6 @@ position = Vector2( 53.3228, 49.8234 )
 z_index = 1
 
 [node name="Door" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 303.955, 16.1522 )
 scale = Vector2( 0.484764, 0.484764 )
 collision_layer = 4
@@ -53,12 +52,6 @@ shape = SubResource( 1 )
 
 [node name="Enemy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 280.686, 150.224 )
-scale = Vector2( 0.484764, 0.484764 )
-attack_cooldown = 1.0
-attack_radius = 150
-damage = 10
-detect_radius = 200
-hp = 100.0
 level = 1
 speed = 50
 

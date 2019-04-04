@@ -11,7 +11,6 @@ var dead = false
 var health = skills.health
 var maxHealth = skills.maxHealth
 var rangeDamage = skills.rangeDamage
-var show_health = false
 var speed = skills.speed
 var target = null
 var velocity = Vector2()
@@ -73,7 +72,6 @@ func clamp_pos():
 	
 func set_sprite_dir(delta):
 	var target_dir = (get_global_mouse_position() - global_position).normalized()
-	var current_dir = Vector2(1, 0).rotated(global_rotation)
 	$CollisionShape2D.global_rotation = target_dir.angle()
 	$Position.global_rotation = target_dir.angle()
 	$AnimatedSprite.global_rotation = target_dir.angle()

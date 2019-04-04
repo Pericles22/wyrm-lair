@@ -6,16 +6,15 @@ var drops = Drops.state
 const Drop = preload("res://scenes/items/Drop.tscn")
 const Projectile = preload("res://scenes/projectiles/BlueSpit.tscn")
 
-export(float) var attack_cooldown
-export(int) var attack_radius
-export(int) var damage
-export(int) var detect_radius
-export(float) var hp
-export(int) var level
-export(int) var speed
+export(float) var attack_cooldown = 1
+export(int) var attack_radius = 150
+export(int) var damage = 10
+export(int) var detect_radius = 200
+export(float) var hp = 100
+export(int) var level = 10
+export(int) var speed = 80
 export(String) var type = "range"
 
-var aggravated = false
 var attacking = false
 var can_attack = true
 var target = null
@@ -54,11 +53,35 @@ func _ready():
 	$DetectRadius/CollisionShape2D.shape = circle2
 	$DetectRadius/CollisionShape2D.shape.radius = detect_radius
 	$AttackCooldown.wait_time = attack_cooldown
+	
+func calculate_target_pos():
+	var toTarget = target.global_position - global_position
+
+	var a = target.velocity.dot(target.velocity) - 40000;
+	var b = 2 * target.velocity.dot(toTarget);
+	var c = toTarget.dot(toTarget);
+	
+	var p = -b / (2 * a);
+	var q = sqrt((b * b) - 4 * a * c) / (2 * a);
+	
+	var t1 = p - q;
+	var t2 = p + q;
+	var t;
+	
+	if t1 > t2 && t2 > 0:
+	    t = t2;
+	else:
+	    t = t1;
+	
+	return target.position + target.velocity * t;
 
 func _process(delta):
 	var current_dir = Vector2(0, 0)
+	var targetPosition
 	if target:
-		var target_dir = (target.global_position - global_position).normalized()
+		targetPosition = calculate_target_pos()
+	if target:
+		var target_dir = (targetPosition - global_position).normalized()
 		current_dir = Vector2(1, 0).rotated($AnimatedSprite.global_rotation)
 		global_rotation = target_dir.angle()
 	if attacking:

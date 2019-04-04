@@ -1,6 +1,5 @@
 extends Area2D
 
-var PlayerStats = PlayerStore.getStats()
 var type
 
 func start(pos, t):
@@ -19,5 +18,6 @@ func _on_Drop_body_entered(body):
 		queue_free()
 		
 func update_player_stats(player, stat, diff, perm):
+	print(player, stat, diff, perm)
 	pass
 	#player[stat].experiencew += diff
