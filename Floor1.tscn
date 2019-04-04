@@ -10,6 +10,7 @@ extents = Vector2( 30.5186, 31.406 )
 
 [node name="Floor1" type="Node2D"]
 script = ExtResource( 1 )
+enemy_count = 10
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )

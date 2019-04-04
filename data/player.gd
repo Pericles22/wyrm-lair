@@ -36,7 +36,7 @@ var state = {
 		},
 		rangeDamage = {
 			experience = 0,
-			level = 1,
+			level = 2,
 			requiredXP = requiredXP
 		},
 		speed = {

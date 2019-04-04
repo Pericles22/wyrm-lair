@@ -2,6 +2,8 @@ extends Node2D
 
 const Enemy = preload("res://scenes/characters/Enemy.tscn")
 
+export(int) var enemy_count = 30
+
 var map_limits
 var map_cellsize
 var left
