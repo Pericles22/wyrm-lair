@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/characters/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemies/blue-snake/slither-01.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/enemies/blue-snake/slither-04.png" type="Texture" id=9]
 [ext_resource path="res://assets/enemies/blue-snake/slither-05.png" type="Texture" id=10]
 [ext_resource path="res://assets/enemies/blue-snake/slither-06.png" type="Texture" id=11]
+[ext_resource path="res://scenes/hud/Health.tscn" type="PackedScene" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -44,6 +45,9 @@ script = ExtResource( 1 )
 frames = SubResource( 1 )
 animation = "idle"
 
+[node name="Position" type="Position2D" parent="AnimatedSprite"]
+position = Vector2( 13, 0 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1, 0 )
 shape = SubResource( 2 )
@@ -63,9 +67,11 @@ one_shot = true
 wait_time = 30.0
 one_shot = true
 
-[node name="Position" type="Position2D" parent="."]
-position = Vector2( 13, 0 )
+[node name="HUD" parent="." instance=ExtResource( 12 )]
+position = Vector2( -28.884, -32.1132 )
 
+[connection signal="change_health" from="." to="HUD" method="change_health"]
+[connection signal="change_health" from="." to="." method="change_health"]
 [connection signal="body_entered" from="DetectRadius" to="." method="_on_DetectRadius_body_entered"]
 [connection signal="body_exited" from="DetectRadius" to="." method="_on_DetectRadius_body_exited"]
 [connection signal="body_entered" from="AttackRadius" to="." method="_on_AttackRadius_body_entered"]

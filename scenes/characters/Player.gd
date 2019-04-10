@@ -26,8 +26,8 @@ func die():
 	$CollisionShape2D.queue_free()
 
 func shoot():
-	var dir = Vector2(1, 0).rotated($Position.global_rotation)
-	get_parent()._on_shoot(Projectile, $Position.global_position, dir, name, rangeDamage)
+	var dir = Vector2(1, 0).rotated($AnimatedSprite/Position.global_rotation)
+	get_parent()._on_shoot(Projectile, $AnimatedSprite/Position.global_position, dir, name, rangeDamage)
 
 func take_damage(damage, pos):
 	health -= damage
@@ -36,9 +36,6 @@ func take_damage(damage, pos):
 		die()
 		
 func update_health():
-	$HUD.visible = true
-	$HealthCooldown.stop()
-	$HealthCooldown.start()
 	emit_signal("health_changed", health * 100 / maxHealth)
 
 func check_inputs():
@@ -73,18 +70,12 @@ func clamp_pos():
 func set_sprite_dir(delta):
 	var target_dir = (get_global_mouse_position() - global_position).normalized()
 	$CollisionShape2D.global_rotation = target_dir.angle()
-	$Position.global_rotation = target_dir.angle()
 	$AnimatedSprite.global_rotation = target_dir.angle()
 	
 func update_stats():
 	meleeDamage = skills.meleeDamage
 	rangeDamage = skills.rangeDamage
 	speed = skills.speed
-
-func _ready():
-	health = maxHealth
-	emit_signal("health_changed", health * 100 / maxHealth)
-	$HUD.visible = false
 
 func _physics_process(delta):
 	if dead:
@@ -108,6 +99,3 @@ func _physics_process(delta):
 	
 func _on_AttackCooldown_timeout():
 	can_attack = true
-
-func _on_HealthCooldown_timeout():
-	$HUD.visible = false

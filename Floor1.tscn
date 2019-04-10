@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Floor1.gd" type="Script" id=1]
 [ext_resource path="res://bg_tiles.tres" type="TileSet" id=2]
-[ext_resource path="res://scenes/environment/walls.tres" type="TileSet" id=3]
+[ext_resource path="res://scenes/environment/obstacles.tres" type="TileSet" id=3]
 [ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -10,7 +10,8 @@ extents = Vector2( 30.5186, 31.406 )
 
 [node name="Floor1" type="Node2D"]
 script = ExtResource( 1 )
-enemy_count = 10
+enemy_count = 3
+floorCount = 1
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )

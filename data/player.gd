@@ -1,5 +1,7 @@
 extends Node
 
+signal updateLevel
+
 var requiredXP = pow(log(2), 2)
 
 var state = {
@@ -21,7 +23,7 @@ var state = {
 		},
 		magicDamage = {
 			experience = 0,
-			level = 1,
+			level = 10,
 			requiredXP = requiredXP
 		},
 		maxHealth = {
@@ -36,7 +38,7 @@ var state = {
 		},
 		rangeDamage = {
 			experience = 0,
-			level = 2,
+			level = 1,
 			requiredXP = requiredXP
 		},
 		speed = {
@@ -47,7 +49,15 @@ var state = {
 	}
 }
 
-#requiredXP += pow(log(playerLevel + 1),2) * pow(playerLevel + 1,2)
+func getLevels():
+	return {
+		accuracy = state.skills.accuracy.level,
+		health = state.skills.health.level,
+		maxHealth = state.skills.maxHealth.level,
+		meleeDamage = state.skills.meleeDamage.level,
+		rangeDamage = state.skills.rangeDamage.level,
+		speed = state.skills.speed.level,
+	}
 
 func getStats():
 	return {
@@ -63,5 +73,7 @@ func updateStat(stat, xp):
 	var playerStat = state.skills[stat]
 	playerStat.experience += xp
 	if playerStat.experience >= playerStat.requiredXP:
+		print(state.skills.rangeDamage.level)
+		emit_signal('updateLevel', state.skills.rangeDamage.level)
 		playerStat.level += 1
 		playerStat.requiredXP += pow(log(playerStat.level + 1), 2) * pow(playerStat.level + 1, 2)

@@ -18,4 +18,4 @@ func _ready():
 			ts.tile_set_texture(id, texture)
 			ts.tile_set_region(id, region)
 			
-	ResourceSaver.save("res://bg_tiles.tres", ts)
+	ResourceSaver.save("res://plant_tiles.tres", ts)

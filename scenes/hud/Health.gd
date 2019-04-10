@@ -5,7 +5,13 @@ var bar_yellow = preload("res://assets/sprites/hud/health_yellow.png")
 var bar_green = preload("res://assets/sprites/hud/health_green.png")
 var bar_texture = bar_green
 
+func _ready():
+	$TextureProgress.visible = false
+
 func change_health(val):
+	$TextureProgress.visible = true
+	$Timer.stop()
+	$Timer.start()
 	if val < 60:
 		bar_texture = bar_yellow
 	if val < 25:
@@ -15,6 +21,5 @@ func change_health(val):
 		val, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$TextureProgress/Tween.start()
 
-
-func _on_Player_health_changed():
-	pass # Replace with function body.
+func _on_Timer_timeout():
+	$TextureProgress.visible = false

@@ -4,6 +4,7 @@ const Enemy = preload("res://scenes/characters/Enemy.tscn")
 
 export(int) var enemy_count = 30
 
+export(int) var floorCount
 var map_limits
 var map_cellsize
 var left
@@ -33,8 +34,9 @@ func spawn_enemies():
 	var yCount = yRange.size()
 	for i in range(1, enemy_count):
 		var en = Enemy.instance()
-		add_child(en)
+		en.level = floorCount * 2
 		en.position = Vector2(xRange[randi() % xCount], yRange[randi() % yCount])
+		add_child(en)
 
 func _ready():
 	set_map_limits()
