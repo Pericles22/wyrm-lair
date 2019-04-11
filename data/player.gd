@@ -67,7 +67,7 @@ func getLevels():
 
 func getStats():
 	return {
-		accuracy = 20 / state.skills.accuracy.level,
+		accuracy = 20 * state.skills.accuracy.level,
 		health = state.skills.health.level + 99,
 		maxHealth = state.skills.maxHealth.level + 99,
 		meleeDamage = state.skills.meleeDamage.level * 20,
