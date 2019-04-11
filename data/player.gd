@@ -24,7 +24,7 @@ var state = {
 		},
 		health = {
 			experience = 0,
-			level = 100,
+			level = 10000,
 			requiredXP = requiredXP
 		},
 		magicDamage = {
@@ -34,7 +34,7 @@ var state = {
 		},
 		maxHealth = {
 			experience = 0,
-			level = 100,
+			level = 10000,
 			requiredXP = requiredXP
 		},
 		meleeDamage = {

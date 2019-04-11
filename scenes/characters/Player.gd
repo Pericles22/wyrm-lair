@@ -55,6 +55,8 @@ func check_inputs():
 		velocity.y = speed
 	else:
 		velocity.y = 0
+	
+	velocity = velocity.normalized() * speed
 		
 	if Input.is_action_just_pressed("attack"):
 		if can_attack && !!target:

@@ -62,6 +62,7 @@ func take_damage(attacker):
 func _ready():
 	var circle1 = CircleShape2D.new()
 	var circle2 = CircleShape2D.new()
+	$AnimatedSprite/RayCast2D.cast_to = Vector2(0, attack_radius)
 	$AttackRadius/CollisionShape2D.shape = circle1
 	$AttackRadius/CollisionShape2D.shape.radius = attack_radius
 	$DetectRadius/CollisionShape2D.shape = circle2
@@ -69,49 +70,30 @@ func _ready():
 	$AttackCooldown.wait_time = attack_cooldown
 	$Damage.visible = false
 	
-func calculate_target_pos():
-	var toTarget = target.global_position - global_position
-
-	var a = target.velocity.dot(target.velocity) - 40000;
-	var b = 2 * target.velocity.dot(toTarget);
-	var c = toTarget.dot(toTarget);
-	
-	var p = -b / (2 * a);
-	var q = sqrt((b * b) - 4 * a * c) / (2 * a);
-	
-	var t1 = p - q;
-	var t2 = p + q;
-	var t;
-	
-	if t1 > t2 && t2 > 0:
-	    t = t2;
-	else:
-	    t = t1;
-	
-	return target.position + target.velocity * t;
-	
 func shouldAggro():
 	var playerLevel = (PlayerSkills.meleeDamage.level + PlayerSkills.rangeDamage.level + PlayerSkills.magicDamage.level) / 3
 	return (level >= playerLevel / 2) || is_aggravated
 
 func _process(delta):
+	var collider = ''
+	if $AnimatedSprite/RayCast2D.get_collider():
+		collider = $AnimatedSprite/RayCast2D.get_collider().name
 	var current_dir = Vector2(0, 0)
 	var targetPosition
 	if target:
-		targetPosition = calculate_target_pos()
-	if target:
+		targetPosition = Algorithms.calculate_target_pos(target, global_position)
 		var target_dir = (targetPosition - global_position).normalized()
 		current_dir = Vector2(1, 0).rotated($AnimatedSprite.global_rotation)
 		$AnimatedSprite.global_rotation = target_dir.angle()
 		$CollisionShape2D.global_rotation = target_dir.angle()
 		$AnimatedSprite/Position.global_rotation = target_dir.angle()
-	if attacking:
+	if attacking && !("Obstacles" in collider):
 		$AnimatedSprite.play("attack")
 		if can_attack && shouldAggro():
 			can_attack = false
 			attack()
 			$AttackCooldown.start()
-	elif target:
+	elif target :
 		$AnimatedSprite.play("move")
 		velocity = current_dir * speed
 		velocity = move_and_slide(velocity)
@@ -144,7 +126,7 @@ func _on_AggroCooldown_timeout():
 	pass
 
 func change_health():
-	pass # Replace with function body.
+	pass
 
 
 func _on_ShowDamage_timeout():

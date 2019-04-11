@@ -53,15 +53,25 @@ animation = "idle"
 [node name="Position" type="Position2D" parent="AnimatedSprite"]
 position = Vector2( 13, 0 )
 
+[node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite"]
+rotation = -1.5708
+enabled = true
+collision_mask = 5
+collide_with_areas = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1, 0 )
 shape = SubResource( 2 )
 
 [node name="DetectRadius" type="Area2D" parent="."]
+editor/display_folded = true
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius"]
 
 [node name="AttackRadius" type="Area2D" parent="."]
+editor/display_folded = true
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRadius"]
 
