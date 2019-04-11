@@ -18,5 +18,6 @@ func _on_Drop_body_entered(body):
 		queue_free()
 		
 func update_player_stats(player, stat, diff, perm):
-	pass
+	if(player && stat && diff && perm):
+		pass
 	#player[stat].experiencew += diff

@@ -5,6 +5,12 @@ signal updateLevel
 var requiredXP = pow(log(2), 2)
 
 var state = {
+	inventory = [
+		"wood body",
+		"wood helm",
+		"wood shield",
+		"wood sword"
+	],
 	skills = {
 		accuracy = {
 			experience = 0,
@@ -73,7 +79,6 @@ func updateStat(stat, xp):
 	var playerStat = state.skills[stat]
 	playerStat.experience += xp
 	if playerStat.experience >= playerStat.requiredXP:
-		print(state.skills.rangeDamage.level)
 		emit_signal('updateLevel', state.skills.rangeDamage.level)
 		playerStat.level += 1
 		playerStat.requiredXP += pow(log(playerStat.level + 1), 2) * pow(playerStat.level + 1, 2)

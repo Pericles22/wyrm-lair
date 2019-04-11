@@ -12,8 +12,9 @@ const Projectile = preload("res://scenes/projectiles/BlueSpit.tscn")
 export(float) var attack_cooldown = .2
 export(int) var attack_radius = 150
 export(int) var damage = 10
+export(int) var defense = 4
 export(int) var detect_radius = 200
-export(float) var hp = 100
+export(float) var hp = 10
 export(int) var level
 export(int) var speed = 80
 export(String) var type = "range"
@@ -40,13 +41,17 @@ func die():
 	get_parent()._on_Enemy_drop(Drop, global_position, drops[drops.keys()[randi()%4]])
 	queue_free()
 	
-func take_damage(damage, pos):
+func take_damage(attacker):
+	var damage = Algorithms.calculate_damage_taken(attacker, self)
 	is_aggravated = true
 	var transformer = Transform2D(Vector2(3, 0), Vector2(0, 3), Vector2(0, 0))
 	$DetectRadius/CollisionShape2D.set_transform(transformer)
+	$Damage.text = String(damage)
+	$Damage.visible = true
 	$AggroCooldown.stop()
 	$AggroCooldown.start()
-	global_position += pos / 15
+	$ShowDamage.stop()
+	$ShowDamage.start()
 	hp -= damage
 	
 	emit_signal("change_health", hp * 100 / max_health)
@@ -62,6 +67,7 @@ func _ready():
 	$DetectRadius/CollisionShape2D.shape = circle2
 	$DetectRadius/CollisionShape2D.shape.radius = detect_radius
 	$AttackCooldown.wait_time = attack_cooldown
+	$Damage.visible = false
 	
 func calculate_target_pos():
 	var toTarget = target.global_position - global_position
@@ -86,7 +92,6 @@ func calculate_target_pos():
 	
 func shouldAggro():
 	var playerLevel = (PlayerSkills.meleeDamage.level + PlayerSkills.rangeDamage.level + PlayerSkills.magicDamage.level) / 3
-	print(level >= playerLevel / 2, is_aggravated)
 	return (level >= playerLevel / 2) || is_aggravated
 
 func _process(delta):
@@ -140,3 +145,7 @@ func _on_AggroCooldown_timeout():
 
 func change_health():
 	pass # Replace with function body.
+
+
+func _on_ShowDamage_timeout():
+	$Damage.visible = false

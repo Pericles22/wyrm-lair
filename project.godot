@@ -23,6 +23,8 @@ config/icon="res://assets/icon.png"
 
 Drops="*res://data/drops.gd"
 PlayerStore="*res://data/player.gd"
+Equipment="*res://data/equipment.gd"
+Algorithms="*res://data/algorithms.gd"
 
 [display]
 
