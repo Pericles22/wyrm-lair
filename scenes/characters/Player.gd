@@ -18,7 +18,7 @@ var velocity = Vector2()
 func attack():
 	var dir = Vector2(1, 0).rotated(global_rotation)
 	if target:
-		target.take_damage(meleeDamage, dir)
+		target.take_damage({accuracy = skills.accuracy, damage = skills.meleeDamage})
 
 func die():
 	dead = true
@@ -27,9 +27,13 @@ func die():
 
 func shoot():
 	var dir = Vector2(1, 0).rotated($AnimatedSprite/Position.global_rotation)
-	get_parent()._on_shoot(Projectile, $AnimatedSprite/Position.global_position, dir, name, rangeDamage)
+	var attacker = {
+		accuracy = skills.accuracy,
+		damage = Algorithms.calculate_damage_given(skills.rangeDamage) 
+	}
+	get_parent()._on_shoot(Projectile, $AnimatedSprite/Position.global_position, dir, name, attacker)
 
-func take_damage(damage, pos):
+func take_damage(damage):
 	health -= damage
 	update_health()
 	if health <= 0:
@@ -51,6 +55,8 @@ func check_inputs():
 		velocity.y = speed
 	else:
 		velocity.y = 0
+	
+	velocity = velocity.normalized() * speed
 		
 	if Input.is_action_just_pressed("attack"):
 		if can_attack && !!target:
@@ -67,7 +73,7 @@ func clamp_pos():
 	position.x = clamp(position.x, $Camera2D.limit_left, $Camera2D.limit_right)
 	position.y = clamp(position.y, $Camera2D.limit_top, $Camera2D.limit_bottom)
 	
-func set_sprite_dir(delta):
+func set_sprite_dir():
 	var target_dir = (get_global_mouse_position() - global_position).normalized()
 	$CollisionShape2D.global_rotation = target_dir.angle()
 	$AnimatedSprite.global_rotation = target_dir.angle()
@@ -88,7 +94,7 @@ func _physics_process(delta):
 	else:
 		$AnimatedSprite.play("idle")
 	clamp_pos()
-	set_sprite_dir(delta)
+	set_sprite_dir()
 	if $AnimatedSprite/AttackRange.is_colliding():
 		target = $AnimatedSprite/AttackRange.get_collider()
 	else:

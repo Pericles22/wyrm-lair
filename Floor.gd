@@ -1,6 +1,7 @@
 extends Node2D
 
 const Enemy = preload("res://scenes/characters/Enemy.tscn")
+const Particle = preload("res://scenes/items/DropParticles.tscn")
 
 export(int) var enemy_count = 30
 
@@ -53,3 +54,9 @@ func _on_Enemy_drop(drop, position, type):
 	var d = drop.instance()
 	add_child(d)
 	d.start(position, type)
+	
+func _on_Drop_pickup(pos):
+	print('and here')
+	var p = Particle.instance()
+	p.position = pos
+	add_child(p)

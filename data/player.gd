@@ -5,6 +5,12 @@ signal updateLevel
 var requiredXP = pow(log(2), 2)
 
 var state = {
+	inventory = [
+		"wood body",
+		"wood helm",
+		"wood shield",
+		"wood sword"
+	],
 	skills = {
 		accuracy = {
 			experience = 0,
@@ -18,7 +24,7 @@ var state = {
 		},
 		health = {
 			experience = 0,
-			level = 100,
+			level = 10000,
 			requiredXP = requiredXP
 		},
 		magicDamage = {
@@ -28,7 +34,7 @@ var state = {
 		},
 		maxHealth = {
 			experience = 0,
-			level = 100,
+			level = 10000,
 			requiredXP = requiredXP
 		},
 		meleeDamage = {
@@ -61,7 +67,7 @@ func getLevels():
 
 func getStats():
 	return {
-		accuracy = 20 / state.skills.accuracy.level,
+		accuracy = 20 * state.skills.accuracy.level,
 		health = state.skills.health.level + 99,
 		maxHealth = state.skills.maxHealth.level + 99,
 		meleeDamage = state.skills.meleeDamage.level * 20,
@@ -73,7 +79,6 @@ func updateStat(stat, xp):
 	var playerStat = state.skills[stat]
 	playerStat.experience += xp
 	if playerStat.experience >= playerStat.requiredXP:
-		print(state.skills.rangeDamage.level)
 		emit_signal('updateLevel', state.skills.rangeDamage.level)
 		playerStat.level += 1
 		playerStat.requiredXP += pow(log(playerStat.level + 1), 2) * pow(playerStat.level + 1, 2)

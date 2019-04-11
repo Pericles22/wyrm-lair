@@ -12,8 +12,9 @@ const Projectile = preload("res://scenes/projectiles/BlueSpit.tscn")
 export(float) var attack_cooldown = .2
 export(int) var attack_radius = 150
 export(int) var damage = 10
+export(int) var defense = 4
 export(int) var detect_radius = 200
-export(float) var hp = 100
+export(float) var hp = 10
 export(int) var level
 export(int) var speed = 80
 export(String) var type = "range"
@@ -40,13 +41,17 @@ func die():
 	get_parent()._on_Enemy_drop(Drop, global_position, drops[drops.keys()[randi()%4]])
 	queue_free()
 	
-func take_damage(damage, pos):
+func take_damage(attacker):
+	var damage = Algorithms.calculate_damage_taken(attacker, self)
 	is_aggravated = true
 	var transformer = Transform2D(Vector2(3, 0), Vector2(0, 3), Vector2(0, 0))
 	$DetectRadius/CollisionShape2D.set_transform(transformer)
+	$Damage.text = String(damage)
+	$Damage.visible = true
 	$AggroCooldown.stop()
 	$AggroCooldown.start()
-	global_position += pos / 15
+	$ShowDamage.stop()
+	$ShowDamage.start()
 	hp -= damage
 	
 	emit_signal("change_health", hp * 100 / max_health)
@@ -57,56 +62,38 @@ func take_damage(damage, pos):
 func _ready():
 	var circle1 = CircleShape2D.new()
 	var circle2 = CircleShape2D.new()
+	$AnimatedSprite/RayCast2D.cast_to = Vector2(0, attack_radius)
 	$AttackRadius/CollisionShape2D.shape = circle1
 	$AttackRadius/CollisionShape2D.shape.radius = attack_radius
 	$DetectRadius/CollisionShape2D.shape = circle2
 	$DetectRadius/CollisionShape2D.shape.radius = detect_radius
 	$AttackCooldown.wait_time = attack_cooldown
-	
-func calculate_target_pos():
-	var toTarget = target.global_position - global_position
-
-	var a = target.velocity.dot(target.velocity) - 40000;
-	var b = 2 * target.velocity.dot(toTarget);
-	var c = toTarget.dot(toTarget);
-	
-	var p = -b / (2 * a);
-	var q = sqrt((b * b) - 4 * a * c) / (2 * a);
-	
-	var t1 = p - q;
-	var t2 = p + q;
-	var t;
-	
-	if t1 > t2 && t2 > 0:
-	    t = t2;
-	else:
-	    t = t1;
-	
-	return target.position + target.velocity * t;
+	$Damage.visible = false
 	
 func shouldAggro():
 	var playerLevel = (PlayerSkills.meleeDamage.level + PlayerSkills.rangeDamage.level + PlayerSkills.magicDamage.level) / 3
-	print(level >= playerLevel / 2, is_aggravated)
 	return (level >= playerLevel / 2) || is_aggravated
 
 func _process(delta):
+	var collider = ''
+	if $AnimatedSprite/RayCast2D.get_collider():
+		collider = $AnimatedSprite/RayCast2D.get_collider().name
 	var current_dir = Vector2(0, 0)
 	var targetPosition
 	if target:
-		targetPosition = calculate_target_pos()
-	if target:
+		targetPosition = Algorithms.calculate_target_pos(target, global_position)
 		var target_dir = (targetPosition - global_position).normalized()
 		current_dir = Vector2(1, 0).rotated($AnimatedSprite.global_rotation)
 		$AnimatedSprite.global_rotation = target_dir.angle()
 		$CollisionShape2D.global_rotation = target_dir.angle()
 		$AnimatedSprite/Position.global_rotation = target_dir.angle()
-	if attacking:
+	if attacking && !("Obstacles" in collider):
 		$AnimatedSprite.play("attack")
 		if can_attack && shouldAggro():
 			can_attack = false
 			attack()
 			$AttackCooldown.start()
-	elif target:
+	elif target :
 		$AnimatedSprite.play("move")
 		velocity = current_dir * speed
 		velocity = move_and_slide(velocity)
@@ -139,4 +126,8 @@ func _on_AggroCooldown_timeout():
 	pass
 
 func change_health():
-	pass # Replace with function body.
+	pass
+
+
+func _on_ShowDamage_timeout():
+	$Damage.visible = false

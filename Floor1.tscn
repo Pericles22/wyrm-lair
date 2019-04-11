@@ -43,7 +43,7 @@ z_index = 1
 [node name="Door" type="Area2D" parent="."]
 position = Vector2( 303.955, 16.1522 )
 scale = Vector2( 0.484764, 0.484764 )
-collision_layer = 4
+collision_layer = 8
 __meta__ = {
 "_edit_group_": true
 }

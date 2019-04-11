@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/characters/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemies/blue-snake/slither-01.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/enemies/blue-snake/slither-05.png" type="Texture" id=10]
 [ext_resource path="res://assets/enemies/blue-snake/slither-06.png" type="Texture" id=11]
 [ext_resource path="res://scenes/hud/Health.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -34,6 +35,10 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8.30244, 4.39346 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 8
+font_data = ExtResource( 13 )
+
 [node name="Enemy" type="KinematicBody2D"]
 z_index = 2
 collision_layer = 2
@@ -48,15 +53,25 @@ animation = "idle"
 [node name="Position" type="Position2D" parent="AnimatedSprite"]
 position = Vector2( 13, 0 )
 
+[node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite"]
+rotation = -1.5708
+enabled = true
+collision_mask = 5
+collide_with_areas = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1, 0 )
 shape = SubResource( 2 )
 
 [node name="DetectRadius" type="Area2D" parent="."]
+editor/display_folded = true
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius"]
 
 [node name="AttackRadius" type="Area2D" parent="."]
+editor/display_folded = true
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRadius"]
 
@@ -67,8 +82,20 @@ one_shot = true
 wait_time = 30.0
 one_shot = true
 
+[node name="ShowDamage" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [node name="HUD" parent="." instance=ExtResource( 12 )]
 position = Vector2( -28.884, -32.1132 )
+
+[node name="Damage" type="Label" parent="."]
+margin_left = -4.52331
+margin_top = 4.40733
+margin_right = 35.4767
+margin_bottom = 18.4073
+custom_fonts/font = SubResource( 3 )
+text = "10"
 
 [connection signal="change_health" from="." to="HUD" method="change_health"]
 [connection signal="change_health" from="." to="." method="change_health"]
@@ -78,3 +105,4 @@ position = Vector2( -28.884, -32.1132 )
 [connection signal="body_exited" from="AttackRadius" to="." method="_on_AttackRadius_body_exited"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_Cooldown_timeout"]
 [connection signal="timeout" from="AggroCooldown" to="." method="_on_AggroCooldown_timeout"]
+[connection signal="timeout" from="ShowDamage" to="." method="_on_ShowDamage_timeout"]

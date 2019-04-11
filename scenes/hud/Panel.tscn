@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/ui/panel-02.png" type="Texture" id=1]
+[ext_resource path="res://assets/equipment/wood/wood-body.png" type="Texture" id=2]
+
+[node name="Panel" type="MarginContainer"]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 1 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 32.0
+margin_bottom = 32.0
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 24.0
+margin_bottom = 24.0
+texture = ExtResource( 2 )
+
