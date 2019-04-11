@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/farmland/bg/hay.png" type="Texture" id=1]
+
+[node name="HayTileset" type="Node2D"]
+
+[node name="center1" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
+
+[node name="center2" type="Sprite" parent="."]
+position = Vector2( 28.3228, -0.44957 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+

@@ -23,8 +23,6 @@ config/icon="res://assets/icon.png"
 
 Drops="*res://data/drops.gd"
 PlayerStore="*res://data/player.gd"
-Equipment="*res://data/equipment.gd"
-Algorithms="*res://data/algorithms.gd"
 
 [display]
 
@@ -87,5 +85,5 @@ shoot={
 
 [rendering]
 
-environment/default_clear_color=Color( 0.407843, 0.333333, 0.333333, 1 )
+environment/default_clear_color=Color( 0.105882, 0.14902, 0.207843, 1 )
 environment/default_environment="res://default_env.tres"
