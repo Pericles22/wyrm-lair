@@ -19,6 +19,7 @@ func _on_Drop_body_entered(body):
 		print('here')
 		get_parent()._on_Drop_pickup(global_position)
 		$CollisionShape2D.queue_free()
+		$Control.queue_free()
 		$Lifetime.start()
 		
 func update_player_stats(player, stat, diff, perm):
