@@ -21,6 +21,7 @@ export(String) var type = "range"
 
 var attacking = false
 var can_attack = true
+var is_dead = false
 var is_aggravated = false
 var max_health = hp
 var target = null
@@ -36,12 +37,18 @@ func attack():
 		target.take_damage(damage, '')
 
 func die():
+	$Particles2D.emitting = true
+	is_dead = true
 	Player.updateStat('rangeDamage', level * 2)
 	randomize()
+	$AnimatedSprite.queue_free()
+	$CollisionShape2D.queue_free()
 	get_parent()._on_Enemy_drop(Drop, global_position, drops[drops.keys()[randi()%4]])
-	queue_free()
+	$DeathTimer.start()
 	
 func take_damage(attacker):
+	if is_dead:
+		return
 	var damage = Algorithms.calculate_damage_taken(attacker, self)
 	is_aggravated = true
 	var transformer = Transform2D(Vector2(3, 0), Vector2(0, 3), Vector2(0, 0))
@@ -75,6 +82,8 @@ func shouldAggro():
 	return (level >= playerLevel / 2) || is_aggravated
 
 func _process(delta):
+	if is_dead:
+		return
 	var collider = ''
 	if $AnimatedSprite/RayCast2D.get_collider():
 		collider = $AnimatedSprite/RayCast2D.get_collider().name
@@ -128,6 +137,8 @@ func _on_AggroCooldown_timeout():
 func change_health():
 	pass
 
-
 func _on_ShowDamage_timeout():
 	$Damage.visible = false
+
+func _on_DeathTimer_timeout():
+	queue_free()

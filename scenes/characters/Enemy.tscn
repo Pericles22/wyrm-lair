@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/characters/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemies/blue-snake/slither-01.png" type="Texture" id=2]
@@ -39,6 +39,32 @@ extents = Vector2( 8.30244, 4.39346 )
 size = 8
 font_data = ExtResource( 13 )
 
+[sub_resource type="Curve" id=4]
+max_value = 200.0
+_data = [ Vector2( 0.0225546, 100.88 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0.00646096, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.4582 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 7 )
+color = Color( 0.454902, 0.286275, 1, 1 )
+hue_variation = -0.08
+hue_variation_random = 0.8
+anim_speed_curve = SubResource( 5 )
+
 [node name="Enemy" type="KinematicBody2D"]
 z_index = 2
 collision_layer = 2
@@ -75,11 +101,15 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRadius"]
 
+[node name="AggroCooldown" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
 [node name="AttackCooldown" type="Timer" parent="."]
 one_shot = true
 
-[node name="AggroCooldown" type="Timer" parent="."]
-wait_time = 30.0
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 
 [node name="ShowDamage" type="Timer" parent="."]
@@ -97,12 +127,21 @@ margin_bottom = 18.4073
 custom_fonts/font = SubResource( 3 )
 text = "10"
 
+[node name="Particles2D" type="Particles2D" parent="."]
+emitting = false
+amount = 200
+lifetime = 0.75
+one_shot = true
+speed_scale = 1.8
+process_material = SubResource( 8 )
+
 [connection signal="change_health" from="." to="HUD" method="change_health"]
 [connection signal="change_health" from="." to="." method="change_health"]
 [connection signal="body_entered" from="DetectRadius" to="." method="_on_DetectRadius_body_entered"]
 [connection signal="body_exited" from="DetectRadius" to="." method="_on_DetectRadius_body_exited"]
 [connection signal="body_entered" from="AttackRadius" to="." method="_on_AttackRadius_body_entered"]
 [connection signal="body_exited" from="AttackRadius" to="." method="_on_AttackRadius_body_exited"]
-[connection signal="timeout" from="AttackCooldown" to="." method="_on_Cooldown_timeout"]
 [connection signal="timeout" from="AggroCooldown" to="." method="_on_AggroCooldown_timeout"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_Cooldown_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]
 [connection signal="timeout" from="ShowDamage" to="." method="_on_ShowDamage_timeout"]
