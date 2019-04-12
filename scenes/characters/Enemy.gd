@@ -8,6 +8,7 @@ var drops = Drops.state
 
 const Drop = preload("res://scenes/items/Drop.tscn")
 const Projectile = preload("res://scenes/projectiles/BlueSpit.tscn")
+const Splat = preload("res://scenes/effects/Splat.tscn")
 
 export(float) var attack_cooldown = .2
 export(int) var attack_radius = 150
@@ -53,13 +54,12 @@ func take_damage(attacker):
 	is_aggravated = true
 	var transformer = Transform2D(Vector2(3, 0), Vector2(0, 3), Vector2(0, 0))
 	$DetectRadius/CollisionShape2D.set_transform(transformer)
-	$Damage.text = String(damage)
-	$Damage.visible = true
 	$AggroCooldown.stop()
 	$AggroCooldown.start()
-	$ShowDamage.stop()
-	$ShowDamage.start()
 	hp -= damage
+	var sp = Splat.instance()
+	sp.find_node("Label").text = String(damage)
+	add_child(sp)
 	
 	emit_signal("change_health", hp * 100 / max_health)
 	
@@ -75,7 +75,6 @@ func _ready():
 	$DetectRadius/CollisionShape2D.shape = circle2
 	$DetectRadius/CollisionShape2D.shape.radius = detect_radius
 	$AttackCooldown.wait_time = attack_cooldown
-	$Damage.visible = false
 	
 func shouldAggro():
 	var playerLevel = (PlayerSkills.meleeDamage.level + PlayerSkills.rangeDamage.level + PlayerSkills.magicDamage.level) / 3
@@ -136,9 +135,6 @@ func _on_AggroCooldown_timeout():
 
 func change_health():
 	pass
-
-func _on_ShowDamage_timeout():
-	$Damage.visible = false
 
 func _on_DeathTimer_timeout():
 	queue_free()
