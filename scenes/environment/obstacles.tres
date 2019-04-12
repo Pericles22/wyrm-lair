@@ -9,57 +9,57 @@ extents = Vector2( 8.00994, 4.01892 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3.99812, 4.00741 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8.02615, 4.00086 )
 
-[sub_resource type="ConvexPolygonShape2D" id=10]
-
-[sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 3.99153, 8.00765 )
-
-[sub_resource type="RectangleShape2D" id=13]
-extents = Vector2( 7.99014, 8.01355 )
-
-[sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 4.01611, 8.01355 )
-
-[sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 7.99014, 3.98675 )
-
-[sub_resource type="RectangleShape2D" id=16]
-extents = Vector2( 11.0397, 9.65273 )
-
-[sub_resource type="RectangleShape2D" id=17]
-extents = Vector2( 10.9079, 9.65607 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 3.99624, 4.0048 )
-
-[sub_resource type="CircleShape2D" id=18]
-radius = 6.20926
-
-[sub_resource type="RectangleShape2D" id=19]
-extents = Vector2( 6.04324, 6.11982 )
-
-[sub_resource type="RectangleShape2D" id=20]
-extents = Vector2( 7.12683, 6.98987 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 4.03143, 8.01027 )
+[sub_resource type="ConvexPolygonShape2D" id=4]
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 7.99284, 7.92446 )
+extents = Vector2( 3.99153, 8.00765 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 4.07116, 8.00065 )
+extents = Vector2( 7.99014, 8.01355 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 3.99779, 4.01164 )
+extents = Vector2( 4.01611, 8.01355 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 8.02924, 3.52491 )
+extents = Vector2( 7.99014, 3.98675 )
 
 [sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 11.0397, 9.65273 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 10.9079, 9.65607 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 3.99624, 4.0048 )
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 6.20926
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 6.04324, 6.11982 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 7.12683, 6.98987 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 4.03143, 8.01027 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 7.99284, 7.92446 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 4.07116, 8.00065 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 3.99779, 4.01164 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 8.02924, 3.52491 )
+
+[sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 4.01747, 3.99945 )
 
 [resource]
@@ -107,7 +107,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 3 ),
+"shape": SubResource( 11 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 4.00521, 11.9907 )
 } ]
 2/z_index = 0
@@ -123,7 +123,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 4 ),
+"shape": SubResource( 15 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 12.0433, 7.992 )
 } ]
 3/z_index = 0
@@ -139,7 +139,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 5 ),
+"shape": SubResource( 16 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8.01847, 8.0076 )
 } ]
 4/z_index = 0
@@ -155,7 +155,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 6 ),
+"shape": SubResource( 17 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 3.928, 7.9085 )
 } ]
 5/z_index = 0
@@ -171,7 +171,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 7 ),
+"shape": SubResource( 18 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 11.9783, 4.0077 )
 } ]
 6/z_index = 0
@@ -187,7 +187,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 8 ),
+"shape": SubResource( 19 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8.01766, 4.488 )
 } ]
 7/z_index = 0
@@ -203,7 +203,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 9 ),
+"shape": SubResource( 20 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 4.01645, 4.0134 )
 } ]
 8/z_index = 0
@@ -219,7 +219,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 10 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 0.511597, -0.517022, -0.292763, -0.289691, 13.0361, 13.0772 )
 } ]
 9/z_index = 0
@@ -235,7 +235,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 11 ),
+"shape": SubResource( 3 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 7.98517, 11.9795 )
 } ]
 10/z_index = 0
@@ -251,7 +251,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 10 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 0.511596, 0.517024, 0.292764, -0.28969, 2.96351, 13.0324 )
 } ]
 11/z_index = 0
@@ -267,7 +267,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 12 ),
+"shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 12.0349, 8.0107 )
 } ]
 12/z_index = 0
@@ -283,7 +283,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 13 ),
+"shape": SubResource( 6 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8.026, 8.034 )
 } ]
 13/z_index = 0
@@ -299,7 +299,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 14 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 3.97187, 8.0025 )
 } ]
 14/z_index = 0
@@ -315,7 +315,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 10 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( -0.523741, -0.504717, -0.285795, 0.296567, 13.1451, 2.9365 )
 } ]
 15/z_index = 0
@@ -331,7 +331,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 15 ),
+"shape": SubResource( 8 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 7.99789, 3.9889 )
 } ]
 16/z_index = 0
@@ -347,7 +347,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 10 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( -0.520162, 0.508404, 0.287883, 0.294541, 2.91898, 2.9658 )
 } ]
 17/z_index = 0
@@ -363,13 +363,13 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 16 ),
+"shape": SubResource( 9 ),
 "shape_transform": Transform2D( 0.727354, 0, 0, -0.411863, 7.99869, 4.02133 )
 }, {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 17 ),
+"shape": SubResource( 10 ),
 "shape_transform": Transform2D( 0.000261131, 0.727354, 0.411863, -0.000147865, 3.97449, 8.04552 )
 } ]
 18/z_index = 0
@@ -385,13 +385,13 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 16 ),
+"shape": SubResource( 9 ),
 "shape_transform": Transform2D( 0.727354, 0, 0, -0.411863, 7.99869, 4.02133 )
 }, {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 17 ),
+"shape": SubResource( 10 ),
 "shape_transform": Transform2D( 0.000261131, 0.727354, 0.411863, -0.000147865, 11.9569, 8.04552 )
 } ]
 19/z_index = 0
@@ -407,13 +407,13 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 16 ),
+"shape": SubResource( 9 ),
 "shape_transform": Transform2D( 0.727354, 0, 0, -0.411863, 7.99869, 12.0038 )
 }, {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 17 ),
+"shape": SubResource( 10 ),
 "shape_transform": Transform2D( 0.000261131, 0.727354, 0.411863, -0.000147865, 3.97449, 8.04552 )
 } ]
 20/z_index = 0
@@ -429,13 +429,13 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 16 ),
+"shape": SubResource( 9 ),
 "shape_transform": Transform2D( 0.727354, 0, 0, -0.411863, 7.99869, 12.0038 )
 }, {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 17 ),
+"shape": SubResource( 10 ),
 "shape_transform": Transform2D( 0.000261131, 0.727354, 0.411863, -0.000147865, 11.9569, 8.04552 )
 } ]
 21/z_index = 0
@@ -451,7 +451,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 18 ),
+"shape": SubResource( 12 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 7.84882, 8.10662 )
 } ]
 22/z_index = 0
@@ -467,7 +467,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 18 ),
+"shape": SubResource( 12 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 7.84882, 8.10662 )
 } ]
 23/z_index = 0
@@ -483,7 +483,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 19 ),
+"shape": SubResource( 13 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 7.93854, 8.01688 )
 } ]
 24/z_index = 0
@@ -499,7 +499,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 19 ),
+"shape": SubResource( 13 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 7.93854, 8.01688 )
 } ]
 25/z_index = 0
@@ -515,7 +515,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 19 ),
+"shape": SubResource( 13 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 7.93854, 8.01688 )
 } ]
 26/z_index = 0
@@ -531,7 +531,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 20 ),
+"shape": SubResource( 14 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 7.93854, 8.01688 )
 } ]
 27/z_index = 0
@@ -547,7 +547,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 19 ),
+"shape": SubResource( 13 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 7.93854, 8.01688 )
 } ]
 28/z_index = 0
@@ -563,7 +563,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 19 ),
+"shape": SubResource( 13 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 7.93854, 8.01688 )
 } ]
 29/z_index = 0
@@ -579,7 +579,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 19 ),
+"shape": SubResource( 13 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 7.93854, 8.01688 )
 } ]
 30/z_index = 0
@@ -595,7 +595,7 @@ extents = Vector2( 4.01747, 3.99945 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 19 ),
+"shape": SubResource( 13 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 7.93854, 8.01688 )
 } ]
 31/z_index = 0

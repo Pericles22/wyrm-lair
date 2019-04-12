@@ -24,7 +24,7 @@ var state = {
 		},
 		health = {
 			experience = 0,
-			level = 10000,
+			level = 100,
 			requiredXP = requiredXP
 		},
 		magicDamage = {
@@ -34,7 +34,7 @@ var state = {
 		},
 		maxHealth = {
 			experience = 0,
-			level = 10000,
+			level = 100,
 			requiredXP = requiredXP
 		},
 		meleeDamage = {
@@ -70,7 +70,7 @@ func getStats():
 		accuracy = 20 * state.skills.accuracy.level,
 		health = state.skills.health.level + 99,
 		maxHealth = state.skills.maxHealth.level + 99,
-		meleeDamage = state.skills.meleeDamage.level * 20,
+		meleeDamage = state.skills.meleeDamage.level * 10,
 		rangeDamage = state.skills.rangeDamage.level * 5,
 		speed = state.skills.speed.level + 120
 	}
@@ -79,6 +79,9 @@ func updateStat(stat, xp):
 	var playerStat = state.skills[stat]
 	playerStat.experience += xp
 	if playerStat.experience >= playerStat.requiredXP:
-		emit_signal('updateLevel', state.skills.rangeDamage.level)
+		print(playerStat.experience, playerStat.requiredXP)
 		playerStat.level += 1
 		playerStat.requiredXP += pow(log(playerStat.level + 1), 2) * pow(playerStat.level + 1, 2)
+		updateStat(stat, 0)
+	emit_signal('updateLevel', state.skills.rangeDamage.level, stat)
+	print(getStats())

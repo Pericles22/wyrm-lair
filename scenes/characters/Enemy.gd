@@ -9,6 +9,8 @@ var drops = Drops.state
 const Drop = preload("res://scenes/items/Drop.tscn")
 const Projectile = preload("res://scenes/projectiles/BlueSpit.tscn")
 const Splat = preload("res://scenes/effects/Splat.tscn")
+const Hit = preload("res://assets/effects/hit-splat.png")
+const Miss = preload("res://assets/effects/miss-splat.png")
 
 export(float) var attack_cooldown = .2
 export(int) var attack_radius = 150
@@ -59,6 +61,10 @@ func take_damage(attacker):
 	hp -= damage
 	var sp = Splat.instance()
 	sp.find_node("Label").text = String(damage)
+	if damage:
+		sp.texture = Hit
+	else:
+		sp.texture = Miss
 	add_child(sp)
 	
 	emit_signal("change_health", hp * 100 / max_health)

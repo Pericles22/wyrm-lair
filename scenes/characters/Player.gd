@@ -10,6 +10,7 @@ var meleeDamage = skills.meleeDamage
 var dead = false
 var health = skills.health
 var maxHealth = skills.maxHealth
+var powered = false
 var rangeDamage = skills.rangeDamage
 var speed = skills.speed
 var target = null
@@ -105,3 +106,16 @@ func _physics_process(delta):
 	
 func _on_AttackCooldown_timeout():
 	can_attack = true
+
+
+func _on_Button_pressed():
+	var diff = 0
+	if powered:
+		diff = -10000
+		$Button.text = "power"
+	else:
+		diff = 10000
+		$Button.text = "weaken"
+	for skill in PlayerStore.state.skills:
+		PlayerStore.updateStat(skill, diff)
+	powered = !powered
