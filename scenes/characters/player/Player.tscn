@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://scenes/characters/Player.gd" type="Script" id=1]
+[ext_resource path="res://scenes/characters/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/player/idle.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/player/attack_1.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/player/attack_2.png" type="Texture" id=4]

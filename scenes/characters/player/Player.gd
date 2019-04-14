@@ -3,11 +3,16 @@ extends KinematicBody2D
 signal health_changed
 
 const Projectile = preload("res://scenes/projectiles/GreenBolt.tscn")
+const Splat = preload("res://scenes/effects/Splat.tscn")
+const Hit = preload("res://assets/effects/hit-splat.png")
+const Miss = preload("res://assets/effects/miss-splat.png")
+
 var skills = PlayerStore.getStats()
 
 var can_attack = true
 var meleeDamage = skills.meleeDamage
 var dead = false
+var defense = skills.defense
 var health = skills.health
 var maxHealth = skills.maxHealth
 var powered = false
@@ -34,7 +39,17 @@ func shoot():
 	}
 	get_parent()._on_shoot(Projectile, $AnimatedSprite/Position.global_position, dir, name, attacker)
 
-func take_damage(damage):
+func take_damage(attacker):
+	var damage = Algorithms.calculate_damage_taken(attacker, self)
+	
+	var sp = Splat.instance()
+	sp.find_node("Label").text = String(damage)
+	if damage:
+		sp.texture = Hit
+	else:
+		sp.texture = Miss
+	add_child(sp)
+	
 	health -= damage
 	update_health()
 	if health <= 0:

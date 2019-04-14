@@ -1,6 +1,11 @@
 extends Node2D
 
-const Enemy = preload("res://scenes/characters/Enemy.tscn")
+const BlueSnake = preload("res://scenes/characters/enemy/BlueSnake.tscn")
+const Grub = preload("res://scenes/characters/enemy/Grub.tscn")
+const YellowSnake = preload("res://scenes/characters/enemy/YellowSnake.tscn")
+
+const Enemies = [BlueSnake, Grub, YellowSnake]
+
 const Particle = preload("res://scenes/items/DropParticles.tscn")
 
 export(int) var enemy_count = 30
@@ -34,7 +39,7 @@ func spawn_enemies():
 	var xCount = xRange.size()
 	var yCount = yRange.size()
 	for i in range(1, enemy_count):
-		var en = Enemy.instance()
+		var en = Enemies[randi() % 3].instance()
 		en.level = floorCount * 2
 		en.position = Vector2(xRange[randi() % xCount], yRange[randi() % yCount])
 		add_child(en)
@@ -56,7 +61,6 @@ func _on_Enemy_drop(drop, position, type):
 	d.start(position, type)
 	
 func _on_Drop_pickup(pos):
-	print('and here')
 	var p = Particle.instance()
 	p.position = pos
 	add_child(p)
