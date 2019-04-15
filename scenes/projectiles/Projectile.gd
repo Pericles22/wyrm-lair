@@ -24,7 +24,7 @@ func _on_Projectile_body_entered(body):
 	if body.name == "Obstacles":
 		queue_free()
 	elif body.has_method("take_damage") && !(shooter in body.name):
-		body.take_damage(_attacker)
+		body.take_damage(_attacker, 'rangeDamage')
 		queue_free()
 
 func _on_Lifetime_timeout():

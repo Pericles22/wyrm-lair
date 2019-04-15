@@ -29,7 +29,7 @@ var state = {
 		},
 		magicDamage = {
 			experience = 0,
-			level = 10,
+			level = 1,
 			requiredXP = requiredXP
 		},
 		maxHealth = {
@@ -55,6 +55,13 @@ var state = {
 	}
 }
 
+func gain_xp_from_hit(xp, stat):
+	state.skills[stat].experience += xp
+	state.skills.accuracy.experience += floor(xp / 3)
+	state.skills.maxHealth.experience += floor(xp / 3)
+	state.skills.speed.experience += floor(xp / 3)
+	updateLevels()
+
 func getLevels():
 	return {
 		accuracy = state.skills.accuracy.level,
@@ -76,11 +83,14 @@ func getStats():
 		speed = state.skills.speed.level + 120
 	}
 	
-func updateStat(stat, xp):
-	var playerStat = state.skills[stat]
-	playerStat.experience += xp
+func updateLevel(playerStat):
 	if playerStat.experience >= playerStat.requiredXP:
 		playerStat.level += 1
 		playerStat.requiredXP += pow(log(playerStat.level + 1), 2) * pow(playerStat.level + 1, 2)
-		updateStat(stat, 0)
-	emit_signal('updateLevel', state.skills.rangeDamage.level, stat)
+		if playerStat.experience >= playerStat.requiredXP:
+			updateLevel(playerStat)
+			
+func updateLevels():
+	for stat in state.skills:
+		updateLevel(state.skills[stat])
+	emit_signal('updateLevel', state.skills)

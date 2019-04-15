@@ -2,9 +2,9 @@ extends KinematicBody2D
 
 signal change_health
 
+var drops = Drops.state
 var Player = PlayerStore
 var PlayerSkills = Player.state.skills
-var drops = Drops.state
 
 const Drop = preload("res://scenes/items/Drop.tscn")
 const Projectile = preload("res://scenes/projectiles/BlueSpit.tscn")
@@ -39,34 +39,16 @@ func attack():
 		var pos = $CollisionShape2D/Position.global_position
 		get_parent()._on_shoot(Projectile, pos, dir, 'Enemy', self)
 	else:
-		target.take_damage(self)
+		target.take_damage(self, '')
 
 func die():
 	$Particles2D.emitting = true
 	is_dead = true
-	Player.updateStat('rangeDamage', level * 2)
 	randomize()
 	$AnimatedSprite.queue_free()
 	$CollisionShape2D.queue_free()
 	get_parent()._on_Enemy_drop(Drop, global_position, drops[drops.keys()[randi()%4]])
 	$DeathTimer.start()
-	
-func get_type():
-	randomize()
-	var t
-	var n = randi() % 3
-	if n == 2:
-		attack_radius = 150
-		detect_radius = 200
-		type = 'range'
-	elif n == 1:
-		attack_radius = 40
-		detect_radius = 150
-		type = 'melee'
-	else:
-		attack_radius = 130
-		detect_radius = 180
-		type = 'range'
 		
 func has_clear_shot():
 	var collider1 = ''
@@ -76,7 +58,7 @@ func has_clear_shot():
 	if $AtCurrentPos/RayCast2D.get_collider():
 		collider2 = $AtCurrentPos/RayCast2D.get_collider().name
 	return !("Obstacles" in collider1) || !("Obstacles" in collider2)
-	
+
 func set_stats():
 	var currFloor = get_parent().floorCount
 	accuracy = 20 + (currFloor * rand_range(.9, 1.1))
@@ -87,10 +69,20 @@ func set_stats():
 	level = floor(currFloor * rand_range(.9, 1.1))
 	max_health = hp
 	speed = 60 + (currFloor * rand_range(.9, 1.1))
+
+func start():
+	set_stats()
+	var circle1 = CircleShape2D.new()
+	var circle2 = CircleShape2D.new()
+	$AtCurrentPos/RayCast2D.cast_to = Vector2(0, attack_radius)
+	$AttackCooldown.wait_time = attack_cooldown
+	$AttackRadius/CollisionShape2D.shape = circle1
+	$AttackRadius/CollisionShape2D.shape.radius = attack_radius
+	$CollisionShape2D/AtFuturePos.cast_to = Vector2(0, attack_radius)
+	$DetectRadius/CollisionShape2D.shape = circle2
+	$DetectRadius/CollisionShape2D.shape.radius = detect_radius
 	
-	get_type()
-	
-func take_damage(attacker):
+func take_damage(attacker, type):
 	if is_dead:
 		return
 	var damage = Algorithms.calculate_damage_taken(attacker, self)
@@ -104,6 +96,7 @@ func take_damage(attacker):
 	sp.find_node("Label").text = String(damage)
 	if damage:
 		sp.texture = Hit
+		Player.gain_xp_from_hit(damage, type)
 	else:
 		sp.texture = Miss
 	add_child(sp)
@@ -112,26 +105,13 @@ func take_damage(attacker):
 	
 	if hp <= 0:
 		die()
-
-func _ready():
-	set_stats()
-	var circle1 = CircleShape2D.new()
-	var circle2 = CircleShape2D.new()
-	$CollisionShape2D/AtFuturePos.cast_to = Vector2(0, attack_radius)
-	$AtCurrentPos/RayCast2D.cast_to = Vector2(0, attack_radius)
-	$AttackRadius/CollisionShape2D.shape = circle1
-	$AttackRadius/CollisionShape2D.shape.radius = attack_radius
-	$DetectRadius/CollisionShape2D.shape = circle2
-	$DetectRadius/CollisionShape2D.shape.radius = detect_radius
-	$AttackCooldown.wait_time = attack_cooldown
 	
 func shouldAggro():
 	var playerLevel = (PlayerSkills.meleeDamage.level + PlayerSkills.rangeDamage.level + PlayerSkills.magicDamage.level) / 3
-	print(playerLevel, " ", level)
 	return (level >= playerLevel / 2) || is_aggravated
 
 func _process(delta):
-	if is_dead:
+	if is_dead || !shouldAggro():
 		return
 	
 	var current_dir = Vector2(0, 0)
@@ -147,7 +127,7 @@ func _process(delta):
 		$CollisionShape2D.global_rotation = target_dir.angle()
 	if attacking && has_clear_shot():
 		$AnimatedSprite.play("attack")
-		if can_attack && shouldAggro():
+		if can_attack:
 			can_attack = false
 			attack()
 			$AttackCooldown.start()

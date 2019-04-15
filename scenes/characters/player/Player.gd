@@ -24,7 +24,7 @@ var velocity = Vector2()
 func attack():
 	var dir = Vector2(1, 0).rotated(global_rotation)
 	if target:
-		target.take_damage({accuracy = skills.accuracy, damage = skills.meleeDamage})
+		target.take_damage({accuracy = skills.accuracy, damage = skills.meleeDamage}, 'meleeDamage')
 
 func die():
 	dead = true
@@ -39,7 +39,7 @@ func shoot():
 	}
 	get_parent()._on_shoot(Projectile, $AnimatedSprite/Position.global_position, dir, name, attacker)
 
-func take_damage(attacker):
+func take_damage(attacker, type):
 	var damage = Algorithms.calculate_damage_taken(attacker, self)
 	
 	var sp = Splat.instance()
@@ -89,15 +89,16 @@ func clamp_pos():
 	position.x = clamp(position.x, $Camera2D.limit_left, $Camera2D.limit_right)
 	position.y = clamp(position.y, $Camera2D.limit_top, $Camera2D.limit_bottom)
 	
+func _ready():
+	PlayerStore.connect("updateLevel", self, "update_skills")
+	
 func set_sprite_dir():
 	var target_dir = (get_global_mouse_position() - global_position).normalized()
 	$CollisionShape2D.global_rotation = target_dir.angle()
 	$AnimatedSprite.global_rotation = target_dir.angle()
 	
-func update_stats():
-	meleeDamage = skills.meleeDamage
-	rangeDamage = skills.rangeDamage
-	speed = skills.speed
+func update_skills(_skills):
+	skills = PlayerStore.getStats()
 
 func _physics_process(delta):
 	if dead:
@@ -117,13 +118,13 @@ func _physics_process(delta):
 		target = null
 
 	velocity = move_and_slide(velocity)
-	update_stats()
 	
 func _on_AttackCooldown_timeout():
 	can_attack = true
 
 
 func _on_Button_pressed():
+	pass
 	var diff = 0
 	if powered:
 		diff = -10000
