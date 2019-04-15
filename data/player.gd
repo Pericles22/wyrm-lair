@@ -29,7 +29,7 @@ var state = {
 		},
 		magicDamage = {
 			experience = 0,
-			level = 1,
+			level = 10,
 			requiredXP = requiredXP
 		},
 		maxHealth = {
