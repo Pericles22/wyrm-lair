@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/farmland/bg/GrassTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/rooms/farmland/common/Environment.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/rooms/addons/PortalPosition.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/environment/monsters/MonsterSpawner.tscn" type="PackedScene" id=4]
 
 [node name="M1" type="Node2D"]
 
@@ -13,4 +15,10 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 [node name="Environment" parent="." instance=ExtResource( 2 )]
 tile_data = PoolIntArray( 31, -2147483648, 0, 65567, -2147483648, 0, 131103, -2147483648, 0, 196639, -2147483648, 0, 262175, -2147483648, 0, 327711, -2147483648, 0, 393247, -2147483648, 0, 458783, -2147483648, 0, 524319, -2147483648, 0, 589855, -2147483648, 0, 655391, -2147483648, 0, 720927, -2147483648, 0, 786463, -2147483648, 0, 851999, -2147483648, 0, 917535, -2147483648, 0, 983071, -2147483648, 0, 1048607, -2147483648, 0, 1114143, -2147483648, 0, 1179679, -2147483648, 0, 1245215, -2147483648, 0, 1310751, -2147483648, 0, 1376287, -2147483648, 0, 1441823, -2147483648, 0, 1507359, -2147483648, 0, 1572895, -2147483648, 0, 1638431, -2147483648, 0, 1703967, -2147483648, 0, 1769503, -2147483648, 0, 1835039, -2147483648, 0, 1900575, -2147483648, 0, 1966111, -2147483648, 0, 2031647, -2147483648, 0 )
+
+[node name="PortalPosition" parent="." instance=ExtResource( 3 )]
+position = Vector2( 240.896, 316.7 )
+
+[node name="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 405.992, 128.335 )
 

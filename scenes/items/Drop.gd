@@ -16,7 +16,7 @@ func _on_Drop_body_entered(body):
 		sound.stream = load("res://assets/sounds/fx/pick-up-drop.wav")
 		sound.playing = true
 		self.add_child(sound)
-		get_parent()._on_Drop_pickup(global_position)
+		Functions._on_drop_pickup(global_position)
 		$CollisionShape2D.queue_free()
 		$Control.queue_free()
 		$Lifetime.start()

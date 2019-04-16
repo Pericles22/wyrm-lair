@@ -8,20 +8,15 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Node",
-"class": "RealmUtils",
-"language": "GDScript",
-"path": "res://scenes/realm/Utils.gd"
-} ]
+_global_script_classes=[  ]
 _global_script_class_icons={
-"RealmUtils": ""
+
 }
 
 [application]
 
 config/name="Wyrm Lair"
-run/main_scene="res://Floor1.tscn"
+run/main_scene="res://Main.tscn"
 config/icon="res://assets/icon.png"
 
 [autoload]
@@ -31,6 +26,7 @@ PlayerStore="*res://data/player.gd"
 Equipment="*res://data/equipment.gd"
 Algorithms="*res://data/algorithms.gd"
 Functions="*res://data/functions.gd"
+Common="*res://data/common.gd"
 
 [display]
 

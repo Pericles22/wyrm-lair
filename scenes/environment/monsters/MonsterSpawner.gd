@@ -28,6 +28,4 @@ func spawn_enemies():
 		var en = Enemies[randi() % 3].instance()
 		var x = xRange[randi() % xCount]
 		var y = yRange[randi() % yCount]
-		en.level = 5
-		add_child(en)
-		en.global_position = Vector2(x, y)
+		Functions._spawn_enemy(en, Vector2(x, y))

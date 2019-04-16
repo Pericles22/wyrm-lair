@@ -60,7 +60,7 @@ func has_clear_shot():
 	return !("Obstacles" in collider1) || !("Obstacles" in collider2)
 
 func set_stats():
-	var currFloor = get_parent().floorCount
+	var currFloor = Common.state.currentFloor
 	accuracy = 20 + (currFloor * rand_range(.9, 1.1))
 	attack_cooldown = 1 - (currFloor * .01)
 	damage = 10 + (currFloor * rand_range(.9, 1.1))
