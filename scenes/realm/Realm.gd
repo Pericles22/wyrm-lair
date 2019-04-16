@@ -7,7 +7,7 @@ const player = preload('res://scenes/characters/player/Player.tscn')
 
 func _ready():
 	randomize()
-	var realm = makeRealm(7)
+	var realm = makeRealm(15)
 	drawRealm(realm, 'farmland')
 
 func drawRealm(realm, realmType):
@@ -29,6 +29,11 @@ func drawRealm(realm, realmType):
 			
 		var instance = scene.instance()
 		instance.position = coords * roomSizeVector
+		
+		if roomDefinition.isEnd:
+			var label = Label.new()
+			label.text = 'You found the end like a freaking pro'
+			instance.add_child(label)
 		
 		add_child(instance)
 	
@@ -52,7 +57,7 @@ func makeRealm(criticalPathLength):
 	# so skip this part if that's the case
 	var numNeededRooms = realm.neededRooms.size()
 	if numNeededRooms:
-		realm = $Fluffer.addFluff(floor(criticalPathLength / 2), realm.rooms, realm.neededRooms)
+		realm = $Fluffer.addFluff(floor(criticalPathLength * 2), realm.rooms, realm.neededRooms)
 
 	# dead-end or loop back all the loose ends
 	return $Filler.fillNeededRooms(realm.rooms, realm.neededRooms)
