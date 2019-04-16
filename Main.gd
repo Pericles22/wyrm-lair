@@ -7,7 +7,7 @@ var loadNewRealm = true
 func _ready():
 	Functions.connect("change_realm", self, "clear_realm")
 	Functions.connect("drop_item", self, "_on_Enemy_drop")
-	Functions.connect("drop_item", self, "_on_Drop_pickup")
+	Functions.connect("drop_pickup", self, "_on_Drop_pickup")
 	Functions.connect("shoot", self, "_on_shoot")
 	Functions.connect("spawn_enemy", self, "spawn_enemy")
 
@@ -42,6 +42,5 @@ func load_new_realm():
 	add_child(r)
 	
 func spawn_enemy(enemy, pos):
-	print('where')
 	get_node("Realm").add_child(enemy)
 	enemy.position = pos
