@@ -1,4 +1,5 @@
 extends Node
+class_name RealmUtils
 
 const a = { type = 'a', right = true }
 const b = { type = 'b', bottom = true }
@@ -29,7 +30,7 @@ const BOTTOM = 'bottom'
 const LEFT = 'left'
 const TOP = 'top'
 
-func getDirectionCoords(coords, direction):
+func getDirectionCoords(coords: Vector2, direction):
 	var x = coords.x
 	var y = coords.y
 	
@@ -39,7 +40,7 @@ func getDirectionCoords(coords, direction):
 	if (direction == TOP): return Vector2(x, y - 1)
 
 func getRoomDirections(roomType, prevRoomDirections):
-	var directions = []
+	var directions := []
   
 	if !prevRoomDirections.has(RIGHT) && roomType.has(RIGHT): directions.push_back(RIGHT)
 	if !prevRoomDirections.has(BOTTOM) && roomType.has(BOTTOM): directions.push_back(BOTTOM)
@@ -48,18 +49,19 @@ func getRoomDirections(roomType, prevRoomDirections):
   
 	return directions
 	
-func mergeDictionaries(source1, source2):
+func mergeDictionaries(source1: Dictionary, source2: Dictionary):
 	var target = source1.duplicate()
 	for key in source2:
 		target[key] = source2[key]
-		
+
 	return target
 
-func pick(arr):
+func pick(arr: Array):
 	if !arr.size():
 		return null
 
-	return arr[randi() % arr.size()]
+	var index = randi() % arr.size()
+	return arr[index]
 
 func reverseDirection(direction):
 	if (direction == RIGHT): return LEFT
