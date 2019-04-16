@@ -1,6 +1,6 @@
 extends Node
 
-signal change_floor
+signal change_realm
 signal drop_item
 signal shoot
 
@@ -13,4 +13,5 @@ func _drop_item(drop, position, type):
 	emit_signal("drop_item", drop, position, type)
 	
 func _on_door_entered():
-	emit_signal("change_floor")
+	print('entered')
+	emit_signal("change_realm")
