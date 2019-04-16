@@ -37,7 +37,7 @@ func attack():
 	if type == "range":
 		var dir = Vector2(1, 0).rotated($CollisionShape2D/Position.global_rotation)
 		var pos = $CollisionShape2D/Position.global_position
-		get_parent()._on_shoot(Projectile, pos, dir, 'Enemy', self)
+		Functions._on_shoot(Projectile, pos, dir, 'Enemy', self)
 	else:
 		target.take_damage(self, '')
 
@@ -47,7 +47,7 @@ func die():
 	randomize()
 	$AnimatedSprite.queue_free()
 	$CollisionShape2D.queue_free()
-	get_parent()._on_Enemy_drop(Drop, global_position, drops[drops.keys()[randi()%4]])
+	Functions._drop_item(Drop, global_position, drops[drops.keys()[randi()%4]])
 	$DeathTimer.start()
 		
 func has_clear_shot():

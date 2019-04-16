@@ -45,15 +45,15 @@ func spawn_enemies():
 		add_child(en)
 
 func _ready():
+	Functions.connect("drop_item", self, "_on_Enemy_drop")
+	Functions.connect("shoot", self, "_on_shoot")
 	set_map_limits()
 	set_camera_limits()
 	spawn_enemies()
 
-func _on_shoot(projectile, position, direction, shooter, dmg):
-	var p = projectile.instance()
-	p.shooter = shooter
-	add_child(p)
-	p.start(position, direction, dmg)
+func _on_shoot(projectile, position, direction, dmg):
+	add_child(projectile)
+	projectile.start(position, direction, dmg)
 	
 func _on_Enemy_drop(drop, position, type):
 	var d = drop.instance()

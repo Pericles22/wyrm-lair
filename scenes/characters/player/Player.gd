@@ -37,7 +37,7 @@ func shoot():
 		accuracy = skills.accuracy,
 		damage = Algorithms.calculate_damage_given(skills.rangeDamage) 
 	}
-	get_parent()._on_shoot(Projectile, $AnimatedSprite/Position.global_position, dir, name, attacker)
+	Functions._on_shoot(Projectile, $AnimatedSprite/Position.global_position, dir, name, attacker)
 
 func take_damage(attacker, type):
 	var damage = Algorithms.calculate_damage_taken(attacker, self)
