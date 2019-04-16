@@ -80,7 +80,7 @@ func getStats():
 		maxHealth = state.skills.maxHealth.level + 99,
 		meleeDamage = state.skills.meleeDamage.level * 10,
 		rangeDamage = state.skills.rangeDamage.level * 5,
-		speed = state.skills.speed.level + 120
+		speed = state.skills.speed.level + 300
 	}
 	
 func updateLevel(playerStat):

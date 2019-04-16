@@ -1,16 +1,19 @@
 extends Node2D
 
-const TILE_SIZE = 16
-const ROOM_TILES = 32
-const ROOM_SIZE = ROOM_TILES * TILE_SIZE
+const door = preload("res://scenes/rooms/addons/Door.tscn")
 const player = preload('res://scenes/characters/player/Player.tscn')
+
+var TILE_SIZE = 16
+var ROOM_TILES = 32
+var ROOM_SIZE = ROOM_TILES * TILE_SIZE
+var realmType = 'farmland'
 
 func _ready():
 	randomize()
 	var realm = makeRealm(15)
-	drawRealm(realm, 'farmland')
+	drawRealm(realm)
 
-func drawRealm(realm, realmType):
+func drawRealm(realm):
 	# cache the loaded scenes as we encounter them
 	var loadedScenes = {}
 	var roomSizeVector = Vector2(ROOM_SIZE, ROOM_SIZE)
@@ -31,9 +34,8 @@ func drawRealm(realm, realmType):
 		instance.position = coords * roomSizeVector
 		
 		if roomDefinition.isEnd:
-			var label = Label.new()
-			label.text = 'You found the end like a freaking pro'
-			instance.add_child(label)
+			var d = door.instance()
+			add_child(d)
 		
 		add_child(instance)
 	
