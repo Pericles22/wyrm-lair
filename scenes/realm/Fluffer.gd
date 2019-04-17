@@ -5,8 +5,8 @@ var Utils
 func _ready():
 	Utils = get_parent().get_node('Utils')
 
-func addFluff(iterations, rooms, neededRooms):
-	if (iterations == 0):
+func addFluff(iterations: int, rooms: Dictionary, neededRooms: Dictionary):
+	if (iterations == 0 || !neededRooms.size()):
 		return { rooms = rooms, neededRooms = neededRooms }
 	
 	# pick one of the neededRooms and extend its path (to better distract the player)
