@@ -17,8 +17,6 @@ func _process(delta: float):
 		loadNewRealm = false
 
 func clear_realm():
-	print(get_children()[0].name)
-	print(get_node("Realm"))
 	if get_node("Realm"):
 		get_node("Realm").queue_free()
 		loadNewRealm = true
@@ -44,3 +42,4 @@ func load_new_realm():
 func spawn_enemy(enemy, pos):
 	get_node("Realm").add_child(enemy)
 	enemy.position = pos
+	

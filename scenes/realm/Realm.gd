@@ -30,15 +30,20 @@ func drawRealm(realm):
 			scene = load(fileName)
 			loadedScenes[fileName] = scene
 			
-		var instance = scene.instance()
-		instance.position = coords * roomSizeVector
+		var roomInstance = scene.instance()
+		roomInstance.position = coords * roomSizeVector
 
+		if roomDefinition.isStart:
+			for child in roomInstance.get_children():
+				if "MonsterSpawner" in child.name:
+					child.isStart = true
+		
 		if roomDefinition.isEnd:
 			var d = door.instance()
-			instance.get_node("PortalPosition").add_child(d)
+			roomInstance.get_node("PortalPosition").add_child(d)
 		
-		add_child(instance)
-	
+		add_child(roomInstance)
+		
 	var playerInstance = player.instance()
 	var roomMiddle = ROOM_SIZE / 2 + 8
 	playerInstance.position = Vector2(roomMiddle, roomMiddle)

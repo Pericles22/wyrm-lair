@@ -6,18 +6,23 @@ const YellowSnake = preload("res://scenes/characters/enemy/YellowSnake.tscn")
 
 const Enemies = [BlueSnake, Grub, YellowSnake]
 
-var floorCount = 2
+var isStart = false
 
 func _ready():
+	if isStart:
+		return
 	randomize()
 	spawn_enemies()
 
 func spawn_enemies():
 	var extents = $CollisionShape2D.get_shape().get_extents()
-	var left = global_position[0]
-	var top = global_position[1]
+	var left = global_position.x
+	var top = global_position.y
 	var right = left + extents[0]
 	var bottom = top + extents[1]
+	
+	print(get_global_transform())
+	print(top, ' ', left)
 	
 	var xRange = range(left, right)
 	var yRange = range(top, bottom)
