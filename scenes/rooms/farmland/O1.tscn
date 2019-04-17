@@ -19,6 +19,27 @@ tile_data = PoolIntArray( 14, 5, 0, 15, 10, 0, 16, 10, 0, 17, 6, 0, 65550, 9, 0,
 [node name="PortalPosition" parent="." instance=ExtResource( 3 )]
 position = Vector2( 238.68, 361.021 )
 
-[node name="Node2D" parent="." instance=ExtResource( 4 )]
+[node name="MonsterSpawner" parent="." instance=ExtResource( 4 )]
 position = Vector2( 277.461, 159.36 )
+
+[node name="MonsterSpawner2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 136.741, 222.518 )
+
+[node name="MonsterSpawner3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 434.801, 181.521 )
+
+[node name="MonsterSpawner4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 267.489, 388.722 )
+
+[node name="MonsterSpawner5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 121.229, 349.941 )
+
+[node name="MonsterSpawner6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 398.236, 334.429 )
+
+[node name="MonsterSpawner7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 398.236, 70.7175 )
+
+[node name="MonsterSpawner8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 106.824, 93.9862 )
 
