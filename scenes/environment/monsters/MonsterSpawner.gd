@@ -24,7 +24,7 @@ func spawn_enemies():
 	var xCount = xRange.size()
 	var yCount = yRange.size()
 	
-	for i in range(1, 10):
+	for i in range(0, randi() % 4):
 		var en = Enemies[randi() % 3].instance()
 		var x = xRange[randi() % xCount]
 		var y = yRange[randi() % yCount]
